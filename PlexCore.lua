@@ -1186,7 +1186,8 @@ AIMBOT.TargetPart = nil
 function AIMBOT.LockOn(PART)
 	if (GLOBAL.IsAlive()) then
 		if (isrbxactive()) then
-			mousemoverel((workspace.CurrentCamera:WorldToScreenPoint(PART.CFrame.p).X - workspace.CurrentCamera:WorldToScreenPoint(game:GetService("Players").LocalPlayer:GetMouse().Hit.p).X), (workspace.CurrentCamera:WorldToScreenPoint(PART.CFrame.p).Y - workspace.CurrentCamera:WorldToScreenPoint(game:GetService("Players").LocalPlayer:GetMouse().Hit.p).Y))
+			local SENSITIVITY = UserSettings():GetService("UserGameSettings").MouseSensitivity
+			mousemoverel(((workspace.CurrentCamera:WorldToScreenPoint(PART.CFrame.p).X - workspace.CurrentCamera:WorldToScreenPoint(game:GetService("Players").LocalPlayer:GetMouse().Hit.p).X)/2)/(SENSITIVITY + 1), ((workspace.CurrentCamera:WorldToScreenPoint(PART.CFrame.p).Y - workspace.CurrentCamera:WorldToScreenPoint(game:GetService("Players").LocalPlayer:GetMouse().Hit.p).Y)/2)/(SENSITIVITY + 1))
 			game:GetService("RunService").RenderStepped:Wait()
 		end
 	end
