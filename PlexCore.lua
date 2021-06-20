@@ -1186,10 +1186,8 @@ AIMBOT.TargetPart = nil
 function AIMBOT.LockOn(PART)
 	if (GLOBAL.IsAlive()) then
 		if (isrbxactive()) then
-			for i=1, 4 do
-				mousemoverel((workspace.CurrentCamera:WorldToScreenPoint(PART.CFrame.p).X - workspace.CurrentCamera:WorldToScreenPoint(game:GetService("Players").LocalPlayer:GetMouse().Hit.p).X)/4, (workspace.CurrentCamera:WorldToScreenPoint(PART.CFrame.p).Y - workspace.CurrentCamera:WorldToScreenPoint(game:GetService("Players").LocalPlayer:GetMouse().Hit.p).Y)/4)
-				game:GetService("RunService").RenderStepped:Wait()
-			end
+			mousemoverel((workspace.CurrentCamera:WorldToScreenPoint(PART.CFrame.p).X - workspace.CurrentCamera:WorldToScreenPoint(game:GetService("Players").LocalPlayer:GetMouse().Hit.p).X), (workspace.CurrentCamera:WorldToScreenPoint(PART.CFrame.p).Y - workspace.CurrentCamera:WorldToScreenPoint(game:GetService("Players").LocalPlayer:GetMouse().Hit.p).Y))
+			game:GetService("RunService").RenderStepped:Wait()
 		end
 	end
 	--workspace.CurrentCamera.CFrame = CFrame.new(workspace.CurrentCamera.CFrame.p, PART.CFrame.p) old aimbot
