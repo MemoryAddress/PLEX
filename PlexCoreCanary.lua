@@ -894,7 +894,6 @@ ESP_HEALTH["TextButton"].MouseButton1Click:Connect(function()
 end)
 
 ESP_DISTANCE["TextButton"].MouseButton1Click:Connect(function()
-  return
 	if (ESP.Distance) then
 		Toggle_Cricle_3:TweenPosition(UDim2.new(-0.25, 0, 0.5, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
 		Toggle_RenderColor_3:TweenSize(UDim2.new(0, 0, 1, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
