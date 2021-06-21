@@ -1398,9 +1398,6 @@ function AIMBOT.Call.Runtime()
 	end
 end
 
-return AIMBOT
-
-
 AB_ACTIVE["TextButton"].MouseButton1Click:Connect(function()
 	if (AIMBOT.Active) then
 		Toggle_Cricle_4:TweenPosition(UDim2.new(-0.25, 0, 0.5, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
