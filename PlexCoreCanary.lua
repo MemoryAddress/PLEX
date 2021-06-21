@@ -1298,7 +1298,8 @@ AIMBOT.getAbsFOV = function (part)
 	return math.abs(fov.X) + math.abs(fov.Y)
 end
 
-AIMBOT.TargetPart = nil
+AIMBOT.TargetModel = nil
+AIMBOT.UNLOCKED = false
 
 function AIMBOT.LockOn(PART)
 	if (GLOBAL.IsAlive()) then
@@ -1312,51 +1313,93 @@ function AIMBOT.LockOn(PART)
 end
 
 function AIMBOT.Call.KeyDown(KEY)
-	if (KEY.KeyCode == Enum.KeyCode.E) then
-		if (not AIMBOT.TargetPart and AIMBOT.Active) then
-			local MAX_ANGLE = math.rad(AIMBOT.FoVRange)
-			for i, plr in pairs(game:GetService("Players"):GetChildren()) do
-				if plr.Name ~= game:GetService("Players").LocalPlayer.Name and plr.Character and plr.Character.Head and plr.Character.Humanoid and plr.Character.Humanoid.Health > 1 then
-					local an = AIMBOT.getAbsFOV(plr.Character.Head)
-					if an < MAX_ANGLE then
-						MAX_ANGLE = an
-						AIMBOT.TargetPart = plr.Character.Head
-					end
-					plr.Character.Humanoid.Died:Connect(function()
-						if AIMBOT.TargetPart.Parent == plr.Character or AIMBOT.TargetPart == nil then
-							AIMBOT.TargetPart = nil
+	if (game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name == "Phantom Forces") then
+		if (KEY.UserInputType == Emun.UserInputType.MouseButton2) then
+			if (not AIMBOT.TargetModel and AIMBOT.Active) then
+				local MAX_ANGLE = math.rad(AIMBOT.FoVRange)
+				repeat
+					if (game:GetService("Workspace").Players.Phantoms.Name == game:GetService("Players").LocalPlayer.Team.Name) then
+						for _, Player in next, game:GetService("Workspace").Players.Phantoms:GetChildren() do
+						    	local an = AIMBOT.getAbsFOV(Player.Head)
+							if an < MAX_ANGLE then
+								MAX_ANGLE = an
+								AIMBOT.TargetModel = Player
+							end
+							wait()
 						end
-					end)
-				end
+					else
+						for _, Player in next, game:GetService("Workspace").Players.Ghosts:GetChildren() do
+						    	local an = AIMBOT.getAbsFOV(Player.Head)
+							if an < MAX_ANGLE then
+								MAX_ANGLE = an
+								AIMBOT.TargetModel = Player
+							end
+							wait()
+						end
+					end					
+				until AIMBOT.TargetModel or AIMBOT.UNLOCKED
+				AIMBOT.UNLOCKED = false
+			else
+				AIMBOT.TargetModel = nil
 			end
-		else
-			AIMBOT.TargetPart = nil
+		end
+	else
+		if (KEY.KeyCode == Enum.KeyCode.E) then
+			if (not AIMBOT.TargetModel and AIMBOT.Active) then
+				local MAX_ANGLE = math.rad(AIMBOT.FoVRange)
+				for i, plr in pairs(game:GetService("Players"):GetChildren()) do
+					if plr.Name ~= game:GetService("Players").LocalPlayer.Name and plr.Character and plr.Character.Head and plr.Character.Humanoid and plr.Character.Humanoid.Health > 1 then
+						local an = AIMBOT.getAbsFOV(plr.Character.Head)
+						if an < MAX_ANGLE then
+							MAX_ANGLE = an
+							AIMBOT.TargetModel = plr.Character
+						end
+						plr.Character.Humanoid.Died:Connect(function()
+							if AIMBOT.TargetModel == plr.Character then
+								AIMBOT.TargetModel = nil
+							end
+						end)
+					end
+				end
+			else
+				AIMBOT.TargetModel = nil
+			end
 		end
 	end
 end
 
+function AIMBOT.Call.KeyUp(KEY)
+	if (KEY.UserInputType == Emun.UserInputType.MouseButton2) then
+		AIMBOT.TargetModel = nil
+		AIMBOT.UNLOCKED = true
+	end
+end
+
 function AIMBOT.Call.Runtime()
-	if (AIMBOT.TargetPart and AIMBOT.Active) then
+	if (AIMBOT.TargetModel and AIMBOT.Active) then
 		if (AIMBOT.Checks.LastPosition) then
-			if ((AIMBOT.TargetPart.CFrame.p - AIMBOT.Checks.LastPosition).magnitude > 10) then
-				AIMBOT.TargetPart = nil
+			if ((AIMBOT.TargetModel.Head.CFrame.p - AIMBOT.Checks.LastPosition).magnitude > 30) then
+				AIMBOT.TargetModel = nil
 			else
-				AIMBOT.Checks.LastPosition = AIMBOT.TargetPart.CFrame.p
+				AIMBOT.Checks.LastPosition = AIMBOT.TargetModel.Head.CFrame.p
 			end
 		else
-			AIMBOT.Checks.LastPosition = AIMBOT.TargetPart.CFrame.p
+			AIMBOT.Checks.LastPosition = AIMBOT.TargetModel.Head.CFrame.p
 		end
-		if (AIMBOT.TargetPart) then
-			if (AIMBOT.TargetPart.Parent == game:GetService("Players").LocalPlayer.Character) then
-				AIMBOT.TargetPart = nil
+		if (AIMBOT.TargetModel) then
+			if (AIMBOT.TargetModel == game:GetService("Players").LocalPlayer.Character) then
+				AIMBOT.TargetModel = nil
 			else
-				AIMBOT.LockOn(AIMBOT.TargetPart)
+				AIMBOT.LockOn(AIMBOT.TargetModel.Head)
 			end
 		else
 			AIMBOT.Checks.LastPosition = nil
 		end
 	end
 end
+
+return AIMBOT
+
 
 AB_ACTIVE["TextButton"].MouseButton1Click:Connect(function()
 	if (AIMBOT.Active) then
@@ -1403,6 +1446,9 @@ game:GetService("UserInputService").inputBegan:Connect(function(KEY)
 	end
 	AIMBOT.Call.KeyDown(KEY)
 	--ESP.Call.KeyDown(KEY)
+end)
+game:GetService("UserInputService").inputEnded:Connect(function(KEY)
+	AIMBOT.Call.KeyUp(KEY)
 end)
 game:GetService('Players').LocalPlayer:GetMouse().KeyDown:connect(function(KEY)
 	FLY.Call.KeyDown(KEY)
