@@ -6,101 +6,230 @@ local ESP = {
 	Distance = false,
 }
 
-ESP.Folder = nil
-
-ESP.Refresh = function()
-	if not ESP.Folder then
-		ESP.Folder = Instance.new("Folder", game.CoreGui)
-		ESP.Folder.Name = game.Name
-	end
-	ESP.Folder:ClearAllChildren()
-	if (ESP.Active) then
-		for _, plr in pairs(game:GetService("Players"):GetPlayers()) do
-			if plr.Character and plr.Character.Humanoid.Health > 0 and plr.Name ~= game:GetService("Players").LocalPlayer.Name then
-				local e = ESP.Folder:FindFirstChild(plr.Name)
-				if not e then
-					local ESP_UI = Instance.new("BillboardGui", ESP.Folder)
-					local ESP_HIGHLIGHT = Instance.new("Frame", ESP_UI)
-					local ESP_NAME = Instance.new("TextLabel", ESP_UI)
-					local ESP_DISTANCE = Instance.new("TextLabel", ESP_UI)
-					local Frame = Instance.new("Frame", ESP_UI)
-					
-					ESP_UI.Name = plr.Name
-					ESP_UI.AlwaysOnTop = true
-					ESP_UI.Size = UDim2.new(3, 1, 5, 1)
-					ESP_UI.Adornee = plr.Character.HumanoidRootPart
-
-					ESP_HIGHLIGHT.Name = "USER_HIGHLIGHT"
-					ESP_HIGHLIGHT.Active = true
-					ESP_HIGHLIGHT.AnchorPoint = Vector2.new(0.5, 0.5)
-					ESP_HIGHLIGHT.BackgroundColor3 = Color3.fromRGB(0, 143, 0)
-					ESP_HIGHLIGHT.BackgroundTransparency = 0.600
-					ESP_HIGHLIGHT.BorderSizePixel = 5
-					ESP_HIGHLIGHT.Position = UDim2.new(0.5, 0, 0.579999983, 0)
-					ESP_HIGHLIGHT.Size = UDim2.new(1, 0, 0.850000024, 0)
-					
-					if (ESP.Health) then
-						ESP_HIGHLIGHT.BorderColor3 = Color3.fromHSV((plr.Character.Humanoid.Health/plr.Character.Humanoid.MaxHealth)*.3, 1, 1)
-					else
-						ESP_HIGHLIGHT.BorderColor3 = Color3.fromHSV(.3, 1, 1)
-					end
-					
-					ESP_NAME.Name = "USER_NAME"
-					ESP_NAME.AnchorPoint = Vector2.new(1, 1)
-					ESP_NAME.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-					ESP_NAME.BackgroundTransparency = 1.000
-					ESP_NAME.BorderSizePixel = 0
-					ESP_NAME.Position = UDim2.new(0.5, 0, 0.150000006, 0)
-					ESP_NAME.Size = UDim2.new(1, 40, 0.200000003, 20)
-					ESP_NAME.Font = Enum.Font.SourceSans
-					ESP_NAME.Text = plr.Name
-					ESP_NAME.TextColor3 = Color3.fromRGB(0, 255, 0)
-					ESP_NAME.TextScaled = true
-					ESP_NAME.TextSize = 14.000
-					ESP_NAME.TextStrokeColor3 = Color3.fromRGB(0, 150, 0)
-					ESP_NAME.TextStrokeTransparency = 0.000
-					ESP_NAME.TextWrapped = true
-
-					ESP_DISTANCE.Name = "USER_DISTANCE"
-					ESP_DISTANCE.AnchorPoint = Vector2.new(0, 1)
-					ESP_DISTANCE.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-					ESP_DISTANCE.BackgroundTransparency = 1.000
-					ESP_DISTANCE.BorderSizePixel = 0
-					ESP_DISTANCE.Position = UDim2.new(0.800000012, 0, 0.150000006, 0)
-					ESP_DISTANCE.Size = UDim2.new(1, 40, 0.200000003, 20)
-					ESP_DISTANCE.Font = Enum.Font.SourceSans
-					ESP_DISTANCE.Text = "0M"
-					ESP_DISTANCE.TextColor3 = Color3.fromRGB(0, 255, 0)
-					ESP_DISTANCE.TextScaled = true
-					ESP_DISTANCE.TextSize = 14.000
-					ESP_DISTANCE.TextStrokeColor3 = Color3.fromRGB(0, 150, 0)
-					ESP_DISTANCE.TextStrokeTransparency = 0.000
-					ESP_DISTANCE.TextWrapped = true
-					ESP_DISTANCE.TextXAlignment = Enum.TextXAlignment.Left
-					
-					if (ESP.Distance) then
-						ESP_DISTANCE.Text =  math.floor((game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position - plr.Character.HumanoidRootPart.Position).Magnitude).."M"
-					else
-						ESP_DISTANCE.Visible = false
-					end
-
-					Frame.AnchorPoint = Vector2.new(1, 1)
-					Frame.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
-					Frame.BorderSizePixel = 0
-					Frame.Position = UDim2.new(0.699999988, 0, 0.150000006, 0)
-					Frame.Size = UDim2.new(0, 2, 0.200000003, 20)
-					
-					plr.Character.Humanoid.Died:Connect(function()
-						ESP_UI:Destroy()
-					end)
-				end
-			end
-		end
-	end
+local function GetPartCorners(Part)
+	local Size = Part.Size * Vector3.new(1, 1.5)
+	return {
+        	TR = (CFrame.new(Part.Position, workspace.CurrentCamera.CFrame.Position) * CFrame.new(Vector3.new(-Size.X, -Size.Y, 0))).Position,
+		BR = (CFrame.new(Part.Position, workspace.CurrentCamera.CFrame.Position) * CFrame.new(Vector3.new(-Size.X, Size.Y, 0))).Position,
+		TL = (CFrame.new(Part.Position, workspace.CurrentCamera.CFrame.Position) * CFrame.new(Vector3.new(Size.X, -Size.Y, 0))).Position,
+		BL = (CFrame.new(Part.Position, workspace.CurrentCamera.CFrame.Position) * CFrame.new(Vector3.new(Size.X, Size.Y, 0))).Position,
+	}
 end
 
-function ESP.Call.KeyDown(KEY)
-	if KEY == "t" then
-		ESP.Refresh()
+function Watch(Model, Type, Dyn)
+	local Objects = {
+	       Box = Drawing.new("Quad"),
+	       Name = Drawing.new("Text"),
+	}
+    local ParentCheck = Model.Parent
+	spawn(function()
+		local function Render()
+			local Distance = (workspace.CurrentCamera.CFrame.Position - Model.HumanoidRootPart.Position).Magnitude
+
+			for i, v in pairs(Objects) do
+				v.Visible = true
+				v.Transparency = 1
+			end
+
+			for i, v in pairs(Model:GetChildren()) do
+				if (v:IsA("BasePart") and v.Name ~= "HumanoidRootPart") then
+					if (not Objects[v.Name]) then
+						Objects[v.Name] = Drawing.new("Line")	
+					else
+						local VectorTOP, OnScreenTOP = workspace.CurrentCamera:WorldToScreenPoint((v.CFrame * CFrame.new(0, (v.Size * Vector3.new(1, 1.5)).Y/2, 0)).Position)
+						local VectorBTTOM, OnScreenBTTOM = workspace.CurrentCamera:WorldToScreenPoint((v.CFrame * CFrame.new(0, -(v.Size * Vector3.new(1, 1.5)).Y/2, 0)).Position)
+
+						if (OnScreenTOP or OnScreenBTTOM) then
+							Objects[v.Name].From = Vector2.new(VectorTOP.X, VectorTOP.Y + 36)
+							Objects[v.Name].To = Vector2.new(VectorBTTOM.X, VectorBTTOM.Y + 36)
+							Objects[v.Name].Thickness = math.clamp(3 - (Distance / 100), 0, 3)
+							Objects[v.Name].Color = Color3.fromHSV(0.571889, 1, 1)
+							Objects[v.Name].Transparency = math.clamp((500 - Distance) / 200, 0.2, 1)
+							Objects[v.Name].Visible = true
+						else
+							Objects[v.Name].Visible = false
+						end
+					end
+				end
+			end
+			local function ConnectTop(Part1, Part2)
+				if (not Objects[Part1.Name..Part2.Name]) then
+					Objects[Part1.Name..Part2.Name] = Drawing.new("Line")
+				end
+				local VectorTOP, OnScreenTOP = workspace.CurrentCamera:WorldToScreenPoint((Part1.CFrame * CFrame.new(0, (Part1.Size * Vector3.new(1, 1.5)).Y/2, 0)).Position)
+				local VectorBTTOM, OnScreenBTTOM = workspace.CurrentCamera:WorldToScreenPoint((Part2.CFrame * CFrame.new(0, (Part2.Size * Vector3.new(1, 1.5)).Y/2, 0)).Position)
+
+				if (OnScreenTOP or OnScreenBTTOM) then
+					Objects[Part1.Name..Part2.Name].From = Vector2.new(VectorTOP.X, VectorTOP.Y + 36)
+					Objects[Part1.Name..Part2.Name].To = Vector2.new(VectorBTTOM.X, VectorBTTOM.Y + 36)
+					Objects[Part1.Name..Part2.Name].Thickness = math.clamp(3 - (Distance / 100), 0, 3)
+					Objects[Part1.Name..Part2.Name].Color = Color3.fromHSV(0.571889, 1, 1)
+					Objects[Part1.Name..Part2.Name].Transparency = math.clamp((500 - Distance) / 200, 0.2, 1)
+					Objects[Part1.Name..Part2.Name].Visible = true
+				else
+					Objects[Part1.Name..Part2.Name].Visible = false
+				end
+			end
+			if (Model:FindFirstChild("UpperTorso")) then
+				if (Model:FindFirstChild("LeftUpperArm")) then
+					ConnectTop(Model:FindFirstChild("LeftUpperArm"), Model:FindFirstChild("UpperTorso"))
+				end
+				if (Model:FindFirstChild("Left Arm")) then
+					ConnectTop(Model:FindFirstChild("Left Arm"), Model:FindFirstChild("UpperTorso"))
+				end
+
+				if (Model:FindFirstChild("RightUpperArm")) then
+					ConnectTop(Model:FindFirstChild("RightUpperArm"), Model:FindFirstChild("UpperTorso"))
+				end
+				if (Model:FindFirstChild("Right Arm")) then
+					ConnectTop(Model:FindFirstChild("Right Arm"), Model:FindFirstChild("UpperTorso"))
+				end
+			elseif (Model:FindFirstChild("Torso")) then
+				if (Model:FindFirstChild("LeftUpperArm")) then
+					ConnectTop(Model:FindFirstChild("LeftUpperArm"), Model:FindFirstChild("Torso"))
+				end
+				if (Model:FindFirstChild("Left Arm")) then
+					ConnectTop(Model:FindFirstChild("Left Arm"), Model:FindFirstChild("Torso"))
+				end
+
+				if (Model:FindFirstChild("RightUpperArm")) then
+					ConnectTop(Model:FindFirstChild("RightUpperArm"), Model:FindFirstChild("Torso"))
+				end
+				if (Model:FindFirstChild("Right Arm")) then
+					ConnectTop(Model:FindFirstChild("Right Arm"), Model:FindFirstChild("Torso"))
+				end
+			end
+			if (Model:FindFirstChild("LowerTorso")) then
+				if (Model:FindFirstChild("LeftUpperLeg")) then
+					ConnectTop(Model:FindFirstChild("LeftUpperLeg"), Model:FindFirstChild("LowerTorso"))
+				end
+				if (Model:FindFirstChild("Left Leg")) then
+					ConnectTop(Model:FindFirstChild("Left Leg"), Model:FindFirstChild("LowerTorso"))
+				end
+
+				if (Model:FindFirstChild("RightUpperLeg")) then
+					ConnectTop(Model:FindFirstChild("RightUpperLeg"), Model:FindFirstChild("LowerTorso"))
+				end
+				if (Model:FindFirstChild("Right Leg")) then
+					ConnectTop(Model:FindFirstChild("Right Leg"), Model:FindFirstChild("LowerTorso"))
+				end
+			elseif (Model:FindFirstChild("Torso")) then
+				if (Model:FindFirstChild("LeftUpperLeg")) then
+					ConnectTop(Model:FindFirstChild("LeftUpperLeg"), Model:FindFirstChild("Torso"))
+				end
+				if (Model:FindFirstChild("Left Leg")) then
+					ConnectTop(Model:FindFirstChild("Left Leg"), Model:FindFirstChild("Torso"))
+				end
+
+				if (Model:FindFirstChild("RightUpperLeg")) then
+					ConnectTop(Model:FindFirstChild("RightUpperLeg"), Model:FindFirstChild("Torso"))
+				end
+				if (Model:FindFirstChild("Right Leg")) then
+					ConnectTop(Model:FindFirstChild("Right Leg"), Model:FindFirstChild("Torso"))
+				end
+			end
+			Objects.Name.Center = true
+			Objects.Name.Outline = true
+
+			local Vector, OnScreen = workspace.CurrentCamera:WorldToScreenPoint(Model.Head.Position + Vector3.new(0,2,0))
+			if (OnScreen) then
+				Objects.Name.Position = Vector2.new(Vector.X, Vector.Y + math.clamp(Distance / 10, 10, 30) - 10)
+				Objects.Name.Size = math.clamp(30 - Distance / 10, 10, 30)
+				Objects.Name.Color = Color3.fromHSV(math.clamp(Distance / 5, 0, 125) / 255, 0.75, 1)
+				Objects.Name.Visible = true
+				Objects.Name.Font = 1
+				Objects.Name.Transparency = math.clamp((500 - Distance) / 200, 0.2, 1)
+				Objects.Name.Text = string.format("[%sM] [%s]", tostring(math.floor(Distance)), game:GetService("Players"):GetPlayerFromCharacter(Model) and game:GetService("Players"):GetPlayerFromCharacter(Model).Name or "Player")
+			else
+				Objects.Name.Visible = false 
+			end
+
+			local PartCorners = GetPartCorners(Model.HumanoidRootPart)
+			local VectorTR, OnScreenTR = workspace.CurrentCamera:WorldToScreenPoint(PartCorners.TR)
+			local VectorBR, OnScreenBR = workspace.CurrentCamera:WorldToScreenPoint(PartCorners.BR)
+			local VectorTL, OnScreenTL = workspace.CurrentCamera:WorldToScreenPoint(PartCorners.TL)
+			local VectorBL, OnScreenBL = workspace.CurrentCamera:WorldToScreenPoint(PartCorners.BL)
+			if (OnScreenBL or OnScreenTL or OnScreenBR or OnScreenTR) then
+				Objects.Box.PointA = Vector2.new(VectorTR.X, VectorTR.Y + 36)
+				Objects.Box.PointB = Vector2.new(VectorTL.X, VectorTL.Y + 36)
+				Objects.Box.PointC = Vector2.new(VectorBL.X, VectorBL.Y + 36)
+				Objects.Box.PointD = Vector2.new(VectorBR.X, VectorBR.Y + 36)
+				Objects.Box.Color = Color3.fromHSV(math.clamp(Distance / 5, 0, 125) / 255, 0.75, 1)
+				Objects.Box.Thickness = math.clamp(3 - (Distance / 100), 0, 3)
+				Objects.Box.Transparency = math.clamp((500 - Distance) / 200, 0.2, 1)
+				Objects.Box.Visible = true
+			else
+				Objects.Box.Visible = false
+			end
+			game:GetService("RunService").RenderStepped:Wait()
+		end
+		if (Type == "PFTeam") then
+			while Model.Parent == ParentCheck and ESP.Active and Model.Parent.Name ~= game:GetService("Players").LocalPlayer.Team.Name do
+				Render()
+			end
+		else
+			while Model.Humanoid.Health > 0 and ESP.Active do
+				Render()
+			end
+		end
+		for i, v in pairs(Objects) do
+			v:Remove()
+		end
+	end)
+end
+ESP.Refresh = function()
+	if (ESP.Active) then
+		if (game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name == "Phantom Forces") then
+			for _, Player in next, game:GetService("Workspace").Players.Phantoms:GetChildren() do
+			    Watch(Player, "PFTeam")
+			end
+
+			for _, Player in next, game:GetService("Workspace").Players.Ghosts:GetChildren() do
+			    Watch(Player, "PFTeam")
+			end
+
+			game:GetService("Workspace").Players.Phantoms.ChildAdded:Connect(function(Player)
+				if (ESP.Active) then
+					delay(0.5, function()
+						Watch(Player, "PFTeam")
+					end)
+				end
+			end)
+
+			game:GetService("Workspace").Players.Ghosts.ChildAdded:Connect(function(Player)
+				if (ESP.Active) then
+					delay(0.5, function()
+						Watch(Player, "PFTeam")
+					end)
+				end
+			end)
+		else
+			for _, plr in pairs(game:GetService("Players"):GetPlayers()) do
+				if plr.Character and plr.Name ~= game:GetService("Players").LocalPlayer.Name then
+					plr.CharacterAdded:Connect(function(char)
+						if (ESP.Active) then
+							delay(0.5, function()
+								Watch(char, "none", plr)
+							end)
+						end
+					end)
+					Watch(plr.Character, "none", plr)
+				end
+			end
+			game:GetService("Players").PlayerAdded:Connect(function(plr)
+				plr.CharacterAdded:Connect(function(char)
+					if (ESP.Active) then
+						delay(0.5, function()
+							Watch(char, "none", plr)
+						end)
+					end
+				end)
+				if (ESP.Active) then
+					delay(0.5, function()
+						Watch(plr.Character, "none", plr)
+					end)
+				end
+			end)
+		end
 	end
 end
