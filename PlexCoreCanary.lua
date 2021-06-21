@@ -849,7 +849,7 @@ end
 ScreenGui.ResetOnSpawn = false
 ScreenGui.Name = "Chat"
 
-local FLY = local FLY = {
+local FLY = {
 	Core = {},
 	Controller = {},
 	Call = {}
@@ -1003,7 +1003,7 @@ end
 
 --//////////////////////////////////////////////////////////////////////////////////////////////
 
-local ESP = local ESP = {
+local ESP = {
 	FOV = {},
 	Call = {},
 	Active = false,
