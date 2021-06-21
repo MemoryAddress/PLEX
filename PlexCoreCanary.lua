@@ -1146,7 +1146,12 @@ function Watch(Model, Type, Dyn)
 				Objects.Name.Visible = true
 				Objects.Name.Font = 1
 				Objects.Name.Transparency = math.clamp((500 - Distance) / 200, 0.2, 1)
-				Objects.Name.Text = string.format("[%sM] [%s]", tostring(math.floor(Distance)), game:GetService("Players"):GetPlayerFromCharacter(Model) and game:GetService("Players"):GetPlayerFromCharacter(Model).Name or "Player")
+				if (ESP.Distance) then
+					Objects.Name.Text = string.format("[%sM] [%s]", tostring(math.floor(Distance)), game:GetService("Players"):GetPlayerFromCharacter(Model) and game:GetService("Players"):GetPlayerFromCharacter(Model).Name or "Player")
+				end
+				if (ESP.Health) then
+					Objects.Name.Text = Objects.Name.Text..string.format(" [%s HP]", tostring(math.floor(Model.Humanoid and Model.Humanoid.Health or nil) or "N/A"))
+				end
 			else
 				Objects.Name.Visible = false 
 			end
@@ -1335,24 +1340,23 @@ function AIMBOT.Call.KeyDown(KEY)
 					else
 						local CLOSEST_MODEL = nil
 						local CLOSEST_RANGE = MAX_ANGLE
-						print("looping")
-						for _, Player in pairs(game:GetService("Workspace").Players.Phantoms:GetChildren()) do
+						local CLOSEST_DISTANCE = 1000
+						for _, Player in pairs(game:GetService("Workspace").Players.Ghosts:GetChildren()) do
 						    if (CLOSEST_MODEL) then
 								local an = AIMBOT.getAbsFOV(Player.Head)
 								if (an < CLOSEST_RANGE) then
-									print("surpassed old capture")
-									CLOSEST_MODEL = Player
-									CLOSEST_RANGE = an
-									print("set closest")
+									if (CLOSEST_DISTANCE > (workspace.CurrentCamera.CFrame.p - Player.HumanoidRootPart.Position).magnitude) then
+										CLOSEST_MODEL = Player
+										CLOSEST_RANGE = an
+										CLOSEST_DISTANCE = (workspace.CurrentCamera.CFrame.p - Player.HumanoidRootPart.Position).magnitude
+									end
 								end
 							else
-								print("no closest yet")
-								local an = AIMBOT.getAbsFOV(Player.Head)
+								local an = AIMBOT.getAbsFOV(Player.HumanoidRootPart)
 								if an < MAX_ANGLE then
-									print("found first closest")
 									CLOSEST_MODEL = Player
 									CLOSEST_RANGE = an
-									print("set first closest")
+									CLOSEST_DISTANCE = (workspace.CurrentCamera.CFrame.p - Player.HumanoidRootPart.Position).magnitude
 								end
 							end
 						end
@@ -1392,7 +1396,6 @@ end
 
 function AIMBOT.Call.KeyUp(KEY)
 	if (KEY.UserInputType == Enum.UserInputType.MouseButton2) then
-		print("up")
 		AIMBOT.TargetModel = nil
 		AIMBOT.Locking = false
 	end
