@@ -24,6 +24,8 @@ function Watch(Model, Type, Dyn)
     local ParentCheck = Model.Parent
 	spawn(function()
 		local function Render()
+			if (not ESP.Active) then return end
+
 			local Distance = (workspace.CurrentCamera.CFrame.Position - Model.HumanoidRootPart.Position).Magnitude
 
 			for i, v in pairs(Objects) do
@@ -189,46 +191,36 @@ ESP.Refresh = function()
 			end
 
 			game:GetService("Workspace").Players.Phantoms.ChildAdded:Connect(function(Player)
-				if (ESP.Active) then
-					delay(0.5, function()
-						Watch(Player, "PFTeam")
-					end)
-				end
+				delay(0.5, function()
+					Watch(Player, "PFTeam")
+				end)
 			end)
 
 			game:GetService("Workspace").Players.Ghosts.ChildAdded:Connect(function(Player)
-				if (ESP.Active) then
-					delay(0.5, function()
-						Watch(Player, "PFTeam")
-					end)
-				end
+				delay(0.5, function()
+					Watch(Player, "PFTeam")
+				end)
 			end)
 		else
 			for _, plr in pairs(game:GetService("Players"):GetPlayers()) do
 				if plr.Character and plr.Name ~= game:GetService("Players").LocalPlayer.Name then
 					plr.CharacterAdded:Connect(function(char)
-						if (ESP.Active) then
-							delay(0.5, function()
-								Watch(char, "none", plr)
-							end)
-						end
+						delay(0.5, function()
+							Watch(char, "none", plr)
+						end)
 					end)
 					Watch(plr.Character, "none", plr)
 				end
 			end
 			game:GetService("Players").PlayerAdded:Connect(function(plr)
 				plr.CharacterAdded:Connect(function(char)
-					if (ESP.Active) then
-						delay(0.5, function()
-							Watch(char, "none", plr)
-						end)
-					end
-				end)
-				if (ESP.Active) then
 					delay(0.5, function()
-						Watch(plr.Character, "none", plr)
+						Watch(char, "none", plr)
 					end)
-				end
+				end)
+				delay(0.5, function()
+					Watch(plr.Character, "none", plr)
+				end)
 			end)
 		end
 	end
