@@ -233,3 +233,5 @@ ESP.Refresh = function()
 		end
 	end
 end
+
+return ESP
