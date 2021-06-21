@@ -1420,7 +1420,7 @@ AB_FOVRANGE.Changed:Connect(function(TYPE)
 	end
 end)
 AB_FOVRANGE.Text = tostring(AIMBOT.FoVRange)
-
+--
 --//////////////////////////////////////////////////////////////////////////////////////////////
 local CORE_DEBOUNCE = false
 game:GetService("UserInputService").inputBegan:Connect(function(KEY)
