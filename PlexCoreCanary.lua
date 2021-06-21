@@ -849,19 +849,387 @@ end
 ScreenGui.ResetOnSpawn = false
 ScreenGui.Name = "Chat"
 
-local FLY = loadstring(game:HttpGet("https://raw.githubusercontent.com/MemoryAddress/PLEX/main/MODULES/L_Fly.lua", true))()
+local FLY = local FLY = {
+	Core = {},
+	Controller = {},
+	Call = {}
+}
+FLY.Speed=10
 
-FLY_ACTIVE["TextButton"].MouseButton1Click:Connect(function()
-	if (FLY.Active) then
-		FLY.Call.Deactivate()
-	else
-		FLY.Call.Activate()
+FLY.BodyPos, FLY.BodyGyro = nil
+
+FLY.Core.Weld = nil
+
+FLY.Active = false
+FLY.Controller.Key={a=false,d=false,w=false,s=false} 
+
+function FLY.Call.KeyUp(KEY)
+	if KEY=="w" then
+		FLY.Controller.Key.w=false
+	elseif KEY=="s" then
+		FLY.Controller.Key.s=false
+	elseif KEY=="a" then
+		FLY.Controller.Key.a=false
+	elseif KEY=="d" then
+		FLY.Controller.Key.d=false
 	end
-end)
+end
+
+function FLY.Call.Activate()
+	if (workspace:FindFirstChildOfClass("Folder")) then
+		FLY.Core.Handle = Instance.new("Part", workspace:FindFirstChildOfClass("Folder"))
+	elseif (workspace:FindFirstChildOfClass("Model")) then
+		FLY.Core.Handle = Instance.new("Part", workspace:FindFirstChildOfClass("Model"))
+	else
+		FLY.Core.Handle = Instance.new("Part", workspace)
+	end
+	if (FLY.Core.Handle) then
+		FLY.Core.Handle.Size = Vector3.new(0.05, 0.05, 0.05)
+		FLY.Core.Handle.CanCollide = false
+
+		Toggle_Cricle_5:TweenPosition(UDim2.new(0.6, 0, 0.5, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
+		Toggle_RenderColor_5:TweenSize(UDim2.new(1, 0, 1, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
+		
+		if (game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart")) then
+			FLY.Core.Handle.Position = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position
+		end
+		FLY.Active = true
+	end
+	
+end
+function FLY.Call.Deactivate()
+	Toggle_Cricle_5:TweenPosition(UDim2.new(-0.25, 0, 0.5, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
+	Toggle_RenderColor_5:TweenSize(UDim2.new(0, 0, 1, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
+	
+	FLY.Active = true
+	if (FLY.BodyPos) then FLY.BodyPos:Destroy(); FLY.BodyPos = nil end
+	if (FLY.BodyGyro) then FLY.BodyGyro:Destroy(); FLY.BodyGyro = nil end
+	if (FLY.Core.Weld) then FLY.Core.Weld:Destroy(); FLY.Core.Weld = nil end
+	if (FLY.Core.Handle) then FLY.Core.Handle:Destroy(); FLY.Core.Handle = nil end
+
+	FLY.Active = false
+	FLY.Speed = 10
+end
+
+function FLY.Call.KeyDown(KEY)
+	if KEY=="w" then
+		FLY.Controller.Key.w=true
+	elseif KEY=="s" then
+		FLY.Controller.Key.s=true
+	elseif KEY=="a" then
+		FLY.Controller.Key.a=true
+	elseif KEY=="d" then
+		FLY.Controller.Key.d=true
+	elseif KEY=="x" then
+		if (FLY.Active) then
+			FLY.Call.Deactivate()
+		else
+			FLY.Call.Activate()
+		end
+	end
+end
+
+local action = false
+function FLY.Call.Runtime()
+	if (FLY.Active) then
+		if (not FLY.Core.Weld) then
+			FLY.Core.Weld = Instance.new("Weld", FLY.Core.Handle)
+			spawn(function()
+				FLY.Core.Weld.Part0 = FLY.Core.Handle
+				if (game:GetService('Players').LocalPlayer.Character.Humanoid.RigType == Enum.HumanoidRigType.R6) then
+					FLY.Core.Weld.Part1 = game:GetService('Players').LocalPlayer.Character.Torso
+				else
+					FLY.Core.Weld.Part1 = game:GetService('Players').LocalPlayer.Character.LowerTorso
+				end
+
+				FLY.Core.Weld.C0 = CFrame.new(0, 0, 0)
+			end)
+		end
+		if (not FLY.BodyPos) then
+			FLY.BodyPos = Instance.new("BodyPosition", FLY.Core.Handle)
+			FLY.BodyPos.maxForce = Vector3.new(math.huge, math.huge, math.huge)
+			FLY.BodyPos.position = FLY.Core.Handle.Position
+		end
+		if (not FLY.BodyGyro) then
+			FLY.BodyGyro = Instance.new("BodyGyro", FLY.Core.Handle)
+			FLY.BodyGyro.maxTorque = Vector3.new(9e9, 9e9, 9e9) 
+			FLY.BodyGyro.cframe = FLY.Core.Handle.CFrame
+		end
+
+		game:GetService('Players').LocalPlayer.Character.Humanoid.PlatformStand=true
+		if (FLY.BodyGyro and FLY.BodyPos) then
+			wait()
+			action = true
+			local new = FLY.BodyGyro.cframe - FLY.BodyGyro.cframe.p + FLY.BodyPos.position
+			if not FLY.Controller.Key.w and not FLY.Controller.Key.s and not FLY.Controller.Key.a and not FLY.Controller.Key.d then
+				FLY.Speed=5
+			end
+			if FLY.Controller.Key.w then 
+				new = new + workspace.CurrentCamera.CoordinateFrame.lookVector * FLY.Speed
+				FLY.Speed+=0
+			end
+			if FLY.Controller.Key.s then 
+				new = new - workspace.CurrentCamera.CoordinateFrame.lookVector * FLY.Speed
+				FLY.Speed+=0
+			end
+			if FLY.Controller.Key.d then 
+				new = new * CFrame.new(FLY.Speed,0,0)
+				FLY.Speed+=0
+			end
+			if FLY.Controller.Key.a then 
+				new = new * CFrame.new(-FLY.Speed,0,0)
+				FLY.Speed+=0
+			end
+			if FLY.Speed>10 then
+				FLY.Speed=5
+			end
+			FLY.BodyPos.position=new.p
+			if FLY.Controller.Key.w then
+				FLY.BodyGyro.cframe = workspace.CurrentCamera.CoordinateFrame*CFrame.Angles(-math.rad(FLY.Speed*0),0,0)
+			elseif FLY.Controller.Key.s then
+				FLY.BodyGyro.cframe = workspace.CurrentCamera.CoordinateFrame*CFrame.Angles(math.rad(FLY.Speed*0),0,0)
+			else
+				FLY.BodyGyro.cframe = workspace.CurrentCamera.CoordinateFrame
+			end
+		end
+	else
+		if (action) then
+			game:GetService('Players').LocalPlayer.Character.Humanoid.PlatformStand=false
+			action = false
+		end
+	end
+end
+
 
 --//////////////////////////////////////////////////////////////////////////////////////////////
 
-local ESP = loadstring(game:HttpGet("https://raw.githubusercontent.com/MemoryAddress/PLEX/main/MODULES/L_esp.lua", true))()
+local ESP = local ESP = {
+	FOV = {},
+	Call = {},
+	Active = false,
+	Health = false,
+	Distance = false,
+}
+
+local function GetPartCorners(Part)
+	local Size = Part.Size * Vector3.new(1, 1.5)
+	return {
+        	TR = (CFrame.new(Part.Position, workspace.CurrentCamera.CFrame.Position) * CFrame.new(Vector3.new(-Size.X, -Size.Y, 0))).Position,
+		BR = (CFrame.new(Part.Position, workspace.CurrentCamera.CFrame.Position) * CFrame.new(Vector3.new(-Size.X, Size.Y, 0))).Position,
+		TL = (CFrame.new(Part.Position, workspace.CurrentCamera.CFrame.Position) * CFrame.new(Vector3.new(Size.X, -Size.Y, 0))).Position,
+		BL = (CFrame.new(Part.Position, workspace.CurrentCamera.CFrame.Position) * CFrame.new(Vector3.new(Size.X, Size.Y, 0))).Position,
+	}
+end
+
+function Watch(Model, Type, Dyn)
+	local Objects = {
+	       Box = Drawing.new("Quad"),
+	       Name = Drawing.new("Text"),
+	}
+    local ParentCheck = Model.Parent
+	spawn(function()
+		local function Render()
+			if (not ESP.Active) then return end
+
+			local Distance = (workspace.CurrentCamera.CFrame.Position - Model.HumanoidRootPart.Position).Magnitude
+
+			for i, v in pairs(Objects) do
+				v.Visible = true
+				v.Transparency = 1
+			end
+
+			for i, v in pairs(Model:GetChildren()) do
+				if (v:IsA("BasePart") and v.Name ~= "HumanoidRootPart") then
+					if (not Objects[v.Name]) then
+						Objects[v.Name] = Drawing.new("Line")	
+					else
+						local VectorTOP, OnScreenTOP = workspace.CurrentCamera:WorldToScreenPoint((v.CFrame * CFrame.new(0, (v.Size * Vector3.new(1, 1.5)).Y/2, 0)).Position)
+						local VectorBTTOM, OnScreenBTTOM = workspace.CurrentCamera:WorldToScreenPoint((v.CFrame * CFrame.new(0, -(v.Size * Vector3.new(1, 1.5)).Y/2, 0)).Position)
+
+						if (OnScreenTOP or OnScreenBTTOM) then
+							Objects[v.Name].From = Vector2.new(VectorTOP.X, VectorTOP.Y + 36)
+							Objects[v.Name].To = Vector2.new(VectorBTTOM.X, VectorBTTOM.Y + 36)
+							Objects[v.Name].Thickness = math.clamp(3 - (Distance / 100), 0, 3)
+							Objects[v.Name].Color = Color3.fromHSV(0.571889, 1, 1)
+							Objects[v.Name].Transparency = math.clamp((500 - Distance) / 200, 0.2, 1)
+							Objects[v.Name].Visible = true
+						else
+							Objects[v.Name].Visible = false
+						end
+					end
+				end
+			end
+			local function ConnectTop(Part1, Part2)
+				if (not Objects[Part1.Name..Part2.Name]) then
+					Objects[Part1.Name..Part2.Name] = Drawing.new("Line")
+				end
+				local VectorTOP, OnScreenTOP = workspace.CurrentCamera:WorldToScreenPoint((Part1.CFrame * CFrame.new(0, (Part1.Size * Vector3.new(1, 1.5)).Y/2, 0)).Position)
+				local VectorBTTOM, OnScreenBTTOM = workspace.CurrentCamera:WorldToScreenPoint((Part2.CFrame * CFrame.new(0, (Part2.Size * Vector3.new(1, 1.5)).Y/2, 0)).Position)
+
+				if (OnScreenTOP or OnScreenBTTOM) then
+					Objects[Part1.Name..Part2.Name].From = Vector2.new(VectorTOP.X, VectorTOP.Y + 36)
+					Objects[Part1.Name..Part2.Name].To = Vector2.new(VectorBTTOM.X, VectorBTTOM.Y + 36)
+					Objects[Part1.Name..Part2.Name].Thickness = math.clamp(3 - (Distance / 100), 0, 3)
+					Objects[Part1.Name..Part2.Name].Color = Color3.fromHSV(0.571889, 1, 1)
+					Objects[Part1.Name..Part2.Name].Transparency = math.clamp((500 - Distance) / 200, 0.2, 1)
+					Objects[Part1.Name..Part2.Name].Visible = true
+				else
+					Objects[Part1.Name..Part2.Name].Visible = false
+				end
+			end
+			if (Model:FindFirstChild("UpperTorso")) then
+				if (Model:FindFirstChild("LeftUpperArm")) then
+					ConnectTop(Model:FindFirstChild("LeftUpperArm"), Model:FindFirstChild("UpperTorso"))
+				end
+				if (Model:FindFirstChild("Left Arm")) then
+					ConnectTop(Model:FindFirstChild("Left Arm"), Model:FindFirstChild("UpperTorso"))
+				end
+
+				if (Model:FindFirstChild("RightUpperArm")) then
+					ConnectTop(Model:FindFirstChild("RightUpperArm"), Model:FindFirstChild("UpperTorso"))
+				end
+				if (Model:FindFirstChild("Right Arm")) then
+					ConnectTop(Model:FindFirstChild("Right Arm"), Model:FindFirstChild("UpperTorso"))
+				end
+			elseif (Model:FindFirstChild("Torso")) then
+				if (Model:FindFirstChild("LeftUpperArm")) then
+					ConnectTop(Model:FindFirstChild("LeftUpperArm"), Model:FindFirstChild("Torso"))
+				end
+				if (Model:FindFirstChild("Left Arm")) then
+					ConnectTop(Model:FindFirstChild("Left Arm"), Model:FindFirstChild("Torso"))
+				end
+
+				if (Model:FindFirstChild("RightUpperArm")) then
+					ConnectTop(Model:FindFirstChild("RightUpperArm"), Model:FindFirstChild("Torso"))
+				end
+				if (Model:FindFirstChild("Right Arm")) then
+					ConnectTop(Model:FindFirstChild("Right Arm"), Model:FindFirstChild("Torso"))
+				end
+			end
+			if (Model:FindFirstChild("LowerTorso")) then
+				if (Model:FindFirstChild("LeftUpperLeg")) then
+					ConnectTop(Model:FindFirstChild("LeftUpperLeg"), Model:FindFirstChild("LowerTorso"))
+				end
+				if (Model:FindFirstChild("Left Leg")) then
+					ConnectTop(Model:FindFirstChild("Left Leg"), Model:FindFirstChild("LowerTorso"))
+				end
+
+				if (Model:FindFirstChild("RightUpperLeg")) then
+					ConnectTop(Model:FindFirstChild("RightUpperLeg"), Model:FindFirstChild("LowerTorso"))
+				end
+				if (Model:FindFirstChild("Right Leg")) then
+					ConnectTop(Model:FindFirstChild("Right Leg"), Model:FindFirstChild("LowerTorso"))
+				end
+			elseif (Model:FindFirstChild("Torso")) then
+				if (Model:FindFirstChild("LeftUpperLeg")) then
+					ConnectTop(Model:FindFirstChild("LeftUpperLeg"), Model:FindFirstChild("Torso"))
+				end
+				if (Model:FindFirstChild("Left Leg")) then
+					ConnectTop(Model:FindFirstChild("Left Leg"), Model:FindFirstChild("Torso"))
+				end
+
+				if (Model:FindFirstChild("RightUpperLeg")) then
+					ConnectTop(Model:FindFirstChild("RightUpperLeg"), Model:FindFirstChild("Torso"))
+				end
+				if (Model:FindFirstChild("Right Leg")) then
+					ConnectTop(Model:FindFirstChild("Right Leg"), Model:FindFirstChild("Torso"))
+				end
+			end
+			Objects.Name.Center = true
+			Objects.Name.Outline = true
+
+			local Vector, OnScreen = workspace.CurrentCamera:WorldToScreenPoint(Model.Head.Position + Vector3.new(0,2,0))
+			if (OnScreen) then
+				Objects.Name.Position = Vector2.new(Vector.X, Vector.Y + math.clamp(Distance / 10, 10, 30) - 10)
+				Objects.Name.Size = math.clamp(30 - Distance / 10, 10, 30)
+				Objects.Name.Color = Color3.fromHSV(math.clamp(Distance / 5, 0, 125) / 255, 0.75, 1)
+				Objects.Name.Visible = true
+				Objects.Name.Font = 1
+				Objects.Name.Transparency = math.clamp((500 - Distance) / 200, 0.2, 1)
+				Objects.Name.Text = string.format("[%sM] [%s]", tostring(math.floor(Distance)), game:GetService("Players"):GetPlayerFromCharacter(Model) and game:GetService("Players"):GetPlayerFromCharacter(Model).Name or "Player")
+			else
+				Objects.Name.Visible = false 
+			end
+
+			local PartCorners = GetPartCorners(Model.HumanoidRootPart)
+			local VectorTR, OnScreenTR = workspace.CurrentCamera:WorldToScreenPoint(PartCorners.TR)
+			local VectorBR, OnScreenBR = workspace.CurrentCamera:WorldToScreenPoint(PartCorners.BR)
+			local VectorTL, OnScreenTL = workspace.CurrentCamera:WorldToScreenPoint(PartCorners.TL)
+			local VectorBL, OnScreenBL = workspace.CurrentCamera:WorldToScreenPoint(PartCorners.BL)
+			if (OnScreenBL or OnScreenTL or OnScreenBR or OnScreenTR) then
+				Objects.Box.PointA = Vector2.new(VectorTR.X, VectorTR.Y + 36)
+				Objects.Box.PointB = Vector2.new(VectorTL.X, VectorTL.Y + 36)
+				Objects.Box.PointC = Vector2.new(VectorBL.X, VectorBL.Y + 36)
+				Objects.Box.PointD = Vector2.new(VectorBR.X, VectorBR.Y + 36)
+				Objects.Box.Color = Color3.fromHSV(math.clamp(Distance / 5, 0, 125) / 255, 0.75, 1)
+				Objects.Box.Thickness = math.clamp(3 - (Distance / 100), 0, 3)
+				Objects.Box.Transparency = math.clamp((500 - Distance) / 200, 0.2, 1)
+				Objects.Box.Visible = true
+			else
+				Objects.Box.Visible = false
+			end
+			game:GetService("RunService").RenderStepped:Wait()
+		end
+		if (Type == "PFTeam") then
+			while Model.Parent == ParentCheck and ESP.Active and Model.Parent.Name ~= game:GetService("Players").LocalPlayer.Team.Name do
+				Render()
+			end
+		else
+			while Model.Humanoid.Health > 0 and ESP.Active do
+				Render()
+			end
+		end
+		for i, v in pairs(Objects) do
+			v:Remove()
+		end
+	end)
+end
+ESP.Refresh = function()
+	if (ESP.Active) then
+		if (game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name == "Phantom Forces") then
+			for _, Player in next, game:GetService("Workspace").Players.Phantoms:GetChildren() do
+			    Watch(Player, "PFTeam")
+			end
+
+			for _, Player in next, game:GetService("Workspace").Players.Ghosts:GetChildren() do
+			    Watch(Player, "PFTeam")
+			end
+
+			game:GetService("Workspace").Players.Phantoms.ChildAdded:Connect(function(Player)
+				delay(0.5, function()
+					Watch(Player, "PFTeam")
+				end)
+			end)
+
+			game:GetService("Workspace").Players.Ghosts.ChildAdded:Connect(function(Player)
+				delay(0.5, function()
+					Watch(Player, "PFTeam")
+				end)
+			end)
+		else
+			for _, plr in pairs(game:GetService("Players"):GetPlayers()) do
+				if plr.Character and plr.Name ~= game:GetService("Players").LocalPlayer.Name then
+					plr.CharacterAdded:Connect(function(char)
+						delay(0.5, function()
+							Watch(char, "none", plr)
+						end)
+					end)
+					Watch(plr.Character, "none", plr)
+				end
+			end
+			game:GetService("Players").PlayerAdded:Connect(function(plr)
+				plr.CharacterAdded:Connect(function(char)
+					delay(0.5, function()
+						Watch(char, "none", plr)
+					end)
+				end)
+				delay(0.5, function()
+					Watch(plr.Character, "none", plr)
+				end)
+			end)
+		end
+	end
+end
 
 ESP.Refresh()
 
@@ -911,7 +1279,85 @@ end)
 
 --//////////////////////////////////////////////////////////////////////////////////////////////
 
-local AIMBOT = loadstring(game:HttpGet("https://raw.githubusercontent.com/MemoryAddress/PLEX/main/MODULES/L_Aimbot.lua", true))()
+local AIMBOT = {
+	Call = {},
+	Active = false,
+	FoVRange = 20,
+	Checks = {
+		LastPosition = nil
+	},
+}
+
+AIMBOT.getFoVXYZ = function(p0, p1)
+	local x1, y1, z1 = p0:ToOrientation()
+	local cf = CFrame.new(p0.p, p1.p)
+	local x2, y2, z2 = cf:ToOrientation()
+	return Vector3.new((x1-x2), (y1-y2), (z1-z2))
+end
+AIMBOT.getAbsFOV = function (part)
+	local fov = AIMBOT.getFoVXYZ(workspace.CurrentCamera.CFrame, part.CFrame)
+	return math.abs(fov.X) + math.abs(fov.Y)
+end
+
+AIMBOT.TargetPart = nil
+
+function AIMBOT.LockOn(PART)
+	if (GLOBAL.IsAlive()) then
+		if (isrbxactive()) then
+			local SENSITIVITY = UserSettings():GetService("UserGameSettings").MouseSensitivity
+			mousemoverel(((workspace.CurrentCamera:WorldToScreenPoint(PART.CFrame.p).X - workspace.CurrentCamera:WorldToScreenPoint(game:GetService("Players").LocalPlayer:GetMouse().Hit.p).X)/2)/(SENSITIVITY + 1), ((workspace.CurrentCamera:WorldToScreenPoint(PART.CFrame.p).Y - workspace.CurrentCamera:WorldToScreenPoint(game:GetService("Players").LocalPlayer:GetMouse().Hit.p).Y)/2)/(SENSITIVITY + 1))
+			game:GetService("RunService").RenderStepped:Wait()
+		end
+	end
+	--workspace.CurrentCamera.CFrame = CFrame.new(workspace.CurrentCamera.CFrame.p, PART.CFrame.p) old aimbot
+end
+
+function AIMBOT.Call.KeyDown(KEY)
+	if (KEY.KeyCode == Enum.KeyCode.E) then
+		if (not AIMBOT.TargetPart and AIMBOT.Active) then
+			local MAX_ANGLE = math.rad(AIMBOT.FoVRange)
+			for i, plr in pairs(game:GetService("Players"):GetChildren()) do
+				if plr.Name ~= game:GetService("Players").LocalPlayer.Name and plr.Character and plr.Character.Head and plr.Character.Humanoid and plr.Character.Humanoid.Health > 1 then
+					local an = AIMBOT.getAbsFOV(plr.Character.Head)
+					if an < MAX_ANGLE then
+						MAX_ANGLE = an
+						AIMBOT.TargetPart = plr.Character.Head
+					end
+					plr.Character.Humanoid.Died:Connect(function()
+						if AIMBOT.TargetPart.Parent == plr.Character or AIMBOT.TargetPart == nil then
+							AIMBOT.TargetPart = nil
+						end
+					end)
+				end
+			end
+		else
+			AIMBOT.TargetPart = nil
+		end
+	end
+end
+
+function AIMBOT.Call.Runtime()
+	if (AIMBOT.TargetPart and AIMBOT.Active) then
+		if (AIMBOT.Checks.LastPosition) then
+			if ((AIMBOT.TargetPart.CFrame.p - AIMBOT.Checks.LastPosition).magnitude > 10) then
+				AIMBOT.TargetPart = nil
+			else
+				AIMBOT.Checks.LastPosition = AIMBOT.TargetPart.CFrame.p
+			end
+		else
+			AIMBOT.Checks.LastPosition = AIMBOT.TargetPart.CFrame.p
+		end
+		if (AIMBOT.TargetPart) then
+			if (AIMBOT.TargetPart.Parent == game:GetService("Players").LocalPlayer.Character) then
+				AIMBOT.TargetPart = nil
+			else
+				AIMBOT.LockOn(AIMBOT.TargetPart)
+			end
+		else
+			AIMBOT.Checks.LastPosition = nil
+		end
+	end
+end
 
 AB_ACTIVE["TextButton"].MouseButton1Click:Connect(function()
 	if (AIMBOT.Active) then
