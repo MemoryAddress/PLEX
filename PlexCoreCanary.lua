@@ -1231,17 +1231,16 @@ ESP.Refresh = function()
 	end
 end
 
-ESP.Refresh()
-
 ESP_ACTIVE["TextButton"].MouseButton1Click:Connect(function()
 	if (ESP.Active) then
 		Toggle_Cricle:TweenPosition(UDim2.new(-0.25, 0, 0.5, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
 		Toggle_RenderColor:TweenSize(UDim2.new(0, 0, 1, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
-		ESP.Active = false
+		--ESP.Active = false
 	else
 		Toggle_Cricle:TweenPosition(UDim2.new(0.6, 0, 0.5, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
 		Toggle_RenderColor:TweenSize(UDim2.new(1, 0, 1, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
 		ESP.Active = true
+		ESP.Refresh()
 	end
 end)
 
