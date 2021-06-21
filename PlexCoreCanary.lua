@@ -1184,50 +1184,48 @@ function Watch(Model, Type, Dyn)
 		end
 	end)
 end
-ESP.Refresh = function()
-	if (ESP.Active) then
-		if (game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name == "Phantom Forces") then
-			for _, Player in next, game:GetService("Workspace").Players.Phantoms:GetChildren() do
-			    Watch(Player, "PFTeam")
-			end
+ESP.Update = function()
+	if (game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name == "Phantom Forces") then
+		for _, Player in next, game:GetService("Workspace").Players.Phantoms:GetChildren() do
+			Watch(Player, "PFTeam")
+		end
 
-			for _, Player in next, game:GetService("Workspace").Players.Ghosts:GetChildren() do
-			    Watch(Player, "PFTeam")
-			end
+		for _, Player in next, game:GetService("Workspace").Players.Ghosts:GetChildren() do
+			Watch(Player, "PFTeam")
+		end
 
-			game:GetService("Workspace").Players.Phantoms.ChildAdded:Connect(function(Player)
-				delay(0.5, function()
-					Watch(Player, "PFTeam")
-				end)
+		game:GetService("Workspace").Players.Phantoms.ChildAdded:Connect(function(Player)
+			delay(0.5, function()
+				Watch(Player, "PFTeam")
 			end)
+		end)
 
-			game:GetService("Workspace").Players.Ghosts.ChildAdded:Connect(function(Player)
-				delay(0.5, function()
-					Watch(Player, "PFTeam")
-				end)
+		game:GetService("Workspace").Players.Ghosts.ChildAdded:Connect(function(Player)
+			delay(0.5, function()
+				Watch(Player, "PFTeam")
 			end)
-		else
-			for _, plr in pairs(game:GetService("Players"):GetPlayers()) do
-				if plr.Character and plr.Name ~= game:GetService("Players").LocalPlayer.Name then
-					plr.CharacterAdded:Connect(function(char)
-						delay(0.5, function()
-							Watch(char, "none", plr)
-						end)
-					end)
-					Watch(plr.Character, "none", plr)
-				end
-			end
-			game:GetService("Players").PlayerAdded:Connect(function(plr)
+		end)
+	else
+		for _, plr in pairs(game:GetService("Players"):GetPlayers()) do
+			if plr.Character and plr.Name ~= game:GetService("Players").LocalPlayer.Name then
 				plr.CharacterAdded:Connect(function(char)
 					delay(0.5, function()
 						Watch(char, "none", plr)
 					end)
 				end)
+				Watch(plr.Character, "none", plr)
+			end
+		end
+		game:GetService("Players").PlayerAdded:Connect(function(plr)
+			plr.CharacterAdded:Connect(function(char)
 				delay(0.5, function()
-					Watch(plr.Character, "none", plr)
+					Watch(char, "none", plr)
 				end)
 			end)
-		end
+			delay(0.5, function()
+				Watch(plr.Character, "none", plr)
+			end)
+		end)
 	end
 end
 
@@ -1235,12 +1233,11 @@ ESP_ACTIVE["TextButton"].MouseButton1Click:Connect(function()
 	if (ESP.Active) then
 		Toggle_Cricle:TweenPosition(UDim2.new(-0.25, 0, 0.5, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
 		Toggle_RenderColor:TweenSize(UDim2.new(0, 0, 1, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
-		--ESP.Active = false
+		ESP.Active = false
 	else
 		Toggle_Cricle:TweenPosition(UDim2.new(0.6, 0, 0.5, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
 		Toggle_RenderColor:TweenSize(UDim2.new(1, 0, 1, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
 		ESP.Active = true
-		ESP.Refresh()
 	end
 end)
 
@@ -1249,14 +1246,10 @@ ESP_HEALTH["TextButton"].MouseButton1Click:Connect(function()
 		Toggle_Cricle_2:TweenPosition(UDim2.new(-0.25, 0, 0.5, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
 		Toggle_RenderColor_2:TweenSize(UDim2.new(0, 0, 1, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
 		ESP.Health = false
-		return
-		ESP.Refresh()
 	else
 		Toggle_Cricle_2:TweenPosition(UDim2.new(0.6, 0, 0.5, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
 		Toggle_RenderColor_2:TweenSize(UDim2.new(1, 0, 1, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
 		ESP.Health = true
-		return
-		ESP.Refresh()
 	end
 end)
 
@@ -1265,14 +1258,10 @@ ESP_DISTANCE["TextButton"].MouseButton1Click:Connect(function()
 		Toggle_Cricle_3:TweenPosition(UDim2.new(-0.25, 0, 0.5, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
 		Toggle_RenderColor_3:TweenSize(UDim2.new(0, 0, 1, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
 		ESP.Distance = false
-		return
-		ESP.Refresh()
 	else
 		Toggle_Cricle_3:TweenPosition(UDim2.new(0.6, 0, 0.5, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
 		Toggle_RenderColor_3:TweenSize(UDim2.new(1, 0, 1, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
 		ESP.Distance = true
-		return
-		ESP.Refresh()
 	end
 end)
 
@@ -1299,7 +1288,7 @@ AIMBOT.getAbsFOV = function (part)
 end
 
 AIMBOT.TargetModel = nil
-AIMBOT.UNLOCKED = false
+AIMBOT.Locking = false
 
 function AIMBOT.LockOn(PART)
 	if (GLOBAL.IsAlive()) then
@@ -1314,31 +1303,64 @@ end
 
 function AIMBOT.Call.KeyDown(KEY)
 	if (game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name == "Phantom Forces") then
-		if (KEY.UserInputType == Emun.UserInputType.MouseButton2) then
+		if (KEY.UserInputType == Enum.UserInputType.MouseButton2) then
 			if (not AIMBOT.TargetModel and AIMBOT.Active) then
 				local MAX_ANGLE = math.rad(AIMBOT.FoVRange)
+				AIMBOT.Locking = true
 				repeat
 					if (game:GetService("Workspace").Players.Phantoms.Name == game:GetService("Players").LocalPlayer.Team.Name) then
-						for _, Player in next, game:GetService("Workspace").Players.Phantoms:GetChildren() do
-						    	local an = AIMBOT.getAbsFOV(Player.Head)
-							if an < MAX_ANGLE then
-								MAX_ANGLE = an
-								AIMBOT.TargetModel = Player
+						local CLOSEST_MODEL = nil
+						local CLOSEST_RANGE = MAX_ANGLE
+						local CLOSEST_DISTANCE = 1000
+						for _, Player in pairs(game:GetService("Workspace").Players.Ghosts:GetChildren()) do
+						    if (CLOSEST_MODEL) then
+								local an = AIMBOT.getAbsFOV(Player.Head)
+								if (an < CLOSEST_RANGE) then
+									if (CLOSEST_DISTANCE > (workspace.CurrentCamera.CFrame.p - Player.HumanoidRootPart.Position).magnitude) then
+										CLOSEST_MODEL = Player
+										CLOSEST_RANGE = an
+										CLOSEST_DISTANCE = (workspace.CurrentCamera.CFrame.p - Player.HumanoidRootPart.Position).magnitude
+									end
+								end
+							else
+								local an = AIMBOT.getAbsFOV(Player.HumanoidRootPart)
+								if an < MAX_ANGLE then
+									CLOSEST_MODEL = Player
+									CLOSEST_RANGE = an
+									CLOSEST_DISTANCE = (workspace.CurrentCamera.CFrame.p - Player.HumanoidRootPart.Position).magnitude
+								end
 							end
-							wait()
 						end
+						AIMBOT.TargetModel = CLOSEST_MODEL
 					else
-						for _, Player in next, game:GetService("Workspace").Players.Ghosts:GetChildren() do
-						    	local an = AIMBOT.getAbsFOV(Player.Head)
-							if an < MAX_ANGLE then
-								MAX_ANGLE = an
-								AIMBOT.TargetModel = Player
+						local CLOSEST_MODEL = nil
+						local CLOSEST_RANGE = MAX_ANGLE
+						print("looping")
+						for _, Player in pairs(game:GetService("Workspace").Players.Phantoms:GetChildren()) do
+						    if (CLOSEST_MODEL) then
+								local an = AIMBOT.getAbsFOV(Player.Head)
+								if (an < CLOSEST_RANGE) then
+									print("surpassed old capture")
+									CLOSEST_MODEL = Player
+									CLOSEST_RANGE = an
+									print("set closest")
+								end
+							else
+								print("no closest yet")
+								local an = AIMBOT.getAbsFOV(Player.Head)
+								if an < MAX_ANGLE then
+									print("found first closest")
+									CLOSEST_MODEL = Player
+									CLOSEST_RANGE = an
+									print("set first closest")
+								end
 							end
-							wait()
 						end
-					end					
-				until AIMBOT.TargetModel or AIMBOT.UNLOCKED
-				AIMBOT.UNLOCKED = false
+						AIMBOT.TargetModel = CLOSEST_MODEL
+					end
+					wait()				
+				until AIMBOT.TargetModel or not AIMBOT.Locking or 0 == #game:GetService("Workspace").Players[game:GetService("Players").LocalPlayer.Team.Name]:GetChildren()
+				AIMBOT.Locking = false
 			else
 				AIMBOT.TargetModel = nil
 			end
@@ -1369,9 +1391,10 @@ function AIMBOT.Call.KeyDown(KEY)
 end
 
 function AIMBOT.Call.KeyUp(KEY)
-	if (KEY.UserInputType == Emun.UserInputType.MouseButton2) then
+	if (KEY.UserInputType == Enum.UserInputType.MouseButton2) then
+		print("up")
 		AIMBOT.TargetModel = nil
-		AIMBOT.UNLOCKED = true
+		AIMBOT.Locking = false
 	end
 end
 
