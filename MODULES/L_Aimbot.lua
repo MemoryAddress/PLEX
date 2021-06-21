@@ -7,6 +7,17 @@ local AIMBOT = {
 	},
 }
 
+AIMBOT.getFoVXYZ = function(p0, p1)
+	local x1, y1, z1 = p0:ToOrientation()
+	local cf = CFrame.new(p0.p, p1.p)
+	local x2, y2, z2 = cf:ToOrientation()
+	return Vector3.new((x1-x2), (y1-y2), (z1-z2))
+end
+AIMBOT.getAbsFOV = function (part)
+	local fov = AIMBOT.getFoVXYZ(workspace.CurrentCamera.CFrame, part.CFrame)
+	return math.abs(fov.X) + math.abs(fov.Y)
+end
+
 AIMBOT.TargetPart = nil
 
 function AIMBOT.LockOn(PART)
@@ -26,7 +37,7 @@ function AIMBOT.Call.KeyDown(KEY)
 			local MAX_ANGLE = math.rad(AIMBOT.FoVRange)
 			for i, plr in pairs(game:GetService("Players"):GetChildren()) do
 				if plr.Name ~= game:GetService("Players").LocalPlayer.Name and plr.Character and plr.Character.Head and plr.Character.Humanoid and plr.Character.Humanoid.Health > 1 then
-					local an = ESP.FOV.Check(plr.Character.Head)
+					local an = AIMBOT.getAbsFOV(plr.Character.Head)
 					if an < MAX_ANGLE then
 						MAX_ANGLE = an
 						AIMBOT.TargetPart = plr.Character.Head
