@@ -1147,8 +1147,8 @@ function Watch(Model, Type, Dyn)
 				if (ESP.Distance) then
 					Objects.Name.Text = string.format("[%sM] [%s]", tostring(math.floor(Distance)), game:GetService("Players"):GetPlayerFromCharacter(Model) and game:GetService("Players"):GetPlayerFromCharacter(Model).Name or "Player")
 				end
-				if (ESP.Health) then
-					Objects.Name.Text = Objects.Name.Text..string.format(" [%s HP]", tostring(math.floor(Model.Humanoid and Model.Humanoid.Health or nil) or "N/A"))
+				if (ESP.Health and Model:FindFirstChild("Humanoid")) then
+					Objects.Name.Text = Objects.Name.Text..string.format(" [%s HP]", tostring(math.floor(Model.Humanoid.Health) or "N/A"))
 				end
 			else
 				Objects.Name.Visible = false 
@@ -1350,7 +1350,7 @@ function AIMBOT.Call.KeyDown(KEY)
 						local CLOSEST_MODEL = nil
 						local CLOSEST_RANGE = MAX_ANGLE
 						local CLOSEST_DISTANCE = 1000
-						for _, Player in pairs(game:GetService("Workspace").Players.Ghosts:GetChildren()) do
+						for _, Player in pairs(game:GetService("Workspace").Players.Phantoms:GetChildren()) do
 						    if (CLOSEST_MODEL) then
 								local an = AIMBOT.getAbsFOV(Player.HumanoidRootPart)
 								if (an < CLOSEST_RANGE) then
