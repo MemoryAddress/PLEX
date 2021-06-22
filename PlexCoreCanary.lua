@@ -1014,7 +1014,7 @@ local ESP = {
 local function GetPartCorners(Part)
 	local Size = Part.Size * Vector3.new(1, 1.5)
 	return {
-        	TR = (CFrame.new(Part.Position, workspace.CurrentCamera.CFrame.Position) * CFrame.new(Vector3.new(-Size.X, -Size.Y, 0))).Position,
+        TR = (CFrame.new(Part.Position, workspace.CurrentCamera.CFrame.Position) * CFrame.new(Vector3.new(-Size.X, -Size.Y, 0))).Position,
 		BR = (CFrame.new(Part.Position, workspace.CurrentCamera.CFrame.Position) * CFrame.new(Vector3.new(-Size.X, Size.Y, 0))).Position,
 		TL = (CFrame.new(Part.Position, workspace.CurrentCamera.CFrame.Position) * CFrame.new(Vector3.new(Size.X, -Size.Y, 0))).Position,
 		BL = (CFrame.new(Part.Position, workspace.CurrentCamera.CFrame.Position) * CFrame.new(Vector3.new(Size.X, Size.Y, 0))).Position,
@@ -1029,8 +1029,6 @@ function Watch(Model, Type, Dyn)
     local ParentCheck = Model.Parent
 	spawn(function()
 		local function Render()
-			if (not ESP.Active) then return end
-
 			local Distance = (workspace.CurrentCamera.CFrame.Position - Model.HumanoidRootPart.Position).Magnitude
 
 			for i, v in pairs(Objects) do
@@ -1142,7 +1140,7 @@ function Watch(Model, Type, Dyn)
 			if (OnScreen) then
 				Objects.Name.Position = Vector2.new(Vector.X, Vector.Y + math.clamp(Distance / 10, 10, 30) - 10)
 				Objects.Name.Size = math.clamp(30 - Distance / 10, 10, 30)
-				Objects.Name.Color = Color3.fromHSV(math.clamp(Distance / 5, 0, 125) / 255, 0.75, 1)
+				Objects.Name.Color = Color3.fromHSV(math.clamp(Distance / 5, 0, 125) + 100 / 255, 0.75, 1)
 				Objects.Name.Visible = true
 				Objects.Name.Font = 1
 				Objects.Name.Transparency = math.clamp((500 - Distance) / 200, 0.2, 1)
@@ -1166,9 +1164,9 @@ function Watch(Model, Type, Dyn)
 				Objects.Box.PointB = Vector2.new(VectorTL.X, VectorTL.Y + 36)
 				Objects.Box.PointC = Vector2.new(VectorBL.X, VectorBL.Y + 36)
 				Objects.Box.PointD = Vector2.new(VectorBR.X, VectorBR.Y + 36)
-				Objects.Box.Color = Color3.fromHSV(math.clamp(Distance / 5, 0, 125) / 255, 0.75, 1)
+				Objects.Box.Color = Color3.fromHSV(math.clamp(Distance / 5, 0, 125) + 100 / 255, 0.75, 1)
 				Objects.Box.Thickness = math.clamp(3 - (Distance / 100), 0, 3)
-				Objects.Box.Transparency = math.clamp((500 - Distance) / 200, 0.2, 1)
+				Objects.Box.Transparency = math.clamp((700 - Distance) / 200, 0.2, 0.9)
 				Objects.Box.Visible = true
 			else
 				Objects.Box.Visible = false
@@ -1176,12 +1174,21 @@ function Watch(Model, Type, Dyn)
 			game:GetService("RunService").RenderStepped:Wait()
 		end
 		if (Type == "PFTeam") then
-			while Model.Parent == ParentCheck and ESP.Active and Model.Parent.Name ~= game:GetService("Players").LocalPlayer.Team.Name do
-				Render()
+			while Model.Parent == ParentCheck and Model.Parent.Name ~= game:GetService("Players").LocalPlayer.Team.Name do
+				if (ESP.Active) then 
+					Render()
+				else
+					game:GetService("RunService").RenderStepped:Wait()
+				end
+				
 			end
 		else
-			while Model.Humanoid.Health > 0 and ESP.Active do
-				Render()
+			while Dyn and Dyn.Character.Humanoid.Health > 0 do
+				if (ESP.Active) then 
+					Render()
+				else
+					game:GetService("RunService").RenderStepped:Wait()
+				end
 			end
 		end
 		for i, v in pairs(Objects) do
@@ -1193,10 +1200,12 @@ ESP.Update = function()
 	if (game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name == "Phantom Forces") then
 		for _, Player in next, game:GetService("Workspace").Players.Phantoms:GetChildren() do
 			Watch(Player, "PFTeam")
+			wait(0.5)
 		end
 
 		for _, Player in next, game:GetService("Workspace").Players.Ghosts:GetChildren() do
 			Watch(Player, "PFTeam")
+			wait(0.5)
 		end
 
 		game:GetService("Workspace").Players.Phantoms.ChildAdded:Connect(function(Player)
@@ -1319,7 +1328,7 @@ function AIMBOT.Call.KeyDown(KEY)
 						local CLOSEST_DISTANCE = 1000
 						for _, Player in pairs(game:GetService("Workspace").Players.Ghosts:GetChildren()) do
 						    if (CLOSEST_MODEL) then
-								local an = AIMBOT.getAbsFOV(Player.Head)
+								local an = AIMBOT.getAbsFOV(Player.HumanoidRootPart)
 								if (an < CLOSEST_RANGE) then
 									if (CLOSEST_DISTANCE > (workspace.CurrentCamera.CFrame.p - Player.HumanoidRootPart.Position).magnitude) then
 										CLOSEST_MODEL = Player
@@ -1343,7 +1352,7 @@ function AIMBOT.Call.KeyDown(KEY)
 						local CLOSEST_DISTANCE = 1000
 						for _, Player in pairs(game:GetService("Workspace").Players.Ghosts:GetChildren()) do
 						    if (CLOSEST_MODEL) then
-								local an = AIMBOT.getAbsFOV(Player.Head)
+								local an = AIMBOT.getAbsFOV(Player.HumanoidRootPart)
 								if (an < CLOSEST_RANGE) then
 									if (CLOSEST_DISTANCE > (workspace.CurrentCamera.CFrame.p - Player.HumanoidRootPart.Position).magnitude) then
 										CLOSEST_MODEL = Player
@@ -1375,11 +1384,30 @@ function AIMBOT.Call.KeyDown(KEY)
 				local MAX_ANGLE = math.rad(AIMBOT.FoVRange)
 				for i, plr in pairs(game:GetService("Players"):GetChildren()) do
 					if plr.Name ~= game:GetService("Players").LocalPlayer.Name and plr.Character and plr.Character.Head and plr.Character.Humanoid and plr.Character.Humanoid.Health > 1 then
-						local an = AIMBOT.getAbsFOV(plr.Character.Head)
-						if an < MAX_ANGLE then
-							MAX_ANGLE = an
-							AIMBOT.TargetModel = plr.Character
+						local CLOSEST_MODEL = nil
+						local CLOSEST_RANGE = MAX_ANGLE
+						local CLOSEST_DISTANCE = 1000
+						for _, Player in pairs(game:GetService("Workspace").Players.Ghosts:GetChildren()) do
+						    if (CLOSEST_MODEL) then
+								local an = AIMBOT.getAbsFOV(Player.HumanoidRootPart)
+								if (an < CLOSEST_RANGE) then
+									if (CLOSEST_DISTANCE > (workspace.CurrentCamera.CFrame.p - Player.HumanoidRootPart.Position).magnitude) then
+										CLOSEST_MODEL = Player
+										CLOSEST_RANGE = an
+										CLOSEST_DISTANCE = (workspace.CurrentCamera.CFrame.p - Player.HumanoidRootPart.Position).magnitude
+									end
+								end
+							else
+								local an = AIMBOT.getAbsFOV(Player.HumanoidRootPart)
+								if an < MAX_ANGLE then
+									CLOSEST_MODEL = Player
+									CLOSEST_RANGE = an
+									CLOSEST_DISTANCE = (workspace.CurrentCamera.CFrame.p - Player.HumanoidRootPart.Position).magnitude
+								end
+							end
 						end
+						AIMBOT.TargetModel = CLOSEST_MODEL
+
 						plr.Character.Humanoid.Died:Connect(function()
 							if AIMBOT.TargetModel == plr.Character then
 								AIMBOT.TargetModel = nil
@@ -1446,7 +1474,7 @@ AB_FOVRANGE.Changed:Connect(function(TYPE)
 	end
 end)
 AB_FOVRANGE.Text = tostring(AIMBOT.FoVRange)
---
+
 --//////////////////////////////////////////////////////////////////////////////////////////////
 local CORE_DEBOUNCE = false
 game:GetService("UserInputService").inputBegan:Connect(function(KEY)
@@ -1489,3 +1517,4 @@ Frame:TweenPosition(UDim2.new(0,400,0,0), Enum.EasingDirection.InOut, Enum.Easin
 	CORE_DEBOUNCE = false
 end)
 ACTIVE = true
+ESP.Update()
