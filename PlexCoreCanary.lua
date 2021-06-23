@@ -1183,7 +1183,7 @@ function Watch(Model, Type, Dyn)
 				
 			end
 		else
-			while Dyn and Dyn.Character.Humanoid.Health > 0 do
+			while Dyn.Character:FindFirstChild("Head") do
 				if (ESP.Active) then 
 					Render()
 				else
@@ -1378,43 +1378,37 @@ function AIMBOT.Call.KeyDown(KEY)
 				AIMBOT.TargetModel = nil
 			end
 		end
+
+
 	else
 		if (KEY.KeyCode == Enum.KeyCode.E) then
 			if (not AIMBOT.TargetModel and AIMBOT.Active) then
 				local MAX_ANGLE = math.rad(AIMBOT.FoVRange)
-				for i, plr in pairs(game:GetService("Players"):GetChildren()) do
-					if plr.Name ~= game:GetService("Players").LocalPlayer.Name and plr.Character and plr.Character.Head and plr.Character.Humanoid and plr.Character.Humanoid.Health > 1 then
-						local CLOSEST_MODEL = nil
-						local CLOSEST_RANGE = MAX_ANGLE
-						local CLOSEST_DISTANCE = 1000
-						for _, Player in pairs(game:GetService("Workspace").Players.Ghosts:GetChildren()) do
-						    if (CLOSEST_MODEL) then
-								local an = AIMBOT.getAbsFOV(Player.HumanoidRootPart)
-								if (an < CLOSEST_RANGE) then
-									if (CLOSEST_DISTANCE > (workspace.CurrentCamera.CFrame.p - Player.HumanoidRootPart.Position).magnitude) then
-										CLOSEST_MODEL = Player
-										CLOSEST_RANGE = an
-										CLOSEST_DISTANCE = (workspace.CurrentCamera.CFrame.p - Player.HumanoidRootPart.Position).magnitude
-									end
-								end
-							else
-								local an = AIMBOT.getAbsFOV(Player.HumanoidRootPart)
-								if an < MAX_ANGLE then
-									CLOSEST_MODEL = Player
+				local CLOSEST_MODEL = nil
+				local CLOSEST_RANGE = MAX_ANGLE
+				local CLOSEST_DISTANCE = 1000
+				for i, plr in pairs(game:GetService("Players"):GetPlayers()) do
+					if plr.Name ~= game:GetService("Players").LocalPlayer.Name and plr.Character and plr.Character.Head and plr.Character.Humanoid and plr.Character.Humanoid.Health > 0 then
+						if (CLOSEST_MODEL) then
+							local an = AIMBOT.getAbsFOV(plr.Character.HumanoidRootPart)
+							if (an < CLOSEST_RANGE) then
+								if (CLOSEST_DISTANCE > (workspace.CurrentCamera.CFrame.p - plr.Character.HumanoidRootPart.Position).magnitude) then
+									CLOSEST_MODEL = plr.Character
 									CLOSEST_RANGE = an
-									CLOSEST_DISTANCE = (workspace.CurrentCamera.CFrame.p - Player.HumanoidRootPart.Position).magnitude
+									CLOSEST_DISTANCE = (workspace.CurrentCamera.CFrame.p - plr.Character.HumanoidRootPart.Position).magnitude
 								end
+							end
+						else
+							local an = AIMBOT.getAbsFOV(plr.Character.HumanoidRootPart)
+							if an < MAX_ANGLE then
+								CLOSEST_MODEL = plr.Character
+								CLOSEST_RANGE = an
+								CLOSEST_DISTANCE = (workspace.CurrentCamera.CFrame.p - plr.Character.HumanoidRootPart.Position).magnitude
 							end
 						end
-						AIMBOT.TargetModel = CLOSEST_MODEL
-
-						plr.Character.Humanoid.Died:Connect(function()
-							if AIMBOT.TargetModel == plr.Character then
-								AIMBOT.TargetModel = nil
-							end
-						end)
 					end
 				end
+				AIMBOT.TargetModel = CLOSEST_MODEL
 			else
 				AIMBOT.TargetModel = nil
 			end
