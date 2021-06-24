@@ -1183,7 +1183,7 @@ function Watch(Model, Type, Dyn)
 				
 			end
 		else
-			while Dyn.Character:FindFirstChild("Head") do
+			while Model:FindFirstChild("Head") do
 				if (ESP.Active) then 
 					Render()
 				else
