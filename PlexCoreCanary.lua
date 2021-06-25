@@ -1683,7 +1683,7 @@ function ESP.DrawESP(Model, Type, Dyn)
 				Objects.Name.Visible = true
 				Objects.Name.Font = 1
 				Objects.Name.Transparency = math.clamp((500 - Distance) / 200, 0.2, 1)
-				Objects.Name.Text = string.format("[%s]", game:GetService("Players"):GetPlayerFromCharacter(Model) and game:GetService("Players"):GetPlayerFromCharacter(Model).Name or "Player")			
+				Objects.Name.Text = string.format("[%s]", game:GetService("Players"):GetPlayerFromCharacter(Model) and game:GetService("Players"):GetPlayerFromCharacter(Model).Name or tostring(Model.Name) or "Player")			
 				if (ESP.Distance) then
 					Objects.Name.Text = string.format("[%sM] ", tostring(math.floor(Distance))) .. Objects.Name.Text
 				end
@@ -1885,6 +1885,10 @@ function ESP.Call.Runtime()
 					ESP.DrawESP(Model, "EclipsisPart")
 				end
 			end
+		elseif (string.match(GLOBAL.GameName, "Entry Point")) then
+			for _, Player in next, game:GetService("Workspace").Level.Actors:GetChildren() do
+				ESP.DrawESP(Player.Character, "none")
+			end
 		else
 			for _, Player in next, game:GetService("Players"):GetPlayers() do
 				if Player.Character and Player.Name ~= game:GetService("Players").LocalPlayer.Name then
@@ -2040,6 +2044,40 @@ function AIMBOT.Call.KeyDown(KEY)
 				AIMBOT.TargetModel = nil
 			end
 		end
+	elseif (string.match(GLOBAL.GameName, "Entry Point")) then
+		if (KEY.UserInputType == Enum.UserInputType.MouseButton2) then
+			if (not AIMBOT.TargetModel and AIMBOT.Active) then
+				local MAX_ANGLE = math.rad(AIMBOT.FoVRange)
+				AIMBOT.Locking = true
+				repeat
+					local CLOSEST_MODEL = nil
+					local CLOSEST_RANGE = MAX_ANGLE
+					local CLOSEST_DISTANCE = 1000
+					for _, Player in pairs(game:GetService("Workspace").Level.Actors:GetChildren()) do
+						if (CLOSEST_MODEL) then
+							local an = AIMBOT.getAbsFOV(Player.Character.HumanoidRootPart)
+							if (an < CLOSEST_RANGE) then
+								if (CLOSEST_DISTANCE > (workspace.CurrentCamera.CFrame.p - Player.Character.HumanoidRootPart.Position).magnitude) then
+									CLOSEST_MODEL = Player.Character
+									CLOSEST_RANGE = an
+									CLOSEST_DISTANCE = (workspace.CurrentCamera.CFrame.p - Player.Character.HumanoidRootPart.Position).magnitude
+								end
+							end
+						else
+							local an = AIMBOT.getAbsFOV(Player.Character.HumanoidRootPart)
+							if an < MAX_ANGLE then
+								CLOSEST_MODEL = Player.Character
+								CLOSEST_RANGE = an
+								CLOSEST_DISTANCE = (workspace.CurrentCamera.CFrame.p - Player.Character.HumanoidRootPart.Position).magnitude
+							end
+						end
+					end
+					AIMBOT.TargetModel = CLOSEST_MODEL
+					wait()				
+				until AIMBOT.TargetModel or not AIMBOT.Locking or 0 == #game:GetService("Workspace").Level.Actors:GetChildren()
+				AIMBOT.Locking = false
+			end
+		end
 	else
 		if (KEY.KeyCode == Enum.KeyCode.E) then
 			if (not AIMBOT.TargetModel and AIMBOT.Active) then
@@ -2077,9 +2115,16 @@ function AIMBOT.Call.KeyDown(KEY)
 end
 
 function AIMBOT.Call.KeyUp(KEY)
-	if (KEY.UserInputType == Enum.UserInputType.MouseButton2) then
-		AIMBOT.TargetModel = nil
-		AIMBOT.Locking = false
+	if (GLOBAL.GameName == "Phantom Forces") then
+		if (KEY.UserInputType == Enum.UserInputType.MouseButton2) then
+			AIMBOT.TargetModel = nil
+			AIMBOT.Locking = false
+		end
+	elseif (string.match(GLOBAL.GameName, "Entry Point")) then
+		if (KEY.UserInputType == Enum.UserInputType.MouseButton2) then
+			AIMBOT.TargetModel = nil
+			AIMBOT.Locking = false
+		end
 	end
 end
 
@@ -2103,6 +2148,8 @@ function AIMBOT.Call.Runtime()
 		else
 			AIMBOT.Checks.LastPosition = nil
 		end
+	else
+		AIMBOT.Checks.LastPosition = nil
 	end
 end
 
@@ -2236,6 +2283,11 @@ elseif (GLOBAL.GameName == "5X EVENT✨ Anime Fighting Simulator") then
 			end
 		end
 	end)()
+elseif (string.match(GLOBAL.GameName, "Entry Point")) then
+	GAMESUPPORT_HOLDER:FindFirstChildOfClass("Frame"):FindFirstChildOfClass("Frame"):Destroy()
+	UI:CreateInfoOption("Aim Bot", GAMESUPPORT_HOLDER:FindFirstChildOfClass("Frame"))
+	UI:CreateInfoOption("ESP", GAMESUPPORT_HOLDER:FindFirstChildOfClass("Frame"))
+	GAMESUPPORT_HOLDER.Size = UDim2.new(1, 0, 0, 104)
 end
 
 --//////////////////////////////////////////////////////////////////////////////////////////////
