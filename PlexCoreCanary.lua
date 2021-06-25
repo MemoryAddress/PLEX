@@ -1825,7 +1825,7 @@ function AIMBOT.LockOn(PART)
 end
 
 function AIMBOT.Call.KeyDown(KEY)
-	if (GameName == "Phantom Forces") then
+	if (GLOBAL.GameName == "Phantom Forces") then
 		if (KEY.UserInputType == Enum.UserInputType.MouseButton2) then
 			if (not AIMBOT.TargetModel and AIMBOT.Active) then
 				local MAX_ANGLE = math.rad(AIMBOT.FoVRange)
