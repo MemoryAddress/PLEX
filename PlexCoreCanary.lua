@@ -1710,11 +1710,9 @@ function ESP.DrawESP(Model, Type, Dyn)
 			end)
 		end
 	else
-		if (Model) then
-			pcall(function()
-				Render()
-			end)
-		end
+		pcall(function()
+			Render()
+		end)
 	end
 	game:GetService("RunService").RenderStepped:Wait()
 	for _, v in pairs(Objects) do
@@ -1733,9 +1731,9 @@ function ESP.Call.Runtime()
 				ESP.DrawESP(Player, "PhantomForcesTeam")
 			end
 		else
-			for _, Player in pairs(game:GetService("Players"):GetPlayers()) do
-				if plr.Character and plr.Name ~= game:GetService("Players").LocalPlayer.Name then
-					ESP.DrawESP(Player.Character, "none", Player)
+			for _, Player in next, game:GetService("Players"):GetPlayers() do
+				if Player.Character and Player.Name ~= game:GetService("Players").LocalPlayer.Name then
+					ESP.DrawESP(Player.Character, "none")
 				end
 			end
 		end
