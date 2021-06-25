@@ -1167,7 +1167,8 @@ TextLabel_20.TextWrapped = true
 local ACTIVE = true
 
 local GLOBAL = {
-	GameName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name
+	GameName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name,
+	GameSupportData = {},
 }
 function GLOBAL.IsAlive()
     if game:GetService("Players").LocalPlayer.Character then
@@ -1225,94 +1226,94 @@ function UI:CreateTextBoxOption(NAME, DEFAULT_INPUT, Parent)
 
 	UICorner.CornerRadius = UDim.new(0, 12)
 	UICorner.Parent = TextBox
-	return Frame
+	return TextBox
 end
-function UI:CreateToggleOption(NAME, DEFAULT_INPUT, Parent)
-	local Frame = Instance.new("Frame")
-	local TextLabel = Instance.new("TextLabel")
-	local UIPadding = Instance.new("UIPadding")
-	local ImageLabel = Instance.new("ImageLabel")
-	local Toggle_Cricle = Instance.new("ImageLabel")
-	local Toggle_RenderColor = Instance.new("ImageLabel")
-	local TextButton = Instance.new("TextButton")
+function UI:CreateToggleOption(NAME, Parent)
+	local FrameED = Instance.new("Frame")
+	local TextLabelED = Instance.new("TextLabel")
+	local UIPaddingED = Instance.new("UIPadding")
+	local ImageLabelED = Instance.new("ImageLabel")
+	local Toggle_CricleED = Instance.new("ImageLabel")
+	local Toggle_RenderColorED = Instance.new("ImageLabel")
+	local TextButtonED = Instance.new("TextButton")
 
-	Frame.Parent = Parent
-	Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Frame.BackgroundTransparency = 1.000
-	Frame.BorderSizePixel = 0
-	Frame.Size = UDim2.new(1, 0, 0, 30)
+	FrameED.Parent = Parent
+	FrameED.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	FrameED.BackgroundTransparency = 1.000
+	FrameED.BorderSizePixel = 0
+	FrameED.Size = UDim2.new(1, 0, 0, 30)
 
-	TextLabel.Parent = Frame
-	TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	TextLabel.BackgroundTransparency = 1.000
-	TextLabel.BorderSizePixel = 0
-	TextLabel.Position = UDim2.new(0, 0, 0.00999999978, 0)
-	TextLabel.Size = UDim2.new(1, 0, 1, 0)
-	TextLabel.Font = Enum.Font.SourceSans
-	TextLabel.Text = "Active"
-	TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-	TextLabel.TextScaled = true
-	TextLabel.TextSize = 14.000
-	TextLabel.TextWrapped = true
-	TextLabel.TextXAlignment = Enum.TextXAlignment.Left
+	TextLabelED.Parent = FrameED
+	TextLabelED.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabelED.BackgroundTransparency = 1.000
+	TextLabelED.BorderSizePixel = 0
+	TextLabelED.Position = UDim2.new(0, 0, 0.00999999978, 0)
+	TextLabelED.Size = UDim2.new(1, 0, 1, 0)
+	TextLabelED.Font = Enum.Font.SourceSans
+	TextLabelED.Text = NAME
+	TextLabelED.TextColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabelED.TextScaled = true
+	TextLabelED.TextSize = 14.000
+	TextLabelED.TextWrapped = true
+	TextLabelED.TextXAlignment = Enum.TextXAlignment.Left
 
-	UIPadding.Parent = Frame
-	UIPadding.PaddingLeft = UDim.new(0, 10)
+	UIPaddingED.Parent = FrameED
+	UIPaddingED.PaddingLeft = UDim.new(0, 10)
 
-	ImageLabel.Parent = Frame
-	ImageLabel.AnchorPoint = Vector2.new(1, 0.5)
-	ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	ImageLabel.BackgroundTransparency = 1.000
-	ImageLabel.Position = UDim2.new(1, -12, 0.5, 0)
-	ImageLabel.Selectable = true
-	ImageLabel.Size = UDim2.new(0, 30, 0.5, 0)
-	ImageLabel.Image = "rbxassetid://3570695787"
-	ImageLabel.ImageColor3 = Color3.fromRGB(207, 207, 207)
-	ImageLabel.ScaleType = Enum.ScaleType.Slice
-	ImageLabel.SliceCenter = Rect.new(100, 100, 100, 100)
-	ImageLabel.SliceScale = 5.000
+	ImageLabelED.Parent = FrameED
+	ImageLabelED.AnchorPoint = Vector2.new(1, 0.5)
+	ImageLabelED.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	ImageLabelED.BackgroundTransparency = 1.000
+	ImageLabelED.Position = UDim2.new(1, -12, 0.5, 0)
+	ImageLabelED.Selectable = true
+	ImageLabelED.Size = UDim2.new(0, 30, 0.5, 0)
+	ImageLabelED.Image = "rbxassetid://3570695787"
+	ImageLabelED.ImageColor3 = Color3.fromRGB(207, 207, 207)
+	ImageLabelED.ScaleType = Enum.ScaleType.Slice
+	ImageLabelED.SliceCenter = Rect.new(100, 100, 100, 100)
+	ImageLabelED.SliceScale = 5.000
 
-	Toggle_Cricle.Name = "Toggle_Cricle"
-	Toggle_Cricle.Parent = FLY_ACTIVE
-	Toggle_Cricle.AnchorPoint = Vector2.new(0, 0.5)
-	Toggle_Cricle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Toggle_Cricle.BackgroundTransparency = 1.000
-	Toggle_Cricle.Position = UDim2.new(-0.25, 0, 0.5, 0)
-	Toggle_Cricle.Selectable = true
-	Toggle_Cricle.Size = UDim2.new(0.615999997, 0, 1.22000003, 0)
-	Toggle_Cricle.ZIndex = 2
-	Toggle_Cricle.Image = "rbxassetid://3570695787"
-	Toggle_Cricle.ScaleType = Enum.ScaleType.Slice
-	Toggle_Cricle.SliceCenter = Rect.new(100, 100, 100, 100)
-	Toggle_Cricle.SliceScale = 5.000
+	Toggle_CricleED.Name = "Toggle_Cricle"
+	Toggle_CricleED.Parent = ImageLabelED
+	Toggle_CricleED.AnchorPoint = Vector2.new(0, 0.5)
+	Toggle_CricleED.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Toggle_CricleED.BackgroundTransparency = 1.000
+	Toggle_CricleED.Position = UDim2.new(-0.25, 0, 0.5, 0)
+	Toggle_CricleED.Selectable = true
+	Toggle_CricleED.Size = UDim2.new(0.615999997, 0, 1.22000003, 0)
+	Toggle_CricleED.ZIndex = 2
+	Toggle_CricleED.Image = "rbxassetid://3570695787"
+	Toggle_CricleED.ScaleType = Enum.ScaleType.Slice
+	Toggle_CricleED.SliceCenter = Rect.new(100, 100, 100, 100)
+	Toggle_CricleED.SliceScale = 5.000
 
-	Toggle_RenderColor.Name = "Toggle_RenderColor"
-	Toggle_RenderColor.Parent = FLY_ACTIVE
-	Toggle_RenderColor.AnchorPoint = Vector2.new(0, 0.5)
-	Toggle_RenderColor.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Toggle_RenderColor.BackgroundTransparency = 1.000
-	Toggle_RenderColor.Position = UDim2.new(0, 0, 0.5, 0)
-	Toggle_RenderColor.Selectable = true
-	Toggle_RenderColor.Size = UDim2.new(0, 0, 1, 0)
-	Toggle_RenderColor.Image = "rbxassetid://3570695787"
-	Toggle_RenderColor.ImageColor3 = Color3.fromRGB(39, 218, 72)
-	Toggle_RenderColor.ScaleType = Enum.ScaleType.Slice
-	Toggle_RenderColor.SliceCenter = Rect.new(100, 100, 100, 100)
-	Toggle_RenderColor.SliceScale = 5.000
+	Toggle_RenderColorED.Name = "Toggle_RenderColor"
+	Toggle_RenderColorED.Parent = ImageLabelED
+	Toggle_RenderColorED.AnchorPoint = Vector2.new(0, 0.5)
+	Toggle_RenderColorED.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Toggle_RenderColorED.BackgroundTransparency = 1.000
+	Toggle_RenderColorED.Position = UDim2.new(0, 0, 0.5, 0)
+	Toggle_RenderColorED.Selectable = true
+	Toggle_RenderColorED.Size = UDim2.new(0, 0, 1, 0)
+	Toggle_RenderColorED.Image = "rbxassetid://3570695787"
+	Toggle_RenderColorED.ImageColor3 = Color3.fromRGB(39, 218, 72)
+	Toggle_RenderColorED.ScaleType = Enum.ScaleType.Slice
+	Toggle_RenderColorED.SliceCenter = Rect.new(100, 100, 100, 100)
+	Toggle_RenderColorED.SliceScale = 5.000
 
-	TextButton.Parent = FLY_ACTIVE
-	TextButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	TextButton.BackgroundTransparency = 1.000
-	TextButton.BorderSizePixel = 0
-	TextButton.Size = UDim2.new(1, 0, 1, 0)
-	TextButton.Font = Enum.Font.SourceSansBold
-	TextButton.Text = ""
-	TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-	TextButton.TextScaled = true
-	TextButton.TextSize = 14.000
-	TextButton.TextWrapped = true
+	TextButtonED.Parent = ImageLabelED
+	TextButtonED.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	TextButtonED.BackgroundTransparency = 1.000
+	TextButtonED.BorderSizePixel = 0
+	TextButtonED.Size = UDim2.new(1, 0, 1, 0)
+	TextButtonED.Font = Enum.Font.SourceSansBold
+	TextButtonED.Text = ""
+	TextButtonED.TextColor3 = Color3.fromRGB(255, 255, 255)
+	TextButtonED.TextScaled = true
+	TextButtonED.TextSize = 14.000
+	TextButtonED.TextWrapped = true
 
-	return Frame
+	return ImageLabelED
 end
 function UI:CreateInfoOption(NAME, Parent)
 	local Frame = Instance.new("Frame")
@@ -2139,6 +2140,100 @@ elseif (GLOBAL.GameName == "Eclipsis") then
 	GAMESUPPORT_HOLDER:FindFirstChildOfClass("Frame"):FindFirstChildOfClass("Frame"):Destroy()
 	UI:CreateInfoOption("ESP", GAMESUPPORT_HOLDER:FindFirstChildOfClass("Frame"))
 	GAMESUPPORT_HOLDER.Size = UDim2.new(1, 0, 0, 74)
+elseif (GLOBAL.GameName == "5X EVENT✨ Anime Fighting Simulator") then
+	GAMESUPPORT_HOLDER:FindFirstChildOfClass("Frame"):FindFirstChildOfClass("Frame"):Destroy()
+	UI:CreateInfoOption("Anti-AFK", GAMESUPPORT_HOLDER:FindFirstChildOfClass("Frame"))
+	local STRENGTH = UI:CreateToggleOption("Strength" , GAMESUPPORT_HOLDER:FindFirstChildOfClass("Frame"))
+	local DURABILITY = UI:CreateToggleOption("Durability", GAMESUPPORT_HOLDER:FindFirstChildOfClass("Frame"))
+	local CHAKRA = UI:CreateToggleOption("Chakra", GAMESUPPORT_HOLDER:FindFirstChildOfClass("Frame"))
+	local SWORD = UI:CreateToggleOption("Sword", GAMESUPPORT_HOLDER:FindFirstChildOfClass("Frame"))
+	GAMESUPPORT_HOLDER.Size = UDim2.new(1, 0, 0, 194)
+	GLOBAL.GameSupportData = {
+		Call = {},
+		STRENGTH = {
+			Active = false,
+		},
+		DURABILITY = {
+			Active = false,
+		},
+		CHAKRA = {
+			Active = false,
+		},
+		SWORD = {
+			Active = false,
+		},
+	}
+	STRENGTH["TextButton"].MouseButton1Click:Connect(function()
+		if (GLOBAL.GameSupportData.STRENGTH.Active) then
+			STRENGTH["Toggle_Cricle"]:TweenPosition(UDim2.new(-0.25, 0, 0.5, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
+			STRENGTH["Toggle_RenderColor"]:TweenSize(UDim2.new(0, 0, 1, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
+			GLOBAL.GameSupportData.STRENGTH.Active = false
+		else
+			STRENGTH["Toggle_Cricle"]:TweenPosition(UDim2.new(0.6, 0, 0.5, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
+			STRENGTH["Toggle_RenderColor"]:TweenSize(UDim2.new(1, 0, 1, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
+			GLOBAL.GameSupportData.STRENGTH.Active = true
+		end
+	end)
+	DURABILITY["TextButton"].MouseButton1Click:Connect(function()
+		if (GLOBAL.GameSupportData.DURABILITY.Active) then
+			DURABILITY["Toggle_Cricle"]:TweenPosition(UDim2.new(-0.25, 0, 0.5, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
+			DURABILITY["Toggle_RenderColor"]:TweenSize(UDim2.new(0, 0, 1, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
+			GLOBAL.GameSupportData.DURABILITY.Active = false
+		else
+			DURABILITY["Toggle_Cricle"]:TweenPosition(UDim2.new(0.6, 0, 0.5, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
+			DURABILITY["Toggle_RenderColor"]:TweenSize(UDim2.new(1, 0, 1, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
+			GLOBAL.GameSupportData.DURABILITY.Active = true
+		end
+	end)
+	CHAKRA["TextButton"].MouseButton1Click:Connect(function()
+		if (GLOBAL.GameSupportData.CHAKRA.Active) then
+			CHAKRA["Toggle_Cricle"]:TweenPosition(UDim2.new(-0.25, 0, 0.5, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
+			CHAKRA["Toggle_RenderColor"]:TweenSize(UDim2.new(0, 0, 1, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
+			GLOBAL.GameSupportData.CHAKRA.Active = false
+		else
+			CHAKRA["Toggle_Cricle"]:TweenPosition(UDim2.new(0.6, 0, 0.5, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
+			CHAKRA["Toggle_RenderColor"]:TweenSize(UDim2.new(1, 0, 1, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
+			GLOBAL.GameSupportData.CHAKRA.Active = true
+		end
+	end)
+	SWORD["TextButton"].MouseButton1Click:Connect(function()
+		if (GLOBAL.GameSupportData.SWORD.Active) then
+			SWORD["Toggle_Cricle"]:TweenPosition(UDim2.new(-0.25, 0, 0.5, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
+			SWORD["Toggle_RenderColor"]:TweenSize(UDim2.new(0, 0, 1, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
+			GLOBAL.GameSupportData.SWORD.Active = false
+		else
+			SWORD["Toggle_Cricle"]:TweenPosition(UDim2.new(0.6, 0, 0.5, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
+			SWORD["Toggle_RenderColor"]:TweenSize(UDim2.new(1, 0, 1, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
+			GLOBAL.GameSupportData.SWORD.Active = true
+		end
+	end)
+	game:GetService("Players").LocalPlayer.Idled:Connect(function()
+		game:GetService("VirtualUser"):CaptureController()
+		game:GetService("VirtualUser"):ClickButton2(Vector2.new())
+	end)
+	coroutine.wrap(function()
+		while wait() do
+			if (GLOBAL.GameSupportData.STRENGTH.Active) then
+				game:GetService("ReplicatedStorage").RSPackage.Events.GeneralEvent:FireServer(unpack({[1] = "SpecialAction",[2] = {["Request"] = "Click"}}))
+				game:GetService("ReplicatedStorage").RSPackage.Events.StatFunction:InvokeServer(unpack({[1] = "Stat", [2] = "Strength"}))
+				wait(2.1)
+			end
+			if (GLOBAL.GameSupportData.DURABILITY.Active) then
+				game:GetService("ReplicatedStorage").RSPackage.Events.GeneralEvent:FireServer(unpack({[1] = "SpecialAction",[2] = {["Request"] = "Click"}}))
+				game:GetService("ReplicatedStorage").RSPackage.Events.StatFunction:InvokeServer(unpack({[1] = "Stat", [2] = "Durability"}))
+				wait(2.1)
+			end
+			if (GLOBAL.GameSupportData.CHAKRA.Active) then
+				game:GetService("ReplicatedStorage").RSPackage.Events.StatFunction:InvokeServer(unpack({[1] = "Stat", [2] = "Charka"}))
+				wait(2.1)
+			end
+			if (GLOBAL.GameSupportData.SWORD.Active) then
+				game:GetService("ReplicatedStorage").RSPackage.Events.GeneralEvent:FireServer(unpack({[1] = "SpecialAction",[2] = {["Request"] = "Click"}}))
+				game:GetService("ReplicatedStorage").RSPackage.Events.StatFunction:InvokeServer(unpack({[1] = "Stat", [2] = "Sword"}))
+				wait(2.1)
+			end
+		end
+	end)()
 end
 
 --//////////////////////////////////////////////////////////////////////////////////////////////
