@@ -31,58 +31,91 @@ local ESP_DISTANCE = Instance.new("ImageLabel")
 local Toggle_Cricle_3 = Instance.new("ImageLabel")
 local Toggle_RenderColor_3 = Instance.new("ImageLabel")
 local TextButton_3 = Instance.new("TextButton")
-local UIPadding_4 = Instance.new("UIPadding")
-local UIListLayout_2 = Instance.new("UIListLayout")
-local AIMBOT_HOLDER = Instance.new("Frame")
-local UICorner_4 = Instance.new("UICorner")
-local TextLabel_5 = Instance.new("TextLabel")
 local Frame_8 = Instance.new("Frame")
-local UIListLayout_3 = Instance.new("UIListLayout")
-local Frame_9 = Instance.new("Frame")
-local TextLabel_6 = Instance.new("TextLabel")
-local UIPadding_5 = Instance.new("UIPadding")
-local AB_ACTIVE = Instance.new("ImageLabel")
+local TextLabel_5 = Instance.new("TextLabel")
+local UIPadding_4 = Instance.new("UIPadding")
+local ESP_LIMBS = Instance.new("ImageLabel")
 local Toggle_Cricle_4 = Instance.new("ImageLabel")
 local Toggle_RenderColor_4 = Instance.new("ImageLabel")
 local TextButton_4 = Instance.new("TextButton")
+local UIPadding_5 = Instance.new("UIPadding")
+local UIListLayout_2 = Instance.new("UIListLayout")
+local AIMBOT_HOLDER = Instance.new("Frame")
+local UICorner_4 = Instance.new("UICorner")
+local TextLabel_6 = Instance.new("TextLabel")
+local Frame_9 = Instance.new("Frame")
+local UIListLayout_3 = Instance.new("UIListLayout")
 local Frame_10 = Instance.new("Frame")
 local TextLabel_7 = Instance.new("TextLabel")
 local UIPadding_6 = Instance.new("UIPadding")
+local AB_ACTIVE = Instance.new("ImageLabel")
+local Toggle_Cricle_5 = Instance.new("ImageLabel")
+local Toggle_RenderColor_5 = Instance.new("ImageLabel")
+local TextButton_5 = Instance.new("TextButton")
+local Frame_11 = Instance.new("Frame")
+local TextLabel_8 = Instance.new("TextLabel")
+local UIPadding_7 = Instance.new("UIPadding")
 local AB_FOVRANGE = Instance.new("TextBox")
 local UICorner_5 = Instance.new("UICorner")
 local FLY_HOLDER = Instance.new("Frame")
 local UICorner_6 = Instance.new("UICorner")
-local TextLabel_8 = Instance.new("TextLabel")
-local Frame_11 = Instance.new("Frame")
-local UIListLayout_4 = Instance.new("UIListLayout")
-local Frame_12 = Instance.new("Frame")
 local TextLabel_9 = Instance.new("TextLabel")
-local UIPadding_7 = Instance.new("UIPadding")
-local FLY_ACTIVE = Instance.new("ImageLabel")
-local Toggle_Cricle_5 = Instance.new("ImageLabel")
-local Toggle_RenderColor_5 = Instance.new("ImageLabel")
-local TextButton_5 = Instance.new("TextButton")
-local KEYBIND_HOLDER = Instance.new("Frame")
-local UICorner_7 = Instance.new("UICorner")
-local TextLabel_10 = Instance.new("TextLabel")
+local Frame_12 = Instance.new("Frame")
+local UIListLayout_4 = Instance.new("UIListLayout")
 local Frame_13 = Instance.new("Frame")
-local UIListLayout_5 = Instance.new("UIListLayout")
+local TextLabel_10 = Instance.new("TextLabel")
+local UIPadding_8 = Instance.new("UIPadding")
+local FLY_ACTIVE = Instance.new("ImageLabel")
+local Toggle_Cricle_6 = Instance.new("ImageLabel")
+local Toggle_RenderColor_6 = Instance.new("ImageLabel")
+local TextButton_6 = Instance.new("TextButton")
 local Frame_14 = Instance.new("Frame")
 local TextLabel_11 = Instance.new("TextLabel")
-local UIPadding_8 = Instance.new("UIPadding")
-local AIMBOT_BIND_TARGET = Instance.new("TextBox")
-local UICorner_8 = Instance.new("UICorner")
+local UIPadding_9 = Instance.new("UIPadding")
+local FLY_ENABLED = Instance.new("ImageLabel")
+local Toggle_Cricle_7 = Instance.new("ImageLabel")
+local Toggle_RenderColor_7 = Instance.new("ImageLabel")
+local TextButton_7 = Instance.new("TextButton")
 local Frame_15 = Instance.new("Frame")
 local TextLabel_12 = Instance.new("TextLabel")
-local UIPadding_9 = Instance.new("UIPadding")
-local FLY_BIND_TARGET = Instance.new("TextBox")
-local UICorner_9 = Instance.new("UICorner")
-local Frame_16 = Instance.new("Frame")
-local TextLabel_13 = Instance.new("TextLabel")
 local UIPadding_10 = Instance.new("UIPadding")
-local PLEX_BIND_TOGGLE = Instance.new("TextBox")
-local UICorner_10 = Instance.new("UICorner")
+local FLY_SPEED = Instance.new("TextBox")
+local UICorner_7 = Instance.new("UICorner")
+local KEYBIND_HOLDER = Instance.new("Frame")
+local UICorner_8 = Instance.new("UICorner")
+local TextLabel_13 = Instance.new("TextLabel")
+local Frame_16 = Instance.new("Frame")
+local UIListLayout_5 = Instance.new("UIListLayout")
+local Frame_17 = Instance.new("Frame")
 local TextLabel_14 = Instance.new("TextLabel")
+local UIPadding_11 = Instance.new("UIPadding")
+local AIMBOT_BIND_TARGET = Instance.new("TextBox")
+local UICorner_9 = Instance.new("UICorner")
+local Frame_18 = Instance.new("Frame")
+local TextLabel_15 = Instance.new("TextLabel")
+local UIPadding_12 = Instance.new("UIPadding")
+local FLY_BIND_TARGET = Instance.new("TextBox")
+local UICorner_10 = Instance.new("UICorner")
+local Frame_19 = Instance.new("Frame")
+local TextLabel_16 = Instance.new("TextLabel")
+local UIPadding_13 = Instance.new("UIPadding")
+local PLEX_BIND_TOGGLE = Instance.new("TextBox")
+local UICorner_11 = Instance.new("UICorner")
+local Frame_20 = Instance.new("Frame")
+local TextLabel_17 = Instance.new("TextLabel")
+local UIPadding_14 = Instance.new("UIPadding")
+local PLEX_BIND_PANIC = Instance.new("TextBox")
+local UICorner_12 = Instance.new("UICorner")
+local GAMESUPPORT_HOLDER = Instance.new("Frame")
+local UICorner_13 = Instance.new("UICorner")
+local TextLabel_18 = Instance.new("TextLabel")
+local Frame_21 = Instance.new("Frame")
+local UIListLayout_6 = Instance.new("UIListLayout")
+local Frame_22 = Instance.new("Frame")
+local TextLabel_19 = Instance.new("TextLabel")
+local UIPadding_15 = Instance.new("UIPadding")
+local UIGradient = Instance.new("UIGradient")
+local TextLabel_20 = Instance.new("TextLabel")
 
 ScreenGui.Parent = game.CoreGui
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
@@ -131,7 +164,7 @@ ESP_HOLDER.Parent = ScrollingFrame
 ESP_HOLDER.AnchorPoint = Vector2.new(1, 0)
 ESP_HOLDER.BackgroundColor3 = Color3.fromRGB(33, 37, 52)
 ESP_HOLDER.Position = UDim2.new(1, 0, 0, 0)
-ESP_HOLDER.Size = UDim2.new(1, 0, 0, 134)
+ESP_HOLDER.Size = UDim2.new(1, 0, 0, 164)
 
 UICorner_3.CornerRadius = UDim.new(0, 12)
 UICorner_3.Parent = ESP_HOLDER
@@ -390,11 +423,88 @@ TextButton_3.TextScaled = true
 TextButton_3.TextSize = 14.000
 TextButton_3.TextWrapped = true
 
-UIPadding_4.Parent = ScrollingFrame
-UIPadding_4.PaddingBottom = UDim.new(0, 6)
-UIPadding_4.PaddingLeft = UDim.new(0, 6)
-UIPadding_4.PaddingRight = UDim.new(0, 6)
-UIPadding_4.PaddingTop = UDim.new(0, 6)
+Frame_8.Parent = Frame_4
+Frame_8.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Frame_8.BackgroundTransparency = 1.000
+Frame_8.BorderSizePixel = 0
+Frame_8.Size = UDim2.new(1, 0, 0, 30)
+
+TextLabel_5.Parent = Frame_8
+TextLabel_5.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_5.BackgroundTransparency = 1.000
+TextLabel_5.BorderSizePixel = 0
+TextLabel_5.Position = UDim2.new(0, 0, 0.00999999978, 0)
+TextLabel_5.Size = UDim2.new(1, 0, 1, 0)
+TextLabel_5.Font = Enum.Font.SourceSans
+TextLabel_5.Text = "Limbs"
+TextLabel_5.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_5.TextScaled = true
+TextLabel_5.TextSize = 14.000
+TextLabel_5.TextWrapped = true
+TextLabel_5.TextXAlignment = Enum.TextXAlignment.Left
+
+UIPadding_4.Parent = Frame_8
+UIPadding_4.PaddingLeft = UDim.new(0, 10)
+
+ESP_LIMBS.Name = "ESP_LIMBS"
+ESP_LIMBS.Parent = Frame_8
+ESP_LIMBS.AnchorPoint = Vector2.new(1, 0.5)
+ESP_LIMBS.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ESP_LIMBS.BackgroundTransparency = 1.000
+ESP_LIMBS.Position = UDim2.new(1, -12, 0.5, 0)
+ESP_LIMBS.Selectable = true
+ESP_LIMBS.Size = UDim2.new(0, 30, 0.5, 0)
+ESP_LIMBS.Image = "rbxassetid://3570695787"
+ESP_LIMBS.ImageColor3 = Color3.fromRGB(207, 207, 207)
+ESP_LIMBS.ScaleType = Enum.ScaleType.Slice
+ESP_LIMBS.SliceCenter = Rect.new(100, 100, 100, 100)
+ESP_LIMBS.SliceScale = 5.000
+
+Toggle_Cricle_4.Name = "Toggle_Cricle"
+Toggle_Cricle_4.Parent = ESP_LIMBS
+Toggle_Cricle_4.AnchorPoint = Vector2.new(0, 0.5)
+Toggle_Cricle_4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Toggle_Cricle_4.BackgroundTransparency = 1.000
+Toggle_Cricle_4.Position = UDim2.new(-0.25, 0, 0.5, 0)
+Toggle_Cricle_4.Selectable = true
+Toggle_Cricle_4.Size = UDim2.new(0.615999997, 0, 1.22000003, 0)
+Toggle_Cricle_4.ZIndex = 2
+Toggle_Cricle_4.Image = "rbxassetid://3570695787"
+Toggle_Cricle_4.ScaleType = Enum.ScaleType.Slice
+Toggle_Cricle_4.SliceCenter = Rect.new(100, 100, 100, 100)
+Toggle_Cricle_4.SliceScale = 5.000
+
+Toggle_RenderColor_4.Name = "Toggle_RenderColor"
+Toggle_RenderColor_4.Parent = ESP_LIMBS
+Toggle_RenderColor_4.AnchorPoint = Vector2.new(0, 0.5)
+Toggle_RenderColor_4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Toggle_RenderColor_4.BackgroundTransparency = 1.000
+Toggle_RenderColor_4.Position = UDim2.new(0, 0, 0.5, 0)
+Toggle_RenderColor_4.Selectable = true
+Toggle_RenderColor_4.Size = UDim2.new(0, 0, 1, 0)
+Toggle_RenderColor_4.Image = "rbxassetid://3570695787"
+Toggle_RenderColor_4.ImageColor3 = Color3.fromRGB(39, 218, 72)
+Toggle_RenderColor_4.ScaleType = Enum.ScaleType.Slice
+Toggle_RenderColor_4.SliceCenter = Rect.new(100, 100, 100, 100)
+Toggle_RenderColor_4.SliceScale = 5.000
+
+TextButton_4.Parent = ESP_LIMBS
+TextButton_4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextButton_4.BackgroundTransparency = 1.000
+TextButton_4.BorderSizePixel = 0
+TextButton_4.Size = UDim2.new(1, 0, 1, 0)
+TextButton_4.Font = Enum.Font.SourceSansBold
+TextButton_4.Text = ""
+TextButton_4.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton_4.TextScaled = true
+TextButton_4.TextSize = 14.000
+TextButton_4.TextWrapped = true
+
+UIPadding_5.Parent = ScrollingFrame
+UIPadding_5.PaddingBottom = UDim.new(0, 6)
+UIPadding_5.PaddingLeft = UDim.new(0, 6)
+UIPadding_5.PaddingRight = UDim.new(0, 6)
+UIPadding_5.PaddingTop = UDim.new(0, 6)
 
 UIListLayout_2.Parent = ScrollingFrame
 UIListLayout_2.SortOrder = Enum.SortOrder.LayoutOrder
@@ -410,107 +520,30 @@ AIMBOT_HOLDER.Size = UDim2.new(1, 0, 0, 104)
 UICorner_4.CornerRadius = UDim.new(0, 12)
 UICorner_4.Parent = AIMBOT_HOLDER
 
-TextLabel_5.Parent = AIMBOT_HOLDER
-TextLabel_5.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel_5.BackgroundTransparency = 1.000
-TextLabel_5.BorderSizePixel = 0
-TextLabel_5.Position = UDim2.new(0, 0, 0.00999999978, 0)
-TextLabel_5.Size = UDim2.new(1, 0, 0, 30)
-TextLabel_5.Font = Enum.Font.SourceSans
-TextLabel_5.Text = "AimBot"
-TextLabel_5.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel_5.TextScaled = true
-TextLabel_5.TextSize = 14.000
-TextLabel_5.TextWrapped = true
-
-Frame_8.Parent = AIMBOT_HOLDER
-Frame_8.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Frame_8.BackgroundTransparency = 1.000
-Frame_8.BorderSizePixel = 0
-Frame_8.Position = UDim2.new(0, 0, 0, 30)
-Frame_8.Size = UDim2.new(1, 0, 1, 0)
-
-UIListLayout_3.Parent = Frame_8
-UIListLayout_3.SortOrder = Enum.SortOrder.LayoutOrder
-
-Frame_9.Parent = Frame_8
-Frame_9.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Frame_9.BackgroundTransparency = 1.000
-Frame_9.BorderSizePixel = 0
-Frame_9.Size = UDim2.new(1, 0, 0, 30)
-
-TextLabel_6.Parent = Frame_9
+TextLabel_6.Parent = AIMBOT_HOLDER
 TextLabel_6.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel_6.BackgroundTransparency = 1.000
 TextLabel_6.BorderSizePixel = 0
 TextLabel_6.Position = UDim2.new(0, 0, 0.00999999978, 0)
-TextLabel_6.Size = UDim2.new(1, 0, 1, 0)
+TextLabel_6.Size = UDim2.new(1, 0, 0, 30)
 TextLabel_6.Font = Enum.Font.SourceSans
-TextLabel_6.Text = "Active"
+TextLabel_6.Text = "AimBot"
 TextLabel_6.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel_6.TextScaled = true
 TextLabel_6.TextSize = 14.000
 TextLabel_6.TextWrapped = true
-TextLabel_6.TextXAlignment = Enum.TextXAlignment.Left
 
-UIPadding_5.Parent = Frame_9
-UIPadding_5.PaddingLeft = UDim.new(0, 10)
+Frame_9.Parent = AIMBOT_HOLDER
+Frame_9.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Frame_9.BackgroundTransparency = 1.000
+Frame_9.BorderSizePixel = 0
+Frame_9.Position = UDim2.new(0, 0, 0, 30)
+Frame_9.Size = UDim2.new(1, 0, 1, 0)
 
-AB_ACTIVE.Name = "AB_ACTIVE"
-AB_ACTIVE.Parent = Frame_9
-AB_ACTIVE.AnchorPoint = Vector2.new(1, 0.5)
-AB_ACTIVE.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-AB_ACTIVE.BackgroundTransparency = 1.000
-AB_ACTIVE.Position = UDim2.new(1, -12, 0.5, 0)
-AB_ACTIVE.Selectable = true
-AB_ACTIVE.Size = UDim2.new(0, 30, 0.5, 0)
-AB_ACTIVE.Image = "rbxassetid://3570695787"
-AB_ACTIVE.ImageColor3 = Color3.fromRGB(207, 207, 207)
-AB_ACTIVE.ScaleType = Enum.ScaleType.Slice
-AB_ACTIVE.SliceCenter = Rect.new(100, 100, 100, 100)
-AB_ACTIVE.SliceScale = 5.000
+UIListLayout_3.Parent = Frame_9
+UIListLayout_3.SortOrder = Enum.SortOrder.LayoutOrder
 
-Toggle_Cricle_4.Name = "Toggle_Cricle"
-Toggle_Cricle_4.Parent = AB_ACTIVE
-Toggle_Cricle_4.AnchorPoint = Vector2.new(0, 0.5)
-Toggle_Cricle_4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Toggle_Cricle_4.BackgroundTransparency = 1.000
-Toggle_Cricle_4.Position = UDim2.new(-0.25, 0, 0.5, 0)
-Toggle_Cricle_4.Selectable = true
-Toggle_Cricle_4.Size = UDim2.new(0.615999997, 0, 1.22000003, 0)
-Toggle_Cricle_4.ZIndex = 2
-Toggle_Cricle_4.Image = "rbxassetid://3570695787"
-Toggle_Cricle_4.ScaleType = Enum.ScaleType.Slice
-Toggle_Cricle_4.SliceCenter = Rect.new(100, 100, 100, 100)
-Toggle_Cricle_4.SliceScale = 5.000
-
-Toggle_RenderColor_4.Name = "Toggle_RenderColor"
-Toggle_RenderColor_4.Parent = AB_ACTIVE
-Toggle_RenderColor_4.AnchorPoint = Vector2.new(0, 0.5)
-Toggle_RenderColor_4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Toggle_RenderColor_4.BackgroundTransparency = 1.000
-Toggle_RenderColor_4.Position = UDim2.new(0, 0, 0.5, 0)
-Toggle_RenderColor_4.Selectable = true
-Toggle_RenderColor_4.Size = UDim2.new(0, 0, 1, 0)
-Toggle_RenderColor_4.Image = "rbxassetid://3570695787"
-Toggle_RenderColor_4.ImageColor3 = Color3.fromRGB(39, 218, 72)
-Toggle_RenderColor_4.ScaleType = Enum.ScaleType.Slice
-Toggle_RenderColor_4.SliceCenter = Rect.new(100, 100, 100, 100)
-Toggle_RenderColor_4.SliceScale = 5.000
-
-TextButton_4.Parent = AB_ACTIVE
-TextButton_4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TextButton_4.BackgroundTransparency = 1.000
-TextButton_4.BorderSizePixel = 0
-TextButton_4.Size = UDim2.new(1, 0, 1, 0)
-TextButton_4.Font = Enum.Font.SourceSansBold
-TextButton_4.Text = ""
-TextButton_4.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextButton_4.TextScaled = true
-TextButton_4.TextSize = 14.000
-TextButton_4.TextWrapped = true
-
-Frame_10.Parent = Frame_8
+Frame_10.Parent = Frame_9
 Frame_10.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Frame_10.BackgroundTransparency = 1.000
 Frame_10.BorderSizePixel = 0
@@ -523,7 +556,7 @@ TextLabel_7.BorderSizePixel = 0
 TextLabel_7.Position = UDim2.new(0, 0, 0.00999999978, 0)
 TextLabel_7.Size = UDim2.new(1, 0, 1, 0)
 TextLabel_7.Font = Enum.Font.SourceSans
-TextLabel_7.Text = "FoV Range"
+TextLabel_7.Text = "Active"
 TextLabel_7.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel_7.TextScaled = true
 TextLabel_7.TextSize = 14.000
@@ -533,8 +566,85 @@ TextLabel_7.TextXAlignment = Enum.TextXAlignment.Left
 UIPadding_6.Parent = Frame_10
 UIPadding_6.PaddingLeft = UDim.new(0, 10)
 
+AB_ACTIVE.Name = "AB_ACTIVE"
+AB_ACTIVE.Parent = Frame_10
+AB_ACTIVE.AnchorPoint = Vector2.new(1, 0.5)
+AB_ACTIVE.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+AB_ACTIVE.BackgroundTransparency = 1.000
+AB_ACTIVE.Position = UDim2.new(1, -12, 0.5, 0)
+AB_ACTIVE.Selectable = true
+AB_ACTIVE.Size = UDim2.new(0, 30, 0.5, 0)
+AB_ACTIVE.Image = "rbxassetid://3570695787"
+AB_ACTIVE.ImageColor3 = Color3.fromRGB(207, 207, 207)
+AB_ACTIVE.ScaleType = Enum.ScaleType.Slice
+AB_ACTIVE.SliceCenter = Rect.new(100, 100, 100, 100)
+AB_ACTIVE.SliceScale = 5.000
+
+Toggle_Cricle_5.Name = "Toggle_Cricle"
+Toggle_Cricle_5.Parent = AB_ACTIVE
+Toggle_Cricle_5.AnchorPoint = Vector2.new(0, 0.5)
+Toggle_Cricle_5.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Toggle_Cricle_5.BackgroundTransparency = 1.000
+Toggle_Cricle_5.Position = UDim2.new(-0.25, 0, 0.5, 0)
+Toggle_Cricle_5.Selectable = true
+Toggle_Cricle_5.Size = UDim2.new(0.615999997, 0, 1.22000003, 0)
+Toggle_Cricle_5.ZIndex = 2
+Toggle_Cricle_5.Image = "rbxassetid://3570695787"
+Toggle_Cricle_5.ScaleType = Enum.ScaleType.Slice
+Toggle_Cricle_5.SliceCenter = Rect.new(100, 100, 100, 100)
+Toggle_Cricle_5.SliceScale = 5.000
+
+Toggle_RenderColor_5.Name = "Toggle_RenderColor"
+Toggle_RenderColor_5.Parent = AB_ACTIVE
+Toggle_RenderColor_5.AnchorPoint = Vector2.new(0, 0.5)
+Toggle_RenderColor_5.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Toggle_RenderColor_5.BackgroundTransparency = 1.000
+Toggle_RenderColor_5.Position = UDim2.new(0, 0, 0.5, 0)
+Toggle_RenderColor_5.Selectable = true
+Toggle_RenderColor_5.Size = UDim2.new(0, 0, 1, 0)
+Toggle_RenderColor_5.Image = "rbxassetid://3570695787"
+Toggle_RenderColor_5.ImageColor3 = Color3.fromRGB(39, 218, 72)
+Toggle_RenderColor_5.ScaleType = Enum.ScaleType.Slice
+Toggle_RenderColor_5.SliceCenter = Rect.new(100, 100, 100, 100)
+Toggle_RenderColor_5.SliceScale = 5.000
+
+TextButton_5.Parent = AB_ACTIVE
+TextButton_5.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextButton_5.BackgroundTransparency = 1.000
+TextButton_5.BorderSizePixel = 0
+TextButton_5.Size = UDim2.new(1, 0, 1, 0)
+TextButton_5.Font = Enum.Font.SourceSansBold
+TextButton_5.Text = ""
+TextButton_5.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton_5.TextScaled = true
+TextButton_5.TextSize = 14.000
+TextButton_5.TextWrapped = true
+
+Frame_11.Parent = Frame_9
+Frame_11.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Frame_11.BackgroundTransparency = 1.000
+Frame_11.BorderSizePixel = 0
+Frame_11.Size = UDim2.new(1, 0, 0, 30)
+
+TextLabel_8.Parent = Frame_11
+TextLabel_8.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_8.BackgroundTransparency = 1.000
+TextLabel_8.BorderSizePixel = 0
+TextLabel_8.Position = UDim2.new(0, 0, 0.00999999978, 0)
+TextLabel_8.Size = UDim2.new(1, 0, 1, 0)
+TextLabel_8.Font = Enum.Font.SourceSans
+TextLabel_8.Text = "FoV Range"
+TextLabel_8.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_8.TextScaled = true
+TextLabel_8.TextSize = 14.000
+TextLabel_8.TextWrapped = true
+TextLabel_8.TextXAlignment = Enum.TextXAlignment.Left
+
+UIPadding_7.Parent = Frame_11
+UIPadding_7.PaddingLeft = UDim.new(0, 10)
+
 AB_FOVRANGE.Name = "AB_FOVRANGE"
-AB_FOVRANGE.Parent = Frame_10
+AB_FOVRANGE.Parent = Frame_11
 AB_FOVRANGE.AnchorPoint = Vector2.new(1, 0)
 AB_FOVRANGE.BackgroundColor3 = Color3.fromRGB(27, 30, 43)
 AB_FOVRANGE.BorderColor3 = Color3.fromRGB(255, 255, 255)
@@ -557,59 +667,59 @@ FLY_HOLDER.Parent = ScrollingFrame
 FLY_HOLDER.AnchorPoint = Vector2.new(1, 0)
 FLY_HOLDER.BackgroundColor3 = Color3.fromRGB(33, 37, 52)
 FLY_HOLDER.Position = UDim2.new(1, 0, 0, 0)
-FLY_HOLDER.Size = UDim2.new(1, 0, 0, 74)
+FLY_HOLDER.Size = UDim2.new(1, 0, 0, 134)
 
 UICorner_6.CornerRadius = UDim.new(0, 12)
 UICorner_6.Parent = FLY_HOLDER
 
-TextLabel_8.Parent = FLY_HOLDER
-TextLabel_8.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel_8.BackgroundTransparency = 1.000
-TextLabel_8.BorderSizePixel = 0
-TextLabel_8.Position = UDim2.new(0, 0, 0.00999999978, 0)
-TextLabel_8.Size = UDim2.new(1, 0, 0, 30)
-TextLabel_8.Font = Enum.Font.SourceSans
-TextLabel_8.Text = "Fly"
-TextLabel_8.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel_8.TextScaled = true
-TextLabel_8.TextSize = 14.000
-TextLabel_8.TextWrapped = true
-
-Frame_11.Parent = FLY_HOLDER
-Frame_11.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Frame_11.BackgroundTransparency = 1.000
-Frame_11.BorderSizePixel = 0
-Frame_11.Position = UDim2.new(0, 0, 0, 30)
-Frame_11.Size = UDim2.new(1, 0, 1, 0)
-
-UIListLayout_4.Parent = Frame_11
-UIListLayout_4.SortOrder = Enum.SortOrder.LayoutOrder
-
-Frame_12.Parent = Frame_11
-Frame_12.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Frame_12.BackgroundTransparency = 1.000
-Frame_12.BorderSizePixel = 0
-Frame_12.Size = UDim2.new(1, 0, 0, 30)
-
-TextLabel_9.Parent = Frame_12
+TextLabel_9.Parent = FLY_HOLDER
 TextLabel_9.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel_9.BackgroundTransparency = 1.000
 TextLabel_9.BorderSizePixel = 0
 TextLabel_9.Position = UDim2.new(0, 0, 0.00999999978, 0)
-TextLabel_9.Size = UDim2.new(1, 0, 1, 0)
+TextLabel_9.Size = UDim2.new(1, 0, 0, 30)
 TextLabel_9.Font = Enum.Font.SourceSans
-TextLabel_9.Text = "Active"
+TextLabel_9.Text = "Fly"
 TextLabel_9.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel_9.TextScaled = true
 TextLabel_9.TextSize = 14.000
 TextLabel_9.TextWrapped = true
-TextLabel_9.TextXAlignment = Enum.TextXAlignment.Left
 
-UIPadding_7.Parent = Frame_12
-UIPadding_7.PaddingLeft = UDim.new(0, 10)
+Frame_12.Parent = FLY_HOLDER
+Frame_12.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Frame_12.BackgroundTransparency = 1.000
+Frame_12.BorderSizePixel = 0
+Frame_12.Position = UDim2.new(0, 0, 0, 30)
+Frame_12.Size = UDim2.new(1, 0, 1, 0)
+
+UIListLayout_4.Parent = Frame_12
+UIListLayout_4.SortOrder = Enum.SortOrder.LayoutOrder
+
+Frame_13.Parent = Frame_12
+Frame_13.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Frame_13.BackgroundTransparency = 1.000
+Frame_13.BorderSizePixel = 0
+Frame_13.Size = UDim2.new(1, 0, 0, 30)
+
+TextLabel_10.Parent = Frame_13
+TextLabel_10.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_10.BackgroundTransparency = 1.000
+TextLabel_10.BorderSizePixel = 0
+TextLabel_10.Position = UDim2.new(0, 0, 0.00999999978, 0)
+TextLabel_10.Size = UDim2.new(1, 0, 1, 0)
+TextLabel_10.Font = Enum.Font.SourceSans
+TextLabel_10.Text = "Active"
+TextLabel_10.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_10.TextScaled = true
+TextLabel_10.TextSize = 14.000
+TextLabel_10.TextWrapped = true
+TextLabel_10.TextXAlignment = Enum.TextXAlignment.Left
+
+UIPadding_8.Parent = Frame_13
+UIPadding_8.PaddingLeft = UDim.new(0, 10)
 
 FLY_ACTIVE.Name = "FLY_ACTIVE"
-FLY_ACTIVE.Parent = Frame_12
+FLY_ACTIVE.Parent = Frame_13
 FLY_ACTIVE.AnchorPoint = Vector2.new(1, 0.5)
 FLY_ACTIVE.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 FLY_ACTIVE.BackgroundTransparency = 1.000
@@ -622,80 +732,47 @@ FLY_ACTIVE.ScaleType = Enum.ScaleType.Slice
 FLY_ACTIVE.SliceCenter = Rect.new(100, 100, 100, 100)
 FLY_ACTIVE.SliceScale = 5.000
 
-Toggle_Cricle_5.Name = "Toggle_Cricle"
-Toggle_Cricle_5.Parent = FLY_ACTIVE
-Toggle_Cricle_5.AnchorPoint = Vector2.new(0, 0.5)
-Toggle_Cricle_5.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Toggle_Cricle_5.BackgroundTransparency = 1.000
-Toggle_Cricle_5.Position = UDim2.new(-0.25, 0, 0.5, 0)
-Toggle_Cricle_5.Selectable = true
-Toggle_Cricle_5.Size = UDim2.new(0.615999997, 0, 1.22000003, 0)
-Toggle_Cricle_5.ZIndex = 2
-Toggle_Cricle_5.Image = "rbxassetid://3570695787"
-Toggle_Cricle_5.ScaleType = Enum.ScaleType.Slice
-Toggle_Cricle_5.SliceCenter = Rect.new(100, 100, 100, 100)
-Toggle_Cricle_5.SliceScale = 5.000
+Toggle_Cricle_6.Name = "Toggle_Cricle"
+Toggle_Cricle_6.Parent = FLY_ACTIVE
+Toggle_Cricle_6.AnchorPoint = Vector2.new(0, 0.5)
+Toggle_Cricle_6.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Toggle_Cricle_6.BackgroundTransparency = 1.000
+Toggle_Cricle_6.Position = UDim2.new(-0.25, 0, 0.5, 0)
+Toggle_Cricle_6.Selectable = true
+Toggle_Cricle_6.Size = UDim2.new(0.615999997, 0, 1.22000003, 0)
+Toggle_Cricle_6.ZIndex = 2
+Toggle_Cricle_6.Image = "rbxassetid://3570695787"
+Toggle_Cricle_6.ScaleType = Enum.ScaleType.Slice
+Toggle_Cricle_6.SliceCenter = Rect.new(100, 100, 100, 100)
+Toggle_Cricle_6.SliceScale = 5.000
 
-Toggle_RenderColor_5.Name = "Toggle_RenderColor"
-Toggle_RenderColor_5.Parent = FLY_ACTIVE
-Toggle_RenderColor_5.AnchorPoint = Vector2.new(0, 0.5)
-Toggle_RenderColor_5.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Toggle_RenderColor_5.BackgroundTransparency = 1.000
-Toggle_RenderColor_5.Position = UDim2.new(0, 0, 0.5, 0)
-Toggle_RenderColor_5.Selectable = true
-Toggle_RenderColor_5.Size = UDim2.new(0, 0, 1, 0)
-Toggle_RenderColor_5.Image = "rbxassetid://3570695787"
-Toggle_RenderColor_5.ImageColor3 = Color3.fromRGB(39, 218, 72)
-Toggle_RenderColor_5.ScaleType = Enum.ScaleType.Slice
-Toggle_RenderColor_5.SliceCenter = Rect.new(100, 100, 100, 100)
-Toggle_RenderColor_5.SliceScale = 5.000
+Toggle_RenderColor_6.Name = "Toggle_RenderColor"
+Toggle_RenderColor_6.Parent = FLY_ACTIVE
+Toggle_RenderColor_6.AnchorPoint = Vector2.new(0, 0.5)
+Toggle_RenderColor_6.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Toggle_RenderColor_6.BackgroundTransparency = 1.000
+Toggle_RenderColor_6.Position = UDim2.new(0, 0, 0.5, 0)
+Toggle_RenderColor_6.Selectable = true
+Toggle_RenderColor_6.Size = UDim2.new(0, 0, 1, 0)
+Toggle_RenderColor_6.Image = "rbxassetid://3570695787"
+Toggle_RenderColor_6.ImageColor3 = Color3.fromRGB(39, 218, 72)
+Toggle_RenderColor_6.ScaleType = Enum.ScaleType.Slice
+Toggle_RenderColor_6.SliceCenter = Rect.new(100, 100, 100, 100)
+Toggle_RenderColor_6.SliceScale = 5.000
 
-TextButton_5.Parent = FLY_ACTIVE
-TextButton_5.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TextButton_5.BackgroundTransparency = 1.000
-TextButton_5.BorderSizePixel = 0
-TextButton_5.Size = UDim2.new(1, 0, 1, 0)
-TextButton_5.Font = Enum.Font.SourceSansBold
-TextButton_5.Text = ""
-TextButton_5.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextButton_5.TextScaled = true
-TextButton_5.TextSize = 14.000
-TextButton_5.TextWrapped = true
+TextButton_6.Parent = FLY_ACTIVE
+TextButton_6.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextButton_6.BackgroundTransparency = 1.000
+TextButton_6.BorderSizePixel = 0
+TextButton_6.Size = UDim2.new(1, 0, 1, 0)
+TextButton_6.Font = Enum.Font.SourceSansBold
+TextButton_6.Text = ""
+TextButton_6.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton_6.TextScaled = true
+TextButton_6.TextSize = 14.000
+TextButton_6.TextWrapped = true
 
-KEYBIND_HOLDER.Name = "KEYBIND_HOLDER"
-KEYBIND_HOLDER.Parent = ScrollingFrame
-KEYBIND_HOLDER.AnchorPoint = Vector2.new(1, 0)
-KEYBIND_HOLDER.BackgroundColor3 = Color3.fromRGB(33, 37, 52)
-KEYBIND_HOLDER.Position = UDim2.new(1, 0, 0, 0)
-KEYBIND_HOLDER.Size = UDim2.new(1, 0, 0, 194)
-
-UICorner_7.CornerRadius = UDim.new(0, 12)
-UICorner_7.Parent = KEYBIND_HOLDER
-
-TextLabel_10.Parent = KEYBIND_HOLDER
-TextLabel_10.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel_10.BackgroundTransparency = 1.000
-TextLabel_10.BorderSizePixel = 0
-TextLabel_10.Position = UDim2.new(0, 0, 0.00999999978, 0)
-TextLabel_10.Size = UDim2.new(1, 0, 0, 30)
-TextLabel_10.Font = Enum.Font.SourceSans
-TextLabel_10.Text = "Bindings"
-TextLabel_10.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel_10.TextScaled = true
-TextLabel_10.TextSize = 14.000
-TextLabel_10.TextWrapped = true
-
-Frame_13.Parent = KEYBIND_HOLDER
-Frame_13.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Frame_13.BackgroundTransparency = 1.000
-Frame_13.BorderSizePixel = 0
-Frame_13.Position = UDim2.new(0, 0, 0, 30)
-Frame_13.Size = UDim2.new(1, 0, 1, 0)
-
-UIListLayout_5.Parent = Frame_13
-UIListLayout_5.SortOrder = Enum.SortOrder.LayoutOrder
-
-Frame_14.Parent = Frame_13
+Frame_14.Parent = Frame_12
 Frame_14.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Frame_14.BackgroundTransparency = 1.000
 Frame_14.BorderSizePixel = 0
@@ -708,18 +785,170 @@ TextLabel_11.BorderSizePixel = 0
 TextLabel_11.Position = UDim2.new(0, 0, 0.00999999978, 0)
 TextLabel_11.Size = UDim2.new(1, 0, 1, 0)
 TextLabel_11.Font = Enum.Font.SourceSans
-TextLabel_11.Text = "Aimbot → Target"
+TextLabel_11.Text = "Enabled"
 TextLabel_11.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel_11.TextScaled = true
 TextLabel_11.TextSize = 14.000
 TextLabel_11.TextWrapped = true
 TextLabel_11.TextXAlignment = Enum.TextXAlignment.Left
 
-UIPadding_8.Parent = Frame_14
-UIPadding_8.PaddingLeft = UDim.new(0, 10)
+UIPadding_9.Parent = Frame_14
+UIPadding_9.PaddingLeft = UDim.new(0, 10)
+
+FLY_ENABLED.Name = "FLY_ENABLED"
+FLY_ENABLED.Parent = Frame_14
+FLY_ENABLED.AnchorPoint = Vector2.new(1, 0.5)
+FLY_ENABLED.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+FLY_ENABLED.BackgroundTransparency = 1.000
+FLY_ENABLED.Position = UDim2.new(1, -12, 0.5, 0)
+FLY_ENABLED.Selectable = true
+FLY_ENABLED.Size = UDim2.new(0, 30, 0.5, 0)
+FLY_ENABLED.Image = "rbxassetid://3570695787"
+FLY_ENABLED.ImageColor3 = Color3.fromRGB(207, 207, 207)
+FLY_ENABLED.ScaleType = Enum.ScaleType.Slice
+FLY_ENABLED.SliceCenter = Rect.new(100, 100, 100, 100)
+FLY_ENABLED.SliceScale = 5.000
+
+Toggle_Cricle_7.Name = "Toggle_Cricle"
+Toggle_Cricle_7.Parent = FLY_ENABLED
+Toggle_Cricle_7.AnchorPoint = Vector2.new(0, 0.5)
+Toggle_Cricle_7.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Toggle_Cricle_7.BackgroundTransparency = 1.000
+Toggle_Cricle_7.Position = UDim2.new(-0.25, 0, 0.5, 0)
+Toggle_Cricle_7.Selectable = true
+Toggle_Cricle_7.Size = UDim2.new(0.615999997, 0, 1.22000003, 0)
+Toggle_Cricle_7.ZIndex = 2
+Toggle_Cricle_7.Image = "rbxassetid://3570695787"
+Toggle_Cricle_7.ScaleType = Enum.ScaleType.Slice
+Toggle_Cricle_7.SliceCenter = Rect.new(100, 100, 100, 100)
+Toggle_Cricle_7.SliceScale = 5.000
+
+Toggle_RenderColor_7.Name = "Toggle_RenderColor"
+Toggle_RenderColor_7.Parent = FLY_ENABLED
+Toggle_RenderColor_7.AnchorPoint = Vector2.new(0, 0.5)
+Toggle_RenderColor_7.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Toggle_RenderColor_7.BackgroundTransparency = 1.000
+Toggle_RenderColor_7.Position = UDim2.new(0, 0, 0.5, 0)
+Toggle_RenderColor_7.Selectable = true
+Toggle_RenderColor_7.Size = UDim2.new(0, 0, 1, 0)
+Toggle_RenderColor_7.Image = "rbxassetid://3570695787"
+Toggle_RenderColor_7.ImageColor3 = Color3.fromRGB(39, 218, 72)
+Toggle_RenderColor_7.ScaleType = Enum.ScaleType.Slice
+Toggle_RenderColor_7.SliceCenter = Rect.new(100, 100, 100, 100)
+Toggle_RenderColor_7.SliceScale = 5.000
+
+TextButton_7.Parent = FLY_ENABLED
+TextButton_7.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextButton_7.BackgroundTransparency = 1.000
+TextButton_7.BorderSizePixel = 0
+TextButton_7.Size = UDim2.new(1, 0, 1, 0)
+TextButton_7.Font = Enum.Font.SourceSansBold
+TextButton_7.Text = ""
+TextButton_7.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton_7.TextScaled = true
+TextButton_7.TextSize = 14.000
+TextButton_7.TextWrapped = true
+
+Frame_15.Parent = Frame_12
+Frame_15.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Frame_15.BackgroundTransparency = 1.000
+Frame_15.BorderSizePixel = 0
+Frame_15.Size = UDim2.new(1, 0, 0, 30)
+
+TextLabel_12.Parent = Frame_15
+TextLabel_12.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_12.BackgroundTransparency = 1.000
+TextLabel_12.BorderSizePixel = 0
+TextLabel_12.Position = UDim2.new(0, 0, 0.00999999978, 0)
+TextLabel_12.Size = UDim2.new(1, 0, 1, 0)
+TextLabel_12.Font = Enum.Font.SourceSans
+TextLabel_12.Text = "Speed"
+TextLabel_12.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_12.TextScaled = true
+TextLabel_12.TextSize = 14.000
+TextLabel_12.TextWrapped = true
+TextLabel_12.TextXAlignment = Enum.TextXAlignment.Left
+
+UIPadding_10.Parent = Frame_15
+UIPadding_10.PaddingLeft = UDim.new(0, 10)
+
+FLY_SPEED.Name = "FLY_SPEED"
+FLY_SPEED.Parent = Frame_15
+FLY_SPEED.AnchorPoint = Vector2.new(1, 0)
+FLY_SPEED.BackgroundColor3 = Color3.fromRGB(27, 30, 43)
+FLY_SPEED.BorderColor3 = Color3.fromRGB(255, 255, 255)
+FLY_SPEED.BorderSizePixel = 0
+FLY_SPEED.Position = UDim2.new(1, -12, 0, 0)
+FLY_SPEED.Size = UDim2.new(0, 50, 1, 0)
+FLY_SPEED.ClearTextOnFocus = false
+FLY_SPEED.Font = Enum.Font.SourceSans
+FLY_SPEED.Text = "?"
+FLY_SPEED.TextColor3 = Color3.fromRGB(255, 255, 255)
+FLY_SPEED.TextScaled = true
+FLY_SPEED.TextSize = 14.000
+FLY_SPEED.TextWrapped = true
+
+UICorner_7.CornerRadius = UDim.new(0, 12)
+UICorner_7.Parent = FLY_SPEED
+
+KEYBIND_HOLDER.Name = "KEYBIND_HOLDER"
+KEYBIND_HOLDER.Parent = ScrollingFrame
+KEYBIND_HOLDER.AnchorPoint = Vector2.new(1, 0)
+KEYBIND_HOLDER.BackgroundColor3 = Color3.fromRGB(33, 37, 52)
+KEYBIND_HOLDER.Position = UDim2.new(1, 0, 0, 0)
+KEYBIND_HOLDER.Size = UDim2.new(1, 0, 0, 194)
+
+UICorner_8.CornerRadius = UDim.new(0, 12)
+UICorner_8.Parent = KEYBIND_HOLDER
+
+TextLabel_13.Parent = KEYBIND_HOLDER
+TextLabel_13.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_13.BackgroundTransparency = 1.000
+TextLabel_13.BorderSizePixel = 0
+TextLabel_13.Position = UDim2.new(0, 0, 0.00999999978, 0)
+TextLabel_13.Size = UDim2.new(1, 0, 0, 30)
+TextLabel_13.Font = Enum.Font.SourceSans
+TextLabel_13.Text = "Bindings"
+TextLabel_13.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_13.TextScaled = true
+TextLabel_13.TextSize = 14.000
+TextLabel_13.TextWrapped = true
+
+Frame_16.Parent = KEYBIND_HOLDER
+Frame_16.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Frame_16.BackgroundTransparency = 1.000
+Frame_16.BorderSizePixel = 0
+Frame_16.Position = UDim2.new(0, 0, 0, 30)
+Frame_16.Size = UDim2.new(1, 0, 1, 0)
+
+UIListLayout_5.Parent = Frame_16
+UIListLayout_5.SortOrder = Enum.SortOrder.LayoutOrder
+
+Frame_17.Parent = Frame_16
+Frame_17.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Frame_17.BackgroundTransparency = 1.000
+Frame_17.BorderSizePixel = 0
+Frame_17.Size = UDim2.new(1, 0, 0, 30)
+
+TextLabel_14.Parent = Frame_17
+TextLabel_14.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_14.BackgroundTransparency = 1.000
+TextLabel_14.BorderSizePixel = 0
+TextLabel_14.Position = UDim2.new(0, 0, 0.00999999978, 0)
+TextLabel_14.Size = UDim2.new(1, 0, 1, 0)
+TextLabel_14.Font = Enum.Font.SourceSans
+TextLabel_14.Text = "Aimbot → Target"
+TextLabel_14.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_14.TextScaled = true
+TextLabel_14.TextSize = 14.000
+TextLabel_14.TextWrapped = true
+TextLabel_14.TextXAlignment = Enum.TextXAlignment.Left
+
+UIPadding_11.Parent = Frame_17
+UIPadding_11.PaddingLeft = UDim.new(0, 10)
 
 AIMBOT_BIND_TARGET.Name = "AIMBOT_BIND_TARGET"
-AIMBOT_BIND_TARGET.Parent = Frame_14
+AIMBOT_BIND_TARGET.Parent = Frame_17
 AIMBOT_BIND_TARGET.AnchorPoint = Vector2.new(1, 0)
 AIMBOT_BIND_TARGET.BackgroundColor3 = Color3.fromRGB(27, 30, 43)
 AIMBOT_BIND_TARGET.BorderColor3 = Color3.fromRGB(255, 255, 255)
@@ -734,34 +963,34 @@ AIMBOT_BIND_TARGET.TextScaled = true
 AIMBOT_BIND_TARGET.TextSize = 14.000
 AIMBOT_BIND_TARGET.TextWrapped = true
 
-UICorner_8.CornerRadius = UDim.new(0, 12)
-UICorner_8.Parent = AIMBOT_BIND_TARGET
+UICorner_9.CornerRadius = UDim.new(0, 12)
+UICorner_9.Parent = AIMBOT_BIND_TARGET
 
-Frame_15.Parent = Frame_13
-Frame_15.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Frame_15.BackgroundTransparency = 1.000
-Frame_15.BorderSizePixel = 0
-Frame_15.Size = UDim2.new(1, 0, 0, 30)
+Frame_18.Parent = Frame_16
+Frame_18.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Frame_18.BackgroundTransparency = 1.000
+Frame_18.BorderSizePixel = 0
+Frame_18.Size = UDim2.new(1, 0, 0, 30)
 
-TextLabel_12.Parent = Frame_15
-TextLabel_12.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel_12.BackgroundTransparency = 1.000
-TextLabel_12.BorderSizePixel = 0
-TextLabel_12.Position = UDim2.new(0, 0, 0.00999999978, 0)
-TextLabel_12.Size = UDim2.new(1, 0, 1, 0)
-TextLabel_12.Font = Enum.Font.SourceSans
-TextLabel_12.Text = "Fly → Active"
-TextLabel_12.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel_12.TextScaled = true
-TextLabel_12.TextSize = 14.000
-TextLabel_12.TextWrapped = true
-TextLabel_12.TextXAlignment = Enum.TextXAlignment.Left
+TextLabel_15.Parent = Frame_18
+TextLabel_15.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_15.BackgroundTransparency = 1.000
+TextLabel_15.BorderSizePixel = 0
+TextLabel_15.Position = UDim2.new(0, 0, 0.00999999978, 0)
+TextLabel_15.Size = UDim2.new(1, 0, 1, 0)
+TextLabel_15.Font = Enum.Font.SourceSans
+TextLabel_15.Text = "Fly → Enabled"
+TextLabel_15.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_15.TextScaled = true
+TextLabel_15.TextSize = 14.000
+TextLabel_15.TextWrapped = true
+TextLabel_15.TextXAlignment = Enum.TextXAlignment.Left
 
-UIPadding_9.Parent = Frame_15
-UIPadding_9.PaddingLeft = UDim.new(0, 10)
+UIPadding_12.Parent = Frame_18
+UIPadding_12.PaddingLeft = UDim.new(0, 10)
 
 FLY_BIND_TARGET.Name = "FLY_BIND_TARGET"
-FLY_BIND_TARGET.Parent = Frame_15
+FLY_BIND_TARGET.Parent = Frame_18
 FLY_BIND_TARGET.AnchorPoint = Vector2.new(1, 0)
 FLY_BIND_TARGET.BackgroundColor3 = Color3.fromRGB(27, 30, 43)
 FLY_BIND_TARGET.BorderColor3 = Color3.fromRGB(255, 255, 255)
@@ -776,34 +1005,34 @@ FLY_BIND_TARGET.TextScaled = true
 FLY_BIND_TARGET.TextSize = 14.000
 FLY_BIND_TARGET.TextWrapped = true
 
-UICorner_9.CornerRadius = UDim.new(0, 12)
-UICorner_9.Parent = FLY_BIND_TARGET
+UICorner_10.CornerRadius = UDim.new(0, 12)
+UICorner_10.Parent = FLY_BIND_TARGET
 
-Frame_16.Parent = Frame_13
-Frame_16.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Frame_16.BackgroundTransparency = 1.000
-Frame_16.BorderSizePixel = 0
-Frame_16.Size = UDim2.new(1, 0, 0, 30)
+Frame_19.Parent = Frame_16
+Frame_19.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Frame_19.BackgroundTransparency = 1.000
+Frame_19.BorderSizePixel = 0
+Frame_19.Size = UDim2.new(1, 0, 0, 30)
 
-TextLabel_13.Parent = Frame_16
-TextLabel_13.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel_13.BackgroundTransparency = 1.000
-TextLabel_13.BorderSizePixel = 0
-TextLabel_13.Position = UDim2.new(0, 0, 0.00999999978, 0)
-TextLabel_13.Size = UDim2.new(1, 0, 1, 0)
-TextLabel_13.Font = Enum.Font.SourceSans
-TextLabel_13.Text = "Plex → Toggle"
-TextLabel_13.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel_13.TextScaled = true
-TextLabel_13.TextSize = 14.000
-TextLabel_13.TextWrapped = true
-TextLabel_13.TextXAlignment = Enum.TextXAlignment.Left
+TextLabel_16.Parent = Frame_19
+TextLabel_16.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_16.BackgroundTransparency = 1.000
+TextLabel_16.BorderSizePixel = 0
+TextLabel_16.Position = UDim2.new(0, 0, 0.00999999978, 0)
+TextLabel_16.Size = UDim2.new(1, 0, 1, 0)
+TextLabel_16.Font = Enum.Font.SourceSans
+TextLabel_16.Text = "Plex → Toggle"
+TextLabel_16.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_16.TextScaled = true
+TextLabel_16.TextSize = 14.000
+TextLabel_16.TextWrapped = true
+TextLabel_16.TextXAlignment = Enum.TextXAlignment.Left
 
-UIPadding_10.Parent = Frame_16
-UIPadding_10.PaddingLeft = UDim.new(0, 10)
+UIPadding_13.Parent = Frame_19
+UIPadding_13.PaddingLeft = UDim.new(0, 10)
 
 PLEX_BIND_TOGGLE.Name = "PLEX_BIND_TOGGLE"
-PLEX_BIND_TOGGLE.Parent = Frame_16
+PLEX_BIND_TOGGLE.Parent = Frame_19
 PLEX_BIND_TOGGLE.AnchorPoint = Vector2.new(1, 0)
 PLEX_BIND_TOGGLE.BackgroundColor3 = Color3.fromRGB(27, 30, 43)
 PLEX_BIND_TOGGLE.BorderColor3 = Color3.fromRGB(255, 255, 255)
@@ -818,25 +1047,128 @@ PLEX_BIND_TOGGLE.TextScaled = true
 PLEX_BIND_TOGGLE.TextSize = 14.000
 PLEX_BIND_TOGGLE.TextWrapped = true
 
-UICorner_10.CornerRadius = UDim.new(0, 12)
-UICorner_10.Parent = PLEX_BIND_TOGGLE
+UICorner_11.CornerRadius = UDim.new(0, 12)
+UICorner_11.Parent = PLEX_BIND_TOGGLE
 
-TextLabel_14.Parent = Frame
-TextLabel_14.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel_14.BackgroundTransparency = 1.000
-TextLabel_14.BorderSizePixel = 0
-TextLabel_14.Position = UDim2.new(0, 0, 0.00999999978, 0)
-TextLabel_14.Size = UDim2.new(1, 0, 0.0599999987, 0)
-TextLabel_14.Font = Enum.Font.SourceSans
-TextLabel_14.Text = "PLEX CORE"
-TextLabel_14.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel_14.TextScaled = true
-TextLabel_14.TextSize = 14.000
-TextLabel_14.TextWrapped = true
+Frame_20.Parent = Frame_16
+Frame_20.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Frame_20.BackgroundTransparency = 1.000
+Frame_20.BorderSizePixel = 0
+Frame_20.Size = UDim2.new(1, 0, 0, 30)
+
+TextLabel_17.Parent = Frame_20
+TextLabel_17.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_17.BackgroundTransparency = 1.000
+TextLabel_17.BorderSizePixel = 0
+TextLabel_17.Position = UDim2.new(0, 0, 0.00999999978, 0)
+TextLabel_17.Size = UDim2.new(1, 0, 1, 0)
+TextLabel_17.Font = Enum.Font.SourceSans
+TextLabel_17.Text = "Plex → Panic"
+TextLabel_17.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_17.TextScaled = true
+TextLabel_17.TextSize = 14.000
+TextLabel_17.TextWrapped = true
+TextLabel_17.TextXAlignment = Enum.TextXAlignment.Left
+
+UIPadding_14.Parent = Frame_20
+UIPadding_14.PaddingLeft = UDim.new(0, 10)
+
+PLEX_BIND_PANIC.Name = "PLEX_BIND_PANIC"
+PLEX_BIND_PANIC.Parent = Frame_20
+PLEX_BIND_PANIC.AnchorPoint = Vector2.new(1, 0)
+PLEX_BIND_PANIC.BackgroundColor3 = Color3.fromRGB(27, 30, 43)
+PLEX_BIND_PANIC.BorderColor3 = Color3.fromRGB(255, 255, 255)
+PLEX_BIND_PANIC.BorderSizePixel = 0
+PLEX_BIND_PANIC.Position = UDim2.new(1, -12, 0, 0)
+PLEX_BIND_PANIC.Size = UDim2.new(0, 50, 1, 0)
+PLEX_BIND_PANIC.ClearTextOnFocus = false
+PLEX_BIND_PANIC.Font = Enum.Font.SourceSans
+PLEX_BIND_PANIC.Text = "["
+PLEX_BIND_PANIC.TextColor3 = Color3.fromRGB(255, 255, 255)
+PLEX_BIND_PANIC.TextScaled = true
+PLEX_BIND_PANIC.TextSize = 14.000
+PLEX_BIND_PANIC.TextWrapped = true
+
+UICorner_12.CornerRadius = UDim.new(0, 12)
+UICorner_12.Parent = PLEX_BIND_PANIC
+
+GAMESUPPORT_HOLDER.Name = "GAMESUPPORT_HOLDER"
+GAMESUPPORT_HOLDER.Parent = ScrollingFrame
+GAMESUPPORT_HOLDER.AnchorPoint = Vector2.new(1, 0)
+GAMESUPPORT_HOLDER.BackgroundColor3 = Color3.fromRGB(40, 45, 63)
+GAMESUPPORT_HOLDER.Position = UDim2.new(1, 0, 0, 0)
+GAMESUPPORT_HOLDER.Size = UDim2.new(1, 0, 0, 74)
+
+UICorner_13.CornerRadius = UDim.new(0, 12)
+UICorner_13.Parent = GAMESUPPORT_HOLDER
+
+TextLabel_18.Parent = GAMESUPPORT_HOLDER
+TextLabel_18.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_18.BackgroundTransparency = 1.000
+TextLabel_18.BorderSizePixel = 0
+TextLabel_18.Position = UDim2.new(0, 0, 0.00999999978, 0)
+TextLabel_18.Size = UDim2.new(1, 0, 0, 30)
+TextLabel_18.Font = Enum.Font.SourceSans
+TextLabel_18.Text = "Game Support"
+TextLabel_18.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_18.TextScaled = true
+TextLabel_18.TextSize = 14.000
+TextLabel_18.TextWrapped = true
+
+Frame_21.Parent = GAMESUPPORT_HOLDER
+Frame_21.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Frame_21.BackgroundTransparency = 1.000
+Frame_21.BorderSizePixel = 0
+Frame_21.Position = UDim2.new(0, 0, 0, 30)
+Frame_21.Size = UDim2.new(1, 0, 1, 0)
+
+UIListLayout_6.Parent = Frame_21
+UIListLayout_6.SortOrder = Enum.SortOrder.LayoutOrder
+
+Frame_22.Parent = Frame_21
+Frame_22.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Frame_22.BackgroundTransparency = 1.000
+Frame_22.BorderSizePixel = 0
+Frame_22.Size = UDim2.new(1, 0, 0, 30)
+
+TextLabel_19.Parent = Frame_22
+TextLabel_19.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_19.BackgroundTransparency = 1.000
+TextLabel_19.BorderSizePixel = 0
+TextLabel_19.Position = UDim2.new(0, 0, 0.00999999978, 0)
+TextLabel_19.Size = UDim2.new(1, 0, 1, 0)
+TextLabel_19.Font = Enum.Font.SourceSans
+TextLabel_19.Text = "No Support for This Game"
+TextLabel_19.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_19.TextScaled = true
+TextLabel_19.TextSize = 14.000
+TextLabel_19.TextWrapped = true
+
+UIPadding_15.Parent = Frame_22
+UIPadding_15.PaddingLeft = UDim.new(0, 10)
+
+UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(0, 255, 21)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(138, 255, 165))}
+UIGradient.Rotation = 45
+UIGradient.Parent = GAMESUPPORT_HOLDER
+
+TextLabel_20.Parent = Frame
+TextLabel_20.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_20.BackgroundTransparency = 1.000
+TextLabel_20.BorderSizePixel = 0
+TextLabel_20.Position = UDim2.new(0, 0, 0.00999999978, 0)
+TextLabel_20.Size = UDim2.new(1, 0, 0.0599999987, 0)
+TextLabel_20.Font = Enum.Font.SourceSans
+TextLabel_20.Text = "PLEX CORE"
+TextLabel_20.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_20.TextScaled = true
+TextLabel_20.TextSize = 14.000
+TextLabel_20.TextWrapped = true
 
 local ACTIVE = true
 
-local GLOBAL = {}
+local GLOBAL = {
+	GameName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name
+}
 function GLOBAL.IsAlive()
     if game:GetService("Players").LocalPlayer.Character then
         return game:GetService("Players").LocalPlayer.Character.Head
@@ -845,22 +1177,204 @@ function GLOBAL.IsAlive()
     end
 end
 
+local UI = {}
+function UI:CreateTextBoxOption(NAME, DEFAULT_INPUT, Parent)
+	local Frame = Instance.new("Frame")
+	local TextLabel = Instance.new("TextLabel")
+	local UIPadding = Instance.new("UIPadding")
+	local TextBox = Instance.new("TextBox")
+	local UICorner = Instance.new("UICorner")
+
+	Frame.Parent = Parent
+	Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Frame.BackgroundTransparency = 1.000
+	Frame.BorderSizePixel = 0
+	Frame.Size = UDim2.new(1, 0, 0, 30)
+
+	TextLabel.Parent = Frame
+	TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabel.BackgroundTransparency = 1.000
+	TextLabel.BorderSizePixel = 0
+	TextLabel.Position = UDim2.new(0, 0, 0.00999999978, 0)
+	TextLabel.Size = UDim2.new(1, 0, 1, 0)
+	TextLabel.Font = Enum.Font.SourceSans
+	TextLabel.Text = NAME
+	TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabel.TextScaled = true
+	TextLabel.TextSize = 14.000
+	TextLabel.TextWrapped = true
+	TextLabel.TextXAlignment = Enum.TextXAlignment.Left
+
+	UIPadding.Parent = Frame
+	UIPadding.PaddingLeft = UDim.new(0, 10)
+
+	TextBox.Parent = Frame
+	TextBox.AnchorPoint = Vector2.new(1, 0)
+	TextBox.BackgroundColor3 = Color3.fromRGB(27, 30, 43)
+	TextBox.BorderColor3 = Color3.fromRGB(255, 255, 255)
+	TextBox.BorderSizePixel = 0
+	TextBox.Position = UDim2.new(1, -12, 0, 0)
+	TextBox.Size = UDim2.new(0, 50, 1, 0)
+	TextBox.ClearTextOnFocus = false
+	TextBox.Font = Enum.Font.SourceSans
+	TextBox.Text = DEFAULT_INPUT
+	TextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+	TextBox.TextScaled = true
+	TextBox.TextSize = 14.000
+	TextBox.TextWrapped = true
+
+	UICorner.CornerRadius = UDim.new(0, 12)
+	UICorner.Parent = TextBox
+	return Frame
+end
+function UI:CreateToggleOption(NAME, DEFAULT_INPUT, Parent)
+	local Frame = Instance.new("Frame")
+	local TextLabel = Instance.new("TextLabel")
+	local UIPadding = Instance.new("UIPadding")
+	local ImageLabel = Instance.new("ImageLabel")
+	local Toggle_Cricle = Instance.new("ImageLabel")
+	local Toggle_RenderColor = Instance.new("ImageLabel")
+	local TextButton = Instance.new("TextButton")
+
+	Frame.Parent = Parent
+	Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Frame.BackgroundTransparency = 1.000
+	Frame.BorderSizePixel = 0
+	Frame.Size = UDim2.new(1, 0, 0, 30)
+
+	TextLabel.Parent = Frame
+	TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabel.BackgroundTransparency = 1.000
+	TextLabel.BorderSizePixel = 0
+	TextLabel.Position = UDim2.new(0, 0, 0.00999999978, 0)
+	TextLabel.Size = UDim2.new(1, 0, 1, 0)
+	TextLabel.Font = Enum.Font.SourceSans
+	TextLabel.Text = "Active"
+	TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabel.TextScaled = true
+	TextLabel.TextSize = 14.000
+	TextLabel.TextWrapped = true
+	TextLabel.TextXAlignment = Enum.TextXAlignment.Left
+
+	UIPadding.Parent = Frame
+	UIPadding.PaddingLeft = UDim.new(0, 10)
+
+	ImageLabel.Parent = Frame
+	ImageLabel.AnchorPoint = Vector2.new(1, 0.5)
+	ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	ImageLabel.BackgroundTransparency = 1.000
+	ImageLabel.Position = UDim2.new(1, -12, 0.5, 0)
+	ImageLabel.Selectable = true
+	ImageLabel.Size = UDim2.new(0, 30, 0.5, 0)
+	ImageLabel.Image = "rbxassetid://3570695787"
+	ImageLabel.ImageColor3 = Color3.fromRGB(207, 207, 207)
+	ImageLabel.ScaleType = Enum.ScaleType.Slice
+	ImageLabel.SliceCenter = Rect.new(100, 100, 100, 100)
+	ImageLabel.SliceScale = 5.000
+
+	Toggle_Cricle.Name = "Toggle_Cricle"
+	Toggle_Cricle.Parent = FLY_ACTIVE
+	Toggle_Cricle.AnchorPoint = Vector2.new(0, 0.5)
+	Toggle_Cricle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Toggle_Cricle.BackgroundTransparency = 1.000
+	Toggle_Cricle.Position = UDim2.new(-0.25, 0, 0.5, 0)
+	Toggle_Cricle.Selectable = true
+	Toggle_Cricle.Size = UDim2.new(0.615999997, 0, 1.22000003, 0)
+	Toggle_Cricle.ZIndex = 2
+	Toggle_Cricle.Image = "rbxassetid://3570695787"
+	Toggle_Cricle.ScaleType = Enum.ScaleType.Slice
+	Toggle_Cricle.SliceCenter = Rect.new(100, 100, 100, 100)
+	Toggle_Cricle.SliceScale = 5.000
+
+	Toggle_RenderColor.Name = "Toggle_RenderColor"
+	Toggle_RenderColor.Parent = FLY_ACTIVE
+	Toggle_RenderColor.AnchorPoint = Vector2.new(0, 0.5)
+	Toggle_RenderColor.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Toggle_RenderColor.BackgroundTransparency = 1.000
+	Toggle_RenderColor.Position = UDim2.new(0, 0, 0.5, 0)
+	Toggle_RenderColor.Selectable = true
+	Toggle_RenderColor.Size = UDim2.new(0, 0, 1, 0)
+	Toggle_RenderColor.Image = "rbxassetid://3570695787"
+	Toggle_RenderColor.ImageColor3 = Color3.fromRGB(39, 218, 72)
+	Toggle_RenderColor.ScaleType = Enum.ScaleType.Slice
+	Toggle_RenderColor.SliceCenter = Rect.new(100, 100, 100, 100)
+	Toggle_RenderColor.SliceScale = 5.000
+
+	TextButton.Parent = FLY_ACTIVE
+	TextButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	TextButton.BackgroundTransparency = 1.000
+	TextButton.BorderSizePixel = 0
+	TextButton.Size = UDim2.new(1, 0, 1, 0)
+	TextButton.Font = Enum.Font.SourceSansBold
+	TextButton.Text = ""
+	TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+	TextButton.TextScaled = true
+	TextButton.TextSize = 14.000
+	TextButton.TextWrapped = true
+
+	return Frame
+end
+function UI:CreateInfoOption(NAME, Parent)
+	local Frame = Instance.new("Frame")
+	local TextLabel = Instance.new("TextLabel")
+	local UIPadding = Instance.new("UIPadding")
+	local ImageLabel = Instance.new("ImageLabel")
+
+	Frame.Parent = Parent
+	Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Frame.BackgroundTransparency = 1.000
+	Frame.BorderSizePixel = 0
+	Frame.Size = UDim2.new(1, 0, 0, 30)
+
+	TextLabel.Parent = Frame
+	TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabel.BackgroundTransparency = 1.000
+	TextLabel.BorderSizePixel = 0
+	TextLabel.Position = UDim2.new(0, 0, 0.00999999978, 0)
+	TextLabel.Size = UDim2.new(1, 0, 1, 0)
+	TextLabel.Font = Enum.Font.SourceSans
+	TextLabel.Text = NAME
+	TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabel.TextScaled = true
+	TextLabel.TextSize = 14.000
+	TextLabel.TextWrapped = true
+	TextLabel.TextXAlignment = Enum.TextXAlignment.Left
+
+	UIPadding.Parent = Frame
+	UIPadding.PaddingLeft = UDim.new(0, 10)
+
+	ImageLabel.Parent = Frame
+	ImageLabel.AnchorPoint = Vector2.new(1, 0.5)
+	ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	ImageLabel.BackgroundTransparency = 1.000
+	ImageLabel.Position = UDim2.new(1, -12, 0.5, 0)
+	ImageLabel.Selectable = true
+	ImageLabel.Size = UDim2.new(0, 30, 0, 30)
+	ImageLabel.Image = "http://www.roblox.com/asset/?id=2667008028"
+	ImageLabel.ImageColor3 = Color3.fromRGB(207, 207, 207)
+	ImageLabel.ScaleType = Enum.ScaleType.Slice
+	ImageLabel.SliceCenter = Rect.new(100, 100, 100, 100)
+	ImageLabel.SliceScale = 5.000
+
+	return Frame
+end
 
 ScreenGui.ResetOnSpawn = false
 ScreenGui.Name = "Chat"
 
 local FLY = {
-	Core = {},
+	Core = {
+		Weld = nil,
+	},
 	Controller = {},
-	Call = {}
+	Call = {},
+	Active = false,
+	Enabled = false,
+	Speed = 3
 }
-FLY.Speed=10
 
 FLY.BodyPos, FLY.BodyGyro = nil
 
-FLY.Core.Weld = nil
-
-FLY.Active = false
 FLY.Controller.Key={a=false,d=false,w=false,s=false} 
 
 function FLY.Call.KeyUp(KEY)
@@ -876,62 +1390,63 @@ function FLY.Call.KeyUp(KEY)
 end
 
 function FLY.Call.Activate()
-	if (workspace:FindFirstChildOfClass("Folder")) then
-		FLY.Core.Handle = Instance.new("Part", workspace:FindFirstChildOfClass("Folder"))
-	elseif (workspace:FindFirstChildOfClass("Model")) then
-		FLY.Core.Handle = Instance.new("Part", workspace:FindFirstChildOfClass("Model"))
-	else
-		FLY.Core.Handle = Instance.new("Part", workspace)
-	end
-	if (FLY.Core.Handle) then
-		FLY.Core.Handle.Size = Vector3.new(0.05, 0.05, 0.05)
-		FLY.Core.Handle.CanCollide = false
-
-		Toggle_Cricle_5:TweenPosition(UDim2.new(0.6, 0, 0.5, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
-		Toggle_RenderColor_5:TweenSize(UDim2.new(1, 0, 1, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
-		
-		if (game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart")) then
-			FLY.Core.Handle.Position = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position
+	if (FLY.Active) then
+		if (workspace:FindFirstChildOfClass("Folder")) then
+			FLY.Core.Handle = Instance.new("Part", workspace:FindFirstChildOfClass("Folder"))
+		elseif (workspace:FindFirstChildOfClass("Model")) then
+			FLY.Core.Handle = Instance.new("Part", workspace:FindFirstChildOfClass("Model"))
+		else
+			FLY.Core.Handle = Instance.new("Part", workspace)
 		end
-		FLY.Active = true
+		if (FLY.Core.Handle) then
+			FLY.Core.Handle.Size = Vector3.new(0.05, 0.05, 0.05)
+			FLY.Core.Handle.CanCollide = false
+
+			FLY_ENABLED["Toggle_Cricle"]:TweenPosition(UDim2.new(0.6, 0, 0.5, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
+			FLY_ENABLED["Toggle_RenderColor"]:TweenSize(UDim2.new(1, 0, 1, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
+			
+			if (game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart")) then
+				FLY.Core.Handle.Position = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position
+			end
+			FLY.Enabled = true
+		end
 	end
-	
 end
 function FLY.Call.Deactivate()
-	Toggle_Cricle_5:TweenPosition(UDim2.new(-0.25, 0, 0.5, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
-	Toggle_RenderColor_5:TweenSize(UDim2.new(0, 0, 1, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
+	FLY_ENABLED["Toggle_Cricle"]:TweenPosition(UDim2.new(-0.25, 0, 0.5, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
+	FLY_ENABLED["Toggle_RenderColor"]:TweenSize(UDim2.new(0, 0, 1, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
 	
-	FLY.Active = true
 	if (FLY.BodyPos) then FLY.BodyPos:Destroy(); FLY.BodyPos = nil end
 	if (FLY.BodyGyro) then FLY.BodyGyro:Destroy(); FLY.BodyGyro = nil end
 	if (FLY.Core.Weld) then FLY.Core.Weld:Destroy(); FLY.Core.Weld = nil end
 	if (FLY.Core.Handle) then FLY.Core.Handle:Destroy(); FLY.Core.Handle = nil end
 
-	FLY.Active = false
-	FLY.Speed = 10
+	FLY.Enabled = false
 end
 
 function FLY.Call.KeyDown(KEY)
-	if KEY=="w" then
-		FLY.Controller.Key.w=true
-	elseif KEY=="s" then
-		FLY.Controller.Key.s=true
-	elseif KEY=="a" then
-		FLY.Controller.Key.a=true
-	elseif KEY=="d" then
-		FLY.Controller.Key.d=true
-	elseif KEY=="x" then
-		if (FLY.Active) then
-			FLY.Call.Deactivate()
-		else
-			FLY.Call.Activate()
+	if (FLY.Active) then
+		if KEY=="w" then
+			FLY.Controller.Key.w=true
+		elseif KEY=="s" then
+			FLY.Controller.Key.s=true
+		elseif KEY=="a" then
+			FLY.Controller.Key.a=true
+		elseif KEY=="d" then
+			FLY.Controller.Key.d=true
+		elseif KEY=="x" then
+			if (FLY.Enabled) then
+				FLY.Call.Deactivate()
+			else
+				FLY.Call.Activate()
+			end
 		end
 	end
 end
 
 local action = false
 function FLY.Call.Runtime()
-	if (FLY.Active) then
+	if (FLY.Active and FLY.Enabled) then
 		if (not FLY.Core.Weld) then
 			FLY.Core.Weld = Instance.new("Weld", FLY.Core.Handle)
 			spawn(function()
@@ -953,44 +1468,28 @@ function FLY.Call.Runtime()
 		if (not FLY.BodyGyro) then
 			FLY.BodyGyro = Instance.new("BodyGyro", FLY.Core.Handle)
 			FLY.BodyGyro.maxTorque = Vector3.new(9e9, 9e9, 9e9) 
-			FLY.BodyGyro.cframe = FLY.Core.Handle.CFrame
+			FLY.BodyGyro.CFrame = FLY.Core.Handle.CFrame
 		end
 
 		game:GetService('Players').LocalPlayer.Character.Humanoid.PlatformStand=true
 		if (FLY.BodyGyro and FLY.BodyPos) then
 			wait()
 			action = true
-			local new = FLY.BodyGyro.cframe - FLY.BodyGyro.cframe.p + FLY.BodyPos.position
-			if not FLY.Controller.Key.w and not FLY.Controller.Key.s and not FLY.Controller.Key.a and not FLY.Controller.Key.d then
-				FLY.Speed=5
-			end
+			local new = FLY.BodyGyro.CFrame - FLY.BodyGyro.CFrame.p + FLY.BodyPos.position
 			if FLY.Controller.Key.w then 
 				new = new + workspace.CurrentCamera.CoordinateFrame.lookVector * FLY.Speed
-				FLY.Speed+=0
 			end
 			if FLY.Controller.Key.s then 
 				new = new - workspace.CurrentCamera.CoordinateFrame.lookVector * FLY.Speed
-				FLY.Speed+=0
 			end
 			if FLY.Controller.Key.d then 
 				new = new * CFrame.new(FLY.Speed,0,0)
-				FLY.Speed+=0
 			end
 			if FLY.Controller.Key.a then 
 				new = new * CFrame.new(-FLY.Speed,0,0)
-				FLY.Speed+=0
 			end
-			if FLY.Speed>10 then
-				FLY.Speed=5
-			end
-			FLY.BodyPos.position=new.p
-			if FLY.Controller.Key.w then
-				FLY.BodyGyro.cframe = workspace.CurrentCamera.CoordinateFrame*CFrame.Angles(-math.rad(FLY.Speed*0),0,0)
-			elseif FLY.Controller.Key.s then
-				FLY.BodyGyro.cframe = workspace.CurrentCamera.CoordinateFrame*CFrame.Angles(math.rad(FLY.Speed*0),0,0)
-			else
-				FLY.BodyGyro.cframe = workspace.CurrentCamera.CoordinateFrame
-			end
+			FLY.BodyPos.position = new.p
+			FLY.BodyGyro.CFrame = workspace.CurrentCamera.CoordinateFrame
 		end
 	else
 		if (action) then
@@ -1000,6 +1499,39 @@ function FLY.Call.Runtime()
 	end
 end
 
+FLY_ACTIVE["TextButton"].MouseButton1Click:Connect(function()
+	if (FLY.Active) then
+		FLY.Active = false
+		FLY_ACTIVE["Toggle_Cricle"]:TweenPosition(UDim2.new(-0.25, 0, 0.5, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
+		FLY_ACTIVE["Toggle_RenderColor"]:TweenSize(UDim2.new(0, 0, 1, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
+	else
+		FLY.Active = true
+		FLY_ACTIVE["Toggle_Cricle"]:TweenPosition(UDim2.new(0.6, 0, 0.5, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
+		FLY_ACTIVE["Toggle_RenderColor"]:TweenSize(UDim2.new(1, 0, 1, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
+		if (FLY.Enabled) then
+			FLY.Call.Activate()
+		end
+	end
+end)
+
+FLY_ENABLED["TextButton"].MouseButton1Click:Connect(function()
+	if (FLY.Enabled) then
+		FLY.Call.Deactivate()
+	else
+		FLY.Call.Activate()
+	end
+end)
+
+FLY_SPEED.Changed:Connect(function(TYPE)
+	if (TYPE == "Text") then
+		if (not tonumber(FLY_SPEED.Text)) then
+			FLY_SPEED.Text = tostring(FLY.Speed)
+		else
+			FLY.Speed = tonumber(FLY_SPEED.Text)
+		end
+	end
+end)
+FLY_SPEED.Text = tostring(FLY.Speed)
 
 --//////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -1009,9 +1541,10 @@ local ESP = {
 	Active = false,
 	Health = false,
 	Distance = false,
+	Limbs = false
 }
 
-local function GetPartCorners(Part)
+function ESP.GetPartCorners(Part)
 	local Size = Part.Size * Vector3.new(1, 1.5)
 	return {
         TR = (CFrame.new(Part.Position, workspace.CurrentCamera.CFrame.Position) * CFrame.new(Vector3.new(-Size.X, -Size.Y, 0))).Position,
@@ -1021,39 +1554,33 @@ local function GetPartCorners(Part)
 	}
 end
 
-function Watch(Model, Type, Dyn)
+function ESP.DrawESP(Model, Type, Dyn)
 	local Objects = {
 	       Box = Drawing.new("Quad"),
 	       Name = Drawing.new("Text"),
 	}
-    local ParentCheck = Model.Parent
-	spawn(function()
-		local function Render()
-			local Distance = (workspace.CurrentCamera.CFrame.Position - Model.HumanoidRootPart.Position).Magnitude
+	local function Render()
+		local Distance = (workspace.CurrentCamera.CFrame.Position - Model.HumanoidRootPart.Position).Magnitude
+		local Color = Color3.fromHSV((math.clamp(Distance / 5, 0, 125) + 100) / 255, 0.75, 1)
 
-			for i, v in pairs(Objects) do
-				v.Visible = true
-				v.Transparency = 1
-			end
-
+		if (ESP.Limbs) then
 			for i, v in pairs(Model:GetChildren()) do
 				if (v:IsA("BasePart") and v.Name ~= "HumanoidRootPart") then
 					if (not Objects[v.Name]) then
 						Objects[v.Name] = Drawing.new("Line")	
-					else
-						local VectorTOP, OnScreenTOP = workspace.CurrentCamera:WorldToScreenPoint((v.CFrame * CFrame.new(0, (v.Size * Vector3.new(1, 1.5)).Y/2, 0)).Position)
-						local VectorBTTOM, OnScreenBTTOM = workspace.CurrentCamera:WorldToScreenPoint((v.CFrame * CFrame.new(0, -(v.Size * Vector3.new(1, 1.5)).Y/2, 0)).Position)
+					end
+					local VectorTOP, OnScreenTOP = workspace.CurrentCamera:WorldToViewportPoint((v.CFrame * CFrame.new(0, (v.Size * Vector3.new(1, 1.5)).Y/2, 0)).Position)
+					local VectorBTTOM, OnScreenBTTOM = workspace.CurrentCamera:WorldToViewportPoint((v.CFrame * CFrame.new(0, -(v.Size * Vector3.new(1, 1.5)).Y/2, 0)).Position)
 
-						if (OnScreenTOP or OnScreenBTTOM) then
-							Objects[v.Name].From = Vector2.new(VectorTOP.X, VectorTOP.Y + 36)
-							Objects[v.Name].To = Vector2.new(VectorBTTOM.X, VectorBTTOM.Y + 36)
-							Objects[v.Name].Thickness = math.clamp(3 - (Distance / 100), 0, 3)
-							Objects[v.Name].Color = Color3.fromHSV(0.571889, 1, 1)
-							Objects[v.Name].Transparency = math.clamp((500 - Distance) / 200, 0.2, 1)
-							Objects[v.Name].Visible = true
-						else
-							Objects[v.Name].Visible = false
-						end
+					if (OnScreenTOP or OnScreenBTTOM) then
+						Objects[v.Name].From = Vector2.new(VectorTOP.X, VectorTOP.Y)
+						Objects[v.Name].To = Vector2.new(VectorBTTOM.X, VectorBTTOM.Y)
+						Objects[v.Name].Thickness = math.clamp(3 - (Distance / 100), 0, 3)
+						Objects[v.Name].Color = Color3.fromHSV(0.571889, 1, 1)
+						Objects[v.Name].Transparency = math.clamp((500 - Distance) / 200, 0.2, 1)
+						Objects[v.Name].Visible = true
+					else
+						Objects[v.Name].Visible = false
 					end
 				end
 			end
@@ -1061,12 +1588,12 @@ function Watch(Model, Type, Dyn)
 				if (not Objects[Part1.Name..Part2.Name]) then
 					Objects[Part1.Name..Part2.Name] = Drawing.new("Line")
 				end
-				local VectorTOP, OnScreenTOP = workspace.CurrentCamera:WorldToScreenPoint((Part1.CFrame * CFrame.new(0, (Part1.Size * Vector3.new(1, 1.5)).Y/2, 0)).Position)
-				local VectorBTTOM, OnScreenBTTOM = workspace.CurrentCamera:WorldToScreenPoint((Part2.CFrame * CFrame.new(0, (Part2.Size * Vector3.new(1, 1.5)).Y/2, 0)).Position)
+				local VectorTOP, OnScreenTOP = workspace.CurrentCamera:WorldToViewportPoint((Part1.CFrame * CFrame.new(0, (Part1.Size * Vector3.new(1, 1.5)).Y/2, 0)).Position)
+				local VectorBTTOM, OnScreenBTTOM = workspace.CurrentCamera:WorldToViewportPoint((Part2.CFrame * CFrame.new(0, (Part2.Size * Vector3.new(1, 1.5)).Y/2, 0)).Position)
 
 				if (OnScreenTOP or OnScreenBTTOM) then
-					Objects[Part1.Name..Part2.Name].From = Vector2.new(VectorTOP.X, VectorTOP.Y + 36)
-					Objects[Part1.Name..Part2.Name].To = Vector2.new(VectorBTTOM.X, VectorBTTOM.Y + 36)
+					Objects[Part1.Name..Part2.Name].From = Vector2.new(VectorTOP.X, VectorTOP.Y)
+					Objects[Part1.Name..Part2.Name].To = Vector2.new(VectorBTTOM.X, VectorBTTOM.Y)
 					Objects[Part1.Name..Part2.Name].Thickness = math.clamp(3 - (Distance / 100), 0, 3)
 					Objects[Part1.Name..Part2.Name].Color = Color3.fromHSV(0.571889, 1, 1)
 					Objects[Part1.Name..Part2.Name].Transparency = math.clamp((500 - Distance) / 200, 0.2, 1)
@@ -1133,152 +1660,135 @@ function Watch(Model, Type, Dyn)
 					ConnectTop(Model:FindFirstChild("Right Leg"), Model:FindFirstChild("Torso"))
 				end
 			end
-			Objects.Name.Center = true
-			Objects.Name.Outline = true
-
-			local Vector, OnScreen = workspace.CurrentCamera:WorldToScreenPoint(Model.Head.Position + Vector3.new(0,2,0))
-			if (OnScreen) then
-				Objects.Name.Position = Vector2.new(Vector.X, Vector.Y + math.clamp(Distance / 10, 10, 30) - 10)
-				Objects.Name.Size = math.clamp(30 - Distance / 10, 10, 30)
-				Objects.Name.Color = Color3.fromHSV(math.clamp(Distance / 5, 0, 125) + 100 / 255, 0.75, 1)
-				Objects.Name.Visible = true
-				Objects.Name.Font = 1
-				Objects.Name.Transparency = math.clamp((500 - Distance) / 200, 0.2, 1)
-				if (ESP.Distance) then
-					Objects.Name.Text = string.format("[%sM] [%s]", tostring(math.floor(Distance)), game:GetService("Players"):GetPlayerFromCharacter(Model) and game:GetService("Players"):GetPlayerFromCharacter(Model).Name or "Player")
-				end
-				if (ESP.Health and Model:FindFirstChild("Humanoid")) then
-					Objects.Name.Text = Objects.Name.Text..string.format(" [%s HP]", tostring(math.floor(Model.Humanoid.Health) or "N/A"))
-				end
-			else
-				Objects.Name.Visible = false 
-			end
-
-			local PartCorners = GetPartCorners(Model.HumanoidRootPart)
-			local VectorTR, OnScreenTR = workspace.CurrentCamera:WorldToScreenPoint(PartCorners.TR)
-			local VectorBR, OnScreenBR = workspace.CurrentCamera:WorldToScreenPoint(PartCorners.BR)
-			local VectorTL, OnScreenTL = workspace.CurrentCamera:WorldToScreenPoint(PartCorners.TL)
-			local VectorBL, OnScreenBL = workspace.CurrentCamera:WorldToScreenPoint(PartCorners.BL)
-			if (OnScreenBL or OnScreenTL or OnScreenBR or OnScreenTR) then
-				Objects.Box.PointA = Vector2.new(VectorTR.X, VectorTR.Y + 36)
-				Objects.Box.PointB = Vector2.new(VectorTL.X, VectorTL.Y + 36)
-				Objects.Box.PointC = Vector2.new(VectorBL.X, VectorBL.Y + 36)
-				Objects.Box.PointD = Vector2.new(VectorBR.X, VectorBR.Y + 36)
-				Objects.Box.Color = Color3.fromHSV(math.clamp(Distance / 5, 0, 125) + 100 / 255, 0.75, 1)
-				Objects.Box.Thickness = math.clamp(3 - (Distance / 100), 0, 3)
-				Objects.Box.Transparency = math.clamp((700 - Distance) / 200, 0.2, 0.9)
-				Objects.Box.Visible = true
-			else
-				Objects.Box.Visible = false
-			end
-			game:GetService("RunService").RenderStepped:Wait()
 		end
-		if (Type == "PFTeam") then
-			while Model.Parent == ParentCheck and Model.Parent.Name ~= game:GetService("Players").LocalPlayer.Team.Name do
-				if (ESP.Active) then 
-					Render()
-				else
-					game:GetService("RunService").RenderStepped:Wait()
-				end
-				
+		
+		Objects.Name.Center = true
+		Objects.Name.Outline = true
+
+		local Vector, OnScreen = workspace.CurrentCamera:WorldToViewportPoint(Model.HumanoidRootPart.Position + Vector3.new(0,4,0))
+		if (OnScreen) then
+			Objects.Name.Position = Vector2.new(Vector.X, Vector.Y + math.clamp(Distance / 10, 10, 30) - 20)
+			Objects.Name.Size = math.clamp(30 - Distance / 10, 10, 30)
+			Objects.Name.Color = Color
+			Objects.Name.Visible = true
+			Objects.Name.Font = 1
+			Objects.Name.Transparency = math.clamp((500 - Distance) / 200, 0.2, 1)
+			Objects.Name.Text = string.format("[%s]", game:GetService("Players"):GetPlayerFromCharacter(Model) and game:GetService("Players"):GetPlayerFromCharacter(Model).Name or "Player")			
+			if (ESP.Distance) then
+				Objects.Name.Text = string.format("[%sM] ", tostring(math.floor(Distance))) .. Objects.Name.Text
+			end
+			if (ESP.Health) then
+				Objects.Name.Text = Objects.Name.Text..string.format(" [%s HP]", tostring(math.floor(Model.Humanoid.Health) or "N/A"))
 			end
 		else
-			while Model:FindFirstChild("Head") do
-				if (ESP.Active) then 
-					Render()
-				else
-					game:GetService("RunService").RenderStepped:Wait()
+			Objects.Name.Visible = false 
+		end
+
+		local PartCorners = ESP.GetPartCorners(Model.HumanoidRootPart)
+		local VectorTR, OnScreenTR = workspace.CurrentCamera:WorldToViewportPoint(PartCorners.TR)
+		local VectorBR, OnScreenBR = workspace.CurrentCamera:WorldToViewportPoint(PartCorners.BR)
+		local VectorTL, OnScreenTL = workspace.CurrentCamera:WorldToViewportPoint(PartCorners.TL)
+		local VectorBL, OnScreenBL = workspace.CurrentCamera:WorldToViewportPoint(PartCorners.BL)
+		if (OnScreenBL or OnScreenTL or OnScreenBR or OnScreenTR) then
+			Objects.Box.PointA = Vector2.new(VectorTR.X, VectorTR.Y)
+			Objects.Box.PointB = Vector2.new(VectorTL.X, VectorTL.Y)
+			Objects.Box.PointC = Vector2.new(VectorBL.X, VectorBL.Y)
+			Objects.Box.PointD = Vector2.new(VectorBR.X, VectorBR.Y)
+			Objects.Box.Color = Color
+			Objects.Box.Thickness = math.clamp(3 - (Distance / 100), 0, 3)
+			Objects.Box.Transparency = math.clamp((700 - Distance) / 200, 0.2, 0.9)
+			Objects.Box.Visible = true
+		else
+			Objects.Box.Visible = false
+		end
+		game:GetService("RunService").RenderStepped:Wait()
+	end
+	if (Type == "PhantomForcesTeam") then
+		if (Model.Parent.Name ~= game:GetService("Players").LocalPlayer.Team.Name) then
+			pcall(function()
+				Render()
+			end)
+		end
+	else
+		if (Model) then
+			pcall(function()
+				Render()
+			end)
+		end
+	end
+	game:GetService("RunService").RenderStepped:Wait()
+	for _, v in pairs(Objects) do
+		v:Remove()
+	end
+end
+
+function ESP.Call.Runtime()
+	if (ESP.Active) then
+		if (GLOBAL.GameName == "Phantom Forces") then
+			for _, Player in next, game:GetService("Workspace").Players.Phantoms:GetChildren() do
+				ESP.DrawESP(Player, "PhantomForcesTeam")
+			end
+
+			for _, Player in next, game:GetService("Workspace").Players.Ghosts:GetChildren() do
+				ESP.DrawESP(Player, "PhantomForcesTeam")
+			end
+		else
+			for _, Player in pairs(game:GetService("Players"):GetPlayers()) do
+				if plr.Character and plr.Name ~= game:GetService("Players").LocalPlayer.Name then
+					ESP.DrawESP(Player.Character, "none", Player)
 				end
 			end
 		end
-		for i, v in pairs(Objects) do
-			v:Remove()
-		end
-	end)
-end
-ESP.Update = function()
-	if (game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name == "Phantom Forces") then
-		for _, Player in next, game:GetService("Workspace").Players.Phantoms:GetChildren() do
-			Watch(Player, "PFTeam")
-			wait(0.5)
-		end
-
-		for _, Player in next, game:GetService("Workspace").Players.Ghosts:GetChildren() do
-			Watch(Player, "PFTeam")
-			wait(0.5)
-		end
-
-		game:GetService("Workspace").Players.Phantoms.ChildAdded:Connect(function(Player)
-			delay(0.5, function()
-				Watch(Player, "PFTeam")
-			end)
-		end)
-
-		game:GetService("Workspace").Players.Ghosts.ChildAdded:Connect(function(Player)
-			delay(0.5, function()
-				Watch(Player, "PFTeam")
-			end)
-		end)
-	else
-		for _, plr in pairs(game:GetService("Players"):GetPlayers()) do
-			if plr.Character and plr.Name ~= game:GetService("Players").LocalPlayer.Name then
-				plr.CharacterAdded:Connect(function(char)
-					delay(0.5, function()
-						Watch(char, "none", plr)
-					end)
-				end)
-				Watch(plr.Character, "none", plr)
-			end
-		end
-		game:GetService("Players").PlayerAdded:Connect(function(plr)
-			plr.CharacterAdded:Connect(function(char)
-				delay(0.5, function()
-					Watch(char, "none", plr)
-				end)
-			end)
-			delay(0.5, function()
-				Watch(plr.Character, "none", plr)
-			end)
-		end)
 	end
 end
 
 ESP_ACTIVE["TextButton"].MouseButton1Click:Connect(function()
 	if (ESP.Active) then
-		Toggle_Cricle:TweenPosition(UDim2.new(-0.25, 0, 0.5, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
-		Toggle_RenderColor:TweenSize(UDim2.new(0, 0, 1, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
+		ESP_ACTIVE["Toggle_Cricle"]:TweenPosition(UDim2.new(-0.25, 0, 0.5, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
+		ESP_ACTIVE["Toggle_RenderColor"]:TweenSize(UDim2.new(0, 0, 1, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
 		ESP.Active = false
 	else
-		Toggle_Cricle:TweenPosition(UDim2.new(0.6, 0, 0.5, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
-		Toggle_RenderColor:TweenSize(UDim2.new(1, 0, 1, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
+		ESP_ACTIVE["Toggle_Cricle"]:TweenPosition(UDim2.new(0.6, 0, 0.5, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
+		ESP_ACTIVE["Toggle_RenderColor"]:TweenSize(UDim2.new(1, 0, 1, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
 		ESP.Active = true
 	end
 end)
 
 ESP_HEALTH["TextButton"].MouseButton1Click:Connect(function()
 	if (ESP.Health) then
-		Toggle_Cricle_2:TweenPosition(UDim2.new(-0.25, 0, 0.5, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
-		Toggle_RenderColor_2:TweenSize(UDim2.new(0, 0, 1, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
+		ESP_HEALTH["Toggle_Cricle"]:TweenPosition(UDim2.new(-0.25, 0, 0.5, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
+		ESP_HEALTH["Toggle_RenderColor"]:TweenSize(UDim2.new(0, 0, 1, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
 		ESP.Health = false
 	else
-		Toggle_Cricle_2:TweenPosition(UDim2.new(0.6, 0, 0.5, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
-		Toggle_RenderColor_2:TweenSize(UDim2.new(1, 0, 1, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
+		ESP_HEALTH["Toggle_Cricle"]:TweenPosition(UDim2.new(0.6, 0, 0.5, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
+		ESP_HEALTH["Toggle_RenderColor"]:TweenSize(UDim2.new(1, 0, 1, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
 		ESP.Health = true
 	end
 end)
 
 ESP_DISTANCE["TextButton"].MouseButton1Click:Connect(function()
 	if (ESP.Distance) then
-		Toggle_Cricle_3:TweenPosition(UDim2.new(-0.25, 0, 0.5, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
-		Toggle_RenderColor_3:TweenSize(UDim2.new(0, 0, 1, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
+		ESP_DISTANCE["Toggle_Cricle"]:TweenPosition(UDim2.new(-0.25, 0, 0.5, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
+		ESP_DISTANCE["Toggle_RenderColor"]:TweenSize(UDim2.new(0, 0, 1, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
 		ESP.Distance = false
 	else
-		Toggle_Cricle_3:TweenPosition(UDim2.new(0.6, 0, 0.5, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
-		Toggle_RenderColor_3:TweenSize(UDim2.new(1, 0, 1, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
+		ESP_DISTANCE["Toggle_Cricle"]:TweenPosition(UDim2.new(0.6, 0, 0.5, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
+		ESP_DISTANCE["Toggle_RenderColor"]:TweenSize(UDim2.new(1, 0, 1, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
 		ESP.Distance = true
 	end
 end)
 
+ESP_LIMBS["TextButton"].MouseButton1Click:Connect(function()
+	if (ESP.Limbs) then
+		ESP_LIMBS["Toggle_Cricle"]:TweenPosition(UDim2.new(-0.25, 0, 0.5, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
+		ESP_LIMBS["Toggle_RenderColor"]:TweenSize(UDim2.new(0, 0, 1, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
+		ESP.Limbs = false
+	else
+		ESP_LIMBS["Toggle_Cricle"]:TweenPosition(UDim2.new(0.6, 0, 0.5, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
+		ESP_LIMBS["Toggle_RenderColor"]:TweenSize(UDim2.new(1, 0, 1, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
+		ESP.Limbs = true
+	end
+end)
 --//////////////////////////////////////////////////////////////////////////////////////////////
 
 local AIMBOT = {
@@ -1312,11 +1822,10 @@ function AIMBOT.LockOn(PART)
 			game:GetService("RunService").RenderStepped:Wait()
 		end
 	end
-	--workspace.CurrentCamera.CFrame = CFrame.new(workspace.CurrentCamera.CFrame.p, PART.CFrame.p) old aimbot
 end
 
 function AIMBOT.Call.KeyDown(KEY)
-	if (game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name == "Phantom Forces") then
+	if (GameName == "Phantom Forces") then
 		if (KEY.UserInputType == Enum.UserInputType.MouseButton2) then
 			if (not AIMBOT.TargetModel and AIMBOT.Active) then
 				local MAX_ANGLE = math.rad(AIMBOT.FoVRange)
@@ -1350,7 +1859,7 @@ function AIMBOT.Call.KeyDown(KEY)
 						local CLOSEST_MODEL = nil
 						local CLOSEST_RANGE = MAX_ANGLE
 						local CLOSEST_DISTANCE = 1000
-						for _, Player in pairs(game:GetService("Workspace").Players.Phantoms:GetChildren()) do
+						for _, Player in pairs(game:GetService("Workspace").Players.Ghosts:GetChildren()) do
 						    if (CLOSEST_MODEL) then
 								local an = AIMBOT.getAbsFOV(Player.HumanoidRootPart)
 								if (an < CLOSEST_RANGE) then
@@ -1378,37 +1887,43 @@ function AIMBOT.Call.KeyDown(KEY)
 				AIMBOT.TargetModel = nil
 			end
 		end
-
-
 	else
 		if (KEY.KeyCode == Enum.KeyCode.E) then
 			if (not AIMBOT.TargetModel and AIMBOT.Active) then
 				local MAX_ANGLE = math.rad(AIMBOT.FoVRange)
-				local CLOSEST_MODEL = nil
-				local CLOSEST_RANGE = MAX_ANGLE
-				local CLOSEST_DISTANCE = 1000
-				for i, plr in pairs(game:GetService("Players"):GetPlayers()) do
-					if plr.Name ~= game:GetService("Players").LocalPlayer.Name and plr.Character and plr.Character.Head and plr.Character.Humanoid and plr.Character.Humanoid.Health > 0 then
-						if (CLOSEST_MODEL) then
-							local an = AIMBOT.getAbsFOV(plr.Character.HumanoidRootPart)
-							if (an < CLOSEST_RANGE) then
-								if (CLOSEST_DISTANCE > (workspace.CurrentCamera.CFrame.p - plr.Character.HumanoidRootPart.Position).magnitude) then
-									CLOSEST_MODEL = plr.Character
+				for i, plr in pairs(game:GetService("Players"):GetChildren()) do
+					if plr.Name ~= game:GetService("Players").LocalPlayer.Name and plr.Character and plr.Character.Head and plr.Character.Humanoid and plr.Character.Humanoid.Health > 1 then
+						local CLOSEST_MODEL = nil
+						local CLOSEST_RANGE = MAX_ANGLE
+						local CLOSEST_DISTANCE = 1000
+						for _, Player in pairs(game:GetService("Workspace").Players.Ghosts:GetChildren()) do
+						    if (CLOSEST_MODEL) then
+								local an = AIMBOT.getAbsFOV(Player.HumanoidRootPart)
+								if (an < CLOSEST_RANGE) then
+									if (CLOSEST_DISTANCE > (workspace.CurrentCamera.CFrame.p - Player.HumanoidRootPart.Position).magnitude) then
+										CLOSEST_MODEL = Player
+										CLOSEST_RANGE = an
+										CLOSEST_DISTANCE = (workspace.CurrentCamera.CFrame.p - Player.HumanoidRootPart.Position).magnitude
+									end
+								end
+							else
+								local an = AIMBOT.getAbsFOV(Player.HumanoidRootPart)
+								if an < MAX_ANGLE then
+									CLOSEST_MODEL = Player
 									CLOSEST_RANGE = an
-									CLOSEST_DISTANCE = (workspace.CurrentCamera.CFrame.p - plr.Character.HumanoidRootPart.Position).magnitude
+									CLOSEST_DISTANCE = (workspace.CurrentCamera.CFrame.p - Player.HumanoidRootPart.Position).magnitude
 								end
 							end
-						else
-							local an = AIMBOT.getAbsFOV(plr.Character.HumanoidRootPart)
-							if an < MAX_ANGLE then
-								CLOSEST_MODEL = plr.Character
-								CLOSEST_RANGE = an
-								CLOSEST_DISTANCE = (workspace.CurrentCamera.CFrame.p - plr.Character.HumanoidRootPart.Position).magnitude
-							end
 						end
+						AIMBOT.TargetModel = CLOSEST_MODEL
+
+						plr.Character.Humanoid.Died:Connect(function()
+							if AIMBOT.TargetModel == plr.Character then
+								AIMBOT.TargetModel = nil
+							end
+						end)
 					end
 				end
-				AIMBOT.TargetModel = CLOSEST_MODEL
 			else
 				AIMBOT.TargetModel = nil
 			end
@@ -1448,12 +1963,12 @@ end
 
 AB_ACTIVE["TextButton"].MouseButton1Click:Connect(function()
 	if (AIMBOT.Active) then
-		Toggle_Cricle_4:TweenPosition(UDim2.new(-0.25, 0, 0.5, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
-		Toggle_RenderColor_4:TweenSize(UDim2.new(0, 0, 1, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
+		AB_ACTIVE["Toggle_Cricle"]:TweenPosition(UDim2.new(-0.25, 0, 0.5, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
+		AB_ACTIVE["Toggle_RenderColor"]:TweenSize(UDim2.new(0, 0, 1, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
 		AIMBOT.Active = false
 	else
-		Toggle_Cricle_4:TweenPosition(UDim2.new(0.6, 0, 0.5, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
-		Toggle_RenderColor_4:TweenSize(UDim2.new(1, 0, 1, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
+		AB_ACTIVE["Toggle_Cricle"]:TweenPosition(UDim2.new(0.6, 0, 0.5, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
+		AB_ACTIVE["Toggle_RenderColor"]:TweenSize(UDim2.new(1, 0, 1, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.15, true)
 		AIMBOT.Active = true
 	end
 end)
@@ -1468,6 +1983,15 @@ AB_FOVRANGE.Changed:Connect(function(TYPE)
 	end
 end)
 AB_FOVRANGE.Text = tostring(AIMBOT.FoVRange)
+
+--//////////////////////////////////////////////////////////////////////////////////////////////
+
+if (GLOBAL.GameName == "Phantom Forces") then
+	GAMESUPPORT_HOLDER:FindFirstChildOfClass("Frame"):Destroy()
+	UI:CreateInfoOption("Aim Bot", GAMESUPPORT_HOLDER)
+	UI:CreateInfoOption("ESP", GAMESUPPORT_HOLDER)
+	GAMESUPPORT_HOLDER.Size = UDim2.new(1, 0, 0, 104)
+end
 
 --//////////////////////////////////////////////////////////////////////////////////////////////
 local CORE_DEBOUNCE = false
@@ -1502,6 +2026,7 @@ game:GetService('Players').LocalPlayer:GetMouse().KeyUp:connect(function(KEY)
 	FLY.Call.KeyUp(KEY)
 end)
 game:GetService("RunService").RenderStepped:Connect(function()
+	ESP.Call.Runtime()
 	AIMBOT.Call.Runtime()
 	FLY.Call.Runtime()
 end)
@@ -1511,4 +2036,3 @@ Frame:TweenPosition(UDim2.new(0,400,0,0), Enum.EasingDirection.InOut, Enum.Easin
 	CORE_DEBOUNCE = false
 end)
 ACTIVE = true
-ESP.Update()
