@@ -2005,6 +2005,13 @@ game:GetService("UserInputService").inputBegan:Connect(function(KEY)
 			ACTIVE = true
 		end
 	end
+	if (KEY.KeyCode == Enum.KeyCode.LeftBracket) then
+		--ESP.Active = false
+
+		--AIMBOT.TargetModel = nil
+		--AIMBOT.Locking = false
+		--AIMBOT.Active = false
+	end
 	AIMBOT.Call.KeyDown(KEY)
 	--ESP.Call.KeyDown(KEY)
 end)
