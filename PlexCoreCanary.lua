@@ -1979,9 +1979,9 @@ AB_FOVRANGE.Text = tostring(AIMBOT.FoVRange)
 --//////////////////////////////////////////////////////////////////////////////////////////////
 
 if (GLOBAL.GameName == "Phantom Forces") then
-	GAMESUPPORT_HOLDER:FindFirstChildOfClass("Frame"):Destroy()
-	UI:CreateInfoOption("Aim Bot", GAMESUPPORT_HOLDER)
-	UI:CreateInfoOption("ESP", GAMESUPPORT_HOLDER)
+	GAMESUPPORT_HOLDER:FindFirstChildOfClass("Frame"):FindFirstChildOfClass("Frame"):Destroy()
+	UI:CreateInfoOption("Aim Bot", GAMESUPPORT_HOLDER:FindFirstChildOfClass("Frame"))
+	UI:CreateInfoOption("ESP", GAMESUPPORT_HOLDER:FindFirstChildOfClass("Frame"))
 	GAMESUPPORT_HOLDER.Size = UDim2.new(1, 0, 0, 104)
 end
 
