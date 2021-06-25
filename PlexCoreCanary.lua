@@ -1559,159 +1559,294 @@ function ESP.DrawESP(Model, Type, Dyn)
 	       Box = Drawing.new("Quad"),
 	       Name = Drawing.new("Text"),
 	}
-	local function Render()
-		local Distance = (workspace.CurrentCamera.CFrame.Position - Model.HumanoidRootPart.Position).Magnitude
-		local Color = Color3.fromHSV((math.clamp(Distance / 5, 0, 125) + 100) / 255, 0.75, 1)
+	local function Render(ColorType, Type)
+		local Color = nil
+		local ColorRange = nil
+		if (Type == "Player") then
+			local Distance = (workspace.CurrentCamera.CFrame.Position - Model.HumanoidRootPart.Position).Magnitude
+			if (ColorType == "Range") then
+				Color = Color3.fromHSV((math.clamp(Distance / 5, 0, 125) + 100) / 255, 0.75, 1)
+			elseif (ColorType == "Team") then
+				Color = Color3.fromHSV(Dyn.Team.TeamColor.Color:ToHSV())
+			end
+			if (not Color) then
+				Color = Color3.fromHSV((math.clamp(Distance / 5, 0, 125) + 100) / 255, 0.75, 1)
+			end
+			if (ESP.Limbs) then
+				for i, v in pairs(Model:GetChildren()) do
+					if (v:IsA("BasePart") and v.Name ~= "HumanoidRootPart") then
+						if (not Objects[v.Name]) then
+							Objects[v.Name] = Drawing.new("Line")	
+						end
+						local VectorTOP, OnScreenTOP = workspace.CurrentCamera:WorldToViewportPoint((v.CFrame * CFrame.new(0, (v.Size * Vector3.new(1, 1.5)).Y/2, 0)).Position)
+						local VectorBTTOM, OnScreenBTTOM = workspace.CurrentCamera:WorldToViewportPoint((v.CFrame * CFrame.new(0, -(v.Size * Vector3.new(1, 1.5)).Y/2, 0)).Position)
 
-		if (ESP.Limbs) then
-			for i, v in pairs(Model:GetChildren()) do
-				if (v:IsA("BasePart") and v.Name ~= "HumanoidRootPart") then
-					if (not Objects[v.Name]) then
-						Objects[v.Name] = Drawing.new("Line")	
+						if (OnScreenTOP or OnScreenBTTOM) then
+							Objects[v.Name].From = Vector2.new(VectorTOP.X, VectorTOP.Y)
+							Objects[v.Name].To = Vector2.new(VectorBTTOM.X, VectorBTTOM.Y)
+							Objects[v.Name].Thickness = math.clamp(3 - (Distance / 100), 0, 3)
+							Objects[v.Name].Color = Color3.fromHSV(0.571889, 1, 1)
+							Objects[v.Name].Transparency = math.clamp((500 - Distance) / 200, 0.2, 1)
+							Objects[v.Name].Visible = true
+						else
+							Objects[v.Name].Visible = false
+						end
 					end
-					local VectorTOP, OnScreenTOP = workspace.CurrentCamera:WorldToViewportPoint((v.CFrame * CFrame.new(0, (v.Size * Vector3.new(1, 1.5)).Y/2, 0)).Position)
-					local VectorBTTOM, OnScreenBTTOM = workspace.CurrentCamera:WorldToViewportPoint((v.CFrame * CFrame.new(0, -(v.Size * Vector3.new(1, 1.5)).Y/2, 0)).Position)
+				end
+				local function ConnectTop(Part1, Part2)
+					if (not Objects[Part1.Name..Part2.Name]) then
+						Objects[Part1.Name..Part2.Name] = Drawing.new("Line")
+					end
+					local VectorTOP, OnScreenTOP = workspace.CurrentCamera:WorldToViewportPoint((Part1.CFrame * CFrame.new(0, (Part1.Size * Vector3.new(1, 1.5)).Y/2, 0)).Position)
+					local VectorBTTOM, OnScreenBTTOM = workspace.CurrentCamera:WorldToViewportPoint((Part2.CFrame * CFrame.new(0, (Part2.Size * Vector3.new(1, 1.5)).Y/2, 0)).Position)
 
 					if (OnScreenTOP or OnScreenBTTOM) then
-						Objects[v.Name].From = Vector2.new(VectorTOP.X, VectorTOP.Y)
-						Objects[v.Name].To = Vector2.new(VectorBTTOM.X, VectorBTTOM.Y)
-						Objects[v.Name].Thickness = math.clamp(3 - (Distance / 100), 0, 3)
-						Objects[v.Name].Color = Color3.fromHSV(0.571889, 1, 1)
-						Objects[v.Name].Transparency = math.clamp((500 - Distance) / 200, 0.2, 1)
-						Objects[v.Name].Visible = true
+						Objects[Part1.Name..Part2.Name].From = Vector2.new(VectorTOP.X, VectorTOP.Y)
+						Objects[Part1.Name..Part2.Name].To = Vector2.new(VectorBTTOM.X, VectorBTTOM.Y)
+						Objects[Part1.Name..Part2.Name].Thickness = math.clamp(3 - (Distance / 100), 0, 3)
+						Objects[Part1.Name..Part2.Name].Color = Color3.fromHSV(0.571889, 1, 1)
+						Objects[Part1.Name..Part2.Name].Transparency = math.clamp((500 - Distance) / 200, 0.2, 1)
+						Objects[Part1.Name..Part2.Name].Visible = true
 					else
-						Objects[v.Name].Visible = false
+						Objects[Part1.Name..Part2.Name].Visible = false
+					end
+				end
+				if (Model:FindFirstChild("UpperTorso")) then
+					if (Model:FindFirstChild("LeftUpperArm")) then
+						ConnectTop(Model:FindFirstChild("LeftUpperArm"), Model:FindFirstChild("UpperTorso"))
+					end
+					if (Model:FindFirstChild("Left Arm")) then
+						ConnectTop(Model:FindFirstChild("Left Arm"), Model:FindFirstChild("UpperTorso"))
+					end
+
+					if (Model:FindFirstChild("RightUpperArm")) then
+						ConnectTop(Model:FindFirstChild("RightUpperArm"), Model:FindFirstChild("UpperTorso"))
+					end
+					if (Model:FindFirstChild("Right Arm")) then
+						ConnectTop(Model:FindFirstChild("Right Arm"), Model:FindFirstChild("UpperTorso"))
+					end
+				elseif (Model:FindFirstChild("Torso")) then
+					if (Model:FindFirstChild("LeftUpperArm")) then
+						ConnectTop(Model:FindFirstChild("LeftUpperArm"), Model:FindFirstChild("Torso"))
+					end
+					if (Model:FindFirstChild("Left Arm")) then
+						ConnectTop(Model:FindFirstChild("Left Arm"), Model:FindFirstChild("Torso"))
+					end
+
+					if (Model:FindFirstChild("RightUpperArm")) then
+						ConnectTop(Model:FindFirstChild("RightUpperArm"), Model:FindFirstChild("Torso"))
+					end
+					if (Model:FindFirstChild("Right Arm")) then
+						ConnectTop(Model:FindFirstChild("Right Arm"), Model:FindFirstChild("Torso"))
+					end
+				end
+				if (Model:FindFirstChild("LowerTorso")) then
+					if (Model:FindFirstChild("LeftUpperLeg")) then
+						ConnectTop(Model:FindFirstChild("LeftUpperLeg"), Model:FindFirstChild("LowerTorso"))
+					end
+					if (Model:FindFirstChild("Left Leg")) then
+						ConnectTop(Model:FindFirstChild("Left Leg"), Model:FindFirstChild("LowerTorso"))
+					end
+
+					if (Model:FindFirstChild("RightUpperLeg")) then
+						ConnectTop(Model:FindFirstChild("RightUpperLeg"), Model:FindFirstChild("LowerTorso"))
+					end
+					if (Model:FindFirstChild("Right Leg")) then
+						ConnectTop(Model:FindFirstChild("Right Leg"), Model:FindFirstChild("LowerTorso"))
+					end
+				elseif (Model:FindFirstChild("Torso")) then
+					if (Model:FindFirstChild("LeftUpperLeg")) then
+						ConnectTop(Model:FindFirstChild("LeftUpperLeg"), Model:FindFirstChild("Torso"))
+					end
+					if (Model:FindFirstChild("Left Leg")) then
+						ConnectTop(Model:FindFirstChild("Left Leg"), Model:FindFirstChild("Torso"))
+					end
+
+					if (Model:FindFirstChild("RightUpperLeg")) then
+						ConnectTop(Model:FindFirstChild("RightUpperLeg"), Model:FindFirstChild("Torso"))
+					end
+					if (Model:FindFirstChild("Right Leg")) then
+						ConnectTop(Model:FindFirstChild("Right Leg"), Model:FindFirstChild("Torso"))
 					end
 				end
 			end
-			local function ConnectTop(Part1, Part2)
-				if (not Objects[Part1.Name..Part2.Name]) then
-					Objects[Part1.Name..Part2.Name] = Drawing.new("Line")
-				end
-				local VectorTOP, OnScreenTOP = workspace.CurrentCamera:WorldToViewportPoint((Part1.CFrame * CFrame.new(0, (Part1.Size * Vector3.new(1, 1.5)).Y/2, 0)).Position)
-				local VectorBTTOM, OnScreenBTTOM = workspace.CurrentCamera:WorldToViewportPoint((Part2.CFrame * CFrame.new(0, (Part2.Size * Vector3.new(1, 1.5)).Y/2, 0)).Position)
+			
+			Objects.Name.Center = true
+			Objects.Name.Outline = true
 
-				if (OnScreenTOP or OnScreenBTTOM) then
-					Objects[Part1.Name..Part2.Name].From = Vector2.new(VectorTOP.X, VectorTOP.Y)
-					Objects[Part1.Name..Part2.Name].To = Vector2.new(VectorBTTOM.X, VectorBTTOM.Y)
-					Objects[Part1.Name..Part2.Name].Thickness = math.clamp(3 - (Distance / 100), 0, 3)
-					Objects[Part1.Name..Part2.Name].Color = Color3.fromHSV(0.571889, 1, 1)
-					Objects[Part1.Name..Part2.Name].Transparency = math.clamp((500 - Distance) / 200, 0.2, 1)
-					Objects[Part1.Name..Part2.Name].Visible = true
-				else
-					Objects[Part1.Name..Part2.Name].Visible = false
+			local Vector, OnScreen = workspace.CurrentCamera:WorldToViewportPoint(Model.HumanoidRootPart.Position + Vector3.new(0,4,0))
+			if (OnScreen) then
+				Objects.Name.Position = Vector2.new(Vector.X, Vector.Y + math.clamp(Distance / 10, 10, 30) - 36)
+				Objects.Name.Size = math.clamp(30 - Distance / 10, 10, 30)
+				Objects.Name.Color = Color
+				Objects.Name.Visible = true
+				Objects.Name.Font = 1
+				Objects.Name.Transparency = math.clamp((500 - Distance) / 200, 0.2, 1)
+				Objects.Name.Text = string.format("[%s]", game:GetService("Players"):GetPlayerFromCharacter(Model) and game:GetService("Players"):GetPlayerFromCharacter(Model).Name or "Player")			
+				if (ESP.Distance) then
+					Objects.Name.Text = string.format("[%sM] ", tostring(math.floor(Distance))) .. Objects.Name.Text
 				end
+				if (ESP.Health) then
+					Objects.Name.Text = Objects.Name.Text..string.format(" [%s HP]", tostring(math.floor(Model.Humanoid.Health) or "N/A"))
+				end
+			else
+				Objects.Name.Visible = false 
 			end
-			if (Model:FindFirstChild("UpperTorso")) then
-				if (Model:FindFirstChild("LeftUpperArm")) then
-					ConnectTop(Model:FindFirstChild("LeftUpperArm"), Model:FindFirstChild("UpperTorso"))
-				end
-				if (Model:FindFirstChild("Left Arm")) then
-					ConnectTop(Model:FindFirstChild("Left Arm"), Model:FindFirstChild("UpperTorso"))
-				end
 
-				if (Model:FindFirstChild("RightUpperArm")) then
-					ConnectTop(Model:FindFirstChild("RightUpperArm"), Model:FindFirstChild("UpperTorso"))
-				end
-				if (Model:FindFirstChild("Right Arm")) then
-					ConnectTop(Model:FindFirstChild("Right Arm"), Model:FindFirstChild("UpperTorso"))
-				end
-			elseif (Model:FindFirstChild("Torso")) then
-				if (Model:FindFirstChild("LeftUpperArm")) then
-					ConnectTop(Model:FindFirstChild("LeftUpperArm"), Model:FindFirstChild("Torso"))
-				end
-				if (Model:FindFirstChild("Left Arm")) then
-					ConnectTop(Model:FindFirstChild("Left Arm"), Model:FindFirstChild("Torso"))
-				end
-
-				if (Model:FindFirstChild("RightUpperArm")) then
-					ConnectTop(Model:FindFirstChild("RightUpperArm"), Model:FindFirstChild("Torso"))
-				end
-				if (Model:FindFirstChild("Right Arm")) then
-					ConnectTop(Model:FindFirstChild("Right Arm"), Model:FindFirstChild("Torso"))
-				end
+			local PartCorners = ESP.GetPartCorners(Model.HumanoidRootPart)
+			local VectorTR, OnScreenTR = workspace.CurrentCamera:WorldToViewportPoint(PartCorners.TR)
+			local VectorBR, OnScreenBR = workspace.CurrentCamera:WorldToViewportPoint(PartCorners.BR)
+			local VectorTL, OnScreenTL = workspace.CurrentCamera:WorldToViewportPoint(PartCorners.TL)
+			local VectorBL, OnScreenBL = workspace.CurrentCamera:WorldToViewportPoint(PartCorners.BL)
+			if (OnScreenBL or OnScreenTL or OnScreenBR or OnScreenTR) then
+				Objects.Box.PointA = Vector2.new(VectorTR.X, VectorTR.Y)
+				Objects.Box.PointB = Vector2.new(VectorTL.X, VectorTL.Y)
+				Objects.Box.PointC = Vector2.new(VectorBL.X, VectorBL.Y)
+				Objects.Box.PointD = Vector2.new(VectorBR.X, VectorBR.Y)
+				Objects.Box.Color = Color
+				Objects.Box.Thickness = math.clamp(3 - (Distance / 100), 0, 3)
+				Objects.Box.Transparency = math.clamp((700 - Distance) / 200, 0.2, 0.9)
+				Objects.Box.Visible = true
+			else
+				Objects.Box.Visible = false
 			end
-			if (Model:FindFirstChild("LowerTorso")) then
-				if (Model:FindFirstChild("LeftUpperLeg")) then
-					ConnectTop(Model:FindFirstChild("LeftUpperLeg"), Model:FindFirstChild("LowerTorso"))
-				end
-				if (Model:FindFirstChild("Left Leg")) then
-					ConnectTop(Model:FindFirstChild("Left Leg"), Model:FindFirstChild("LowerTorso"))
-				end
-
-				if (Model:FindFirstChild("RightUpperLeg")) then
-					ConnectTop(Model:FindFirstChild("RightUpperLeg"), Model:FindFirstChild("LowerTorso"))
-				end
-				if (Model:FindFirstChild("Right Leg")) then
-					ConnectTop(Model:FindFirstChild("Right Leg"), Model:FindFirstChild("LowerTorso"))
-				end
-			elseif (Model:FindFirstChild("Torso")) then
-				if (Model:FindFirstChild("LeftUpperLeg")) then
-					ConnectTop(Model:FindFirstChild("LeftUpperLeg"), Model:FindFirstChild("Torso"))
-				end
-				if (Model:FindFirstChild("Left Leg")) then
-					ConnectTop(Model:FindFirstChild("Left Leg"), Model:FindFirstChild("Torso"))
-				end
-
-				if (Model:FindFirstChild("RightUpperLeg")) then
-					ConnectTop(Model:FindFirstChild("RightUpperLeg"), Model:FindFirstChild("Torso"))
-				end
-				if (Model:FindFirstChild("Right Leg")) then
-					ConnectTop(Model:FindFirstChild("Right Leg"), Model:FindFirstChild("Torso"))
-				end
+		elseif (Type == "Model") then
+			if (not Model.PrimaryPart) then return end
+			local Distance = (workspace.CurrentCamera.CFrame.Position - Model.PrimaryPart.Position).Magnitude
+			if (ColorType == "Range") then
+				Color = Color3.fromHSV((math.clamp(Distance / 5, 0, 125) + 100) / 255, 0.75, 1)
+			elseif (ColorType == "Eclipsis") then 
+				Color = Color3.fromHSV(Model.Team.Value.Color:ToHSV())
 			end
-		end
-		
-		Objects.Name.Center = true
-		Objects.Name.Outline = true
-
-		local Vector, OnScreen = workspace.CurrentCamera:WorldToViewportPoint(Model.HumanoidRootPart.Position + Vector3.new(0,4,0))
-		if (OnScreen) then
-			Objects.Name.Position = Vector2.new(Vector.X, Vector.Y + math.clamp(Distance / 10, 10, 30) - 20)
-			Objects.Name.Size = math.clamp(30 - Distance / 10, 10, 30)
-			Objects.Name.Color = Color
-			Objects.Name.Visible = true
-			Objects.Name.Font = 1
-			Objects.Name.Transparency = math.clamp((500 - Distance) / 200, 0.2, 1)
-			Objects.Name.Text = string.format("[%s]", game:GetService("Players"):GetPlayerFromCharacter(Model) and game:GetService("Players"):GetPlayerFromCharacter(Model).Name or "Player")			
-			if (ESP.Distance) then
-				Objects.Name.Text = string.format("[%sM] ", tostring(math.floor(Distance))) .. Objects.Name.Text
+			if (not Color) then
+				Color = Color3.fromHSV((math.clamp(Distance / 5, 0, 125) + 100) / 255, 0.75, 1)
 			end
-			if (ESP.Health) then
-				Objects.Name.Text = Objects.Name.Text..string.format(" [%s HP]", tostring(math.floor(Model.Humanoid.Health) or "N/A"))
+			if (not ColorRange) then
+				ColorRange = Color3.fromHSV((math.clamp(Distance / 5, 0, 125) + 100) / 255, 0.75, 1)
 			end
-		else
-			Objects.Name.Visible = false 
-		end
 
-		local PartCorners = ESP.GetPartCorners(Model.HumanoidRootPart)
-		local VectorTR, OnScreenTR = workspace.CurrentCamera:WorldToViewportPoint(PartCorners.TR)
-		local VectorBR, OnScreenBR = workspace.CurrentCamera:WorldToViewportPoint(PartCorners.BR)
-		local VectorTL, OnScreenTL = workspace.CurrentCamera:WorldToViewportPoint(PartCorners.TL)
-		local VectorBL, OnScreenBL = workspace.CurrentCamera:WorldToViewportPoint(PartCorners.BL)
-		if (OnScreenBL or OnScreenTL or OnScreenBR or OnScreenTR) then
-			Objects.Box.PointA = Vector2.new(VectorTR.X, VectorTR.Y)
-			Objects.Box.PointB = Vector2.new(VectorTL.X, VectorTL.Y)
-			Objects.Box.PointC = Vector2.new(VectorBL.X, VectorBL.Y)
-			Objects.Box.PointD = Vector2.new(VectorBR.X, VectorBR.Y)
-			Objects.Box.Color = Color
-			Objects.Box.Thickness = math.clamp(3 - (Distance / 100), 0, 3)
-			Objects.Box.Transparency = math.clamp((700 - Distance) / 200, 0.2, 0.9)
-			Objects.Box.Visible = true
-		else
-			Objects.Box.Visible = false
+			Objects.Name.Center = true
+			Objects.Name.Outline = true
+
+			local Vector, OnScreen = workspace.CurrentCamera:WorldToViewportPoint(Model.PrimaryPart.Position + Vector3.new(0,4,0))
+			if (OnScreen) then
+				Objects.Name.Position = Vector2.new(Vector.X, Vector.Y + math.clamp(Distance / 10, 10, 30) - 36)
+				Objects.Name.Size = math.clamp(30 - Distance / 10, 10, 30)
+				Objects.Name.Color = ColorRange
+				Objects.Name.Visible = true
+				Objects.Name.Font = 1
+				Objects.Name.Transparency = math.clamp((500 - Distance) / 200, 0.2, 1)
+				Objects.Name.Text = string.format("[%s]", Model.Name)
+				if (ESP.Distance) then
+					Objects.Name.Text = string.format("[%sM] ", tostring(math.floor(Distance))) .. Objects.Name.Text
+				end		
+				if (ESP.Health) then
+					if (ColorType == "Eclipsis") then
+						if (Model:FindFirstChild("Health")) then
+							Objects.Name.Text = Objects.Name.Text..string.format(" [%s HP]", tostring(math.floor(Model.Health.Value) or "N/A").."/"..tostring(math.floor(Model.MaxHealth.Value) or "N/A"))
+						end
+					end
+				end
+			else
+				Objects.Name.Visible = false 
+			end
+
+			local PartCorners = ESP.GetPartCorners(Model.PrimaryPart)
+			local VectorTR, OnScreenTR = workspace.CurrentCamera:WorldToViewportPoint(PartCorners.TR)
+			local VectorBR, OnScreenBR = workspace.CurrentCamera:WorldToViewportPoint(PartCorners.BR)
+			local VectorTL, OnScreenTL = workspace.CurrentCamera:WorldToViewportPoint(PartCorners.TL)
+			local VectorBL, OnScreenBL = workspace.CurrentCamera:WorldToViewportPoint(PartCorners.BL)
+			if (OnScreenBL or OnScreenTL or OnScreenBR or OnScreenTR) then
+				Objects.Box.PointA = Vector2.new(VectorTR.X, VectorTR.Y)
+				Objects.Box.PointB = Vector2.new(VectorTL.X, VectorTL.Y)
+				Objects.Box.PointC = Vector2.new(VectorBL.X, VectorBL.Y)
+				Objects.Box.PointD = Vector2.new(VectorBR.X, VectorBR.Y)
+				Objects.Box.Color = Color
+				Objects.Box.Thickness = math.clamp(3 - (Distance / 100), 0, 3)
+				Objects.Box.Transparency = math.clamp((700 - Distance) / 200, 0.2, 0.9)
+				Objects.Box.Visible = true
+			else
+				Objects.Box.Visible = false
+			end	
+		elseif (Type == "Part") then
+			if (not Model) then return end
+			local Distance = (workspace.CurrentCamera.CFrame.Position - Model.Position).Magnitude
+			if (ColorType == "Range") then
+				Color = Color3.fromHSV((math.clamp(Distance / 5, 0, 125) + 100) / 255, 0.75, 1)
+			end
+			if (not Color) then
+				Color = Color3.fromHSV((math.clamp(Distance / 5, 0, 125) + 100) / 255, 0.75, 1)
+			end
+			if (not ColorRange) then
+				ColorRange = Color3.fromHSV((math.clamp(Distance / 5, 0, 125) + 100) / 255, 0.75, 1)
+			end
+
+			Objects.Name.Center = true
+			Objects.Name.Outline = true
+
+			local Vector, OnScreen = workspace.CurrentCamera:WorldToViewportPoint(Model.Position + Vector3.new(0,4,0))
+			if (OnScreen) then
+				Objects.Name.Position = Vector2.new(Vector.X, Vector.Y + math.clamp(Distance / 10, 10, 30) - 36)
+				Objects.Name.Size = math.clamp(30 - Distance / 10, 10, 30)
+				Objects.Name.Color = ColorRange
+				Objects.Name.Visible = true
+				Objects.Name.Font = 1
+				Objects.Name.Transparency = math.clamp((500 - Distance) / 200, 0.2, 1)
+				Objects.Name.Text = string.format("[%s]", Model.Name)
+				if (ESP.Distance) then
+					Objects.Name.Text = string.format("[%sM] ", tostring(math.floor(Distance))) .. Objects.Name.Text
+				end				
+			else
+				Objects.Name.Visible = false 
+			end
+
+			local PartCorners = ESP.GetPartCorners(Model)
+			local VectorTR, OnScreenTR = workspace.CurrentCamera:WorldToViewportPoint(PartCorners.TR)
+			local VectorBR, OnScreenBR = workspace.CurrentCamera:WorldToViewportPoint(PartCorners.BR)
+			local VectorTL, OnScreenTL = workspace.CurrentCamera:WorldToViewportPoint(PartCorners.TL)
+			local VectorBL, OnScreenBL = workspace.CurrentCamera:WorldToViewportPoint(PartCorners.BL)
+			if (OnScreenBL or OnScreenTL or OnScreenBR or OnScreenTR) then
+				Objects.Box.PointA = Vector2.new(VectorTR.X, VectorTR.Y)
+				Objects.Box.PointB = Vector2.new(VectorTL.X, VectorTL.Y)
+				Objects.Box.PointC = Vector2.new(VectorBL.X, VectorBL.Y)
+				Objects.Box.PointD = Vector2.new(VectorBR.X, VectorBR.Y)
+				Objects.Box.Color = Color
+				Objects.Box.Thickness = math.clamp(3 - (Distance / 100), 0, 3)
+				Objects.Box.Transparency = math.clamp((700 - Distance) / 200, 0.2, 0.9)
+				Objects.Box.Visible = true
+			else
+				Objects.Box.Visible = false
+			end	
 		end
 		game:GetService("RunService").RenderStepped:Wait()
 	end
 	if (Type == "PhantomForcesTeam") then
 		if (Model.Parent.Name ~= game:GetService("Players").LocalPlayer.Team.Name) then
 			pcall(function()
-				Render()
+				Render("Range", "Player")
+			end)
+		end
+	elseif (Type == "EclipsisTeam") then
+		if (Model.Parent.Name ~= game:GetService("Players").LocalPlayer.Team.Name) then
+			pcall(function()
+				Render("Team", "Player")
+			end)
+		end
+	elseif (Type == "EclipsisModel") then
+		if (Model.Parent.Name ~= game:GetService("Players").LocalPlayer.Team.Name) then
+			pcall(function()
+				Render("Eclipsis", "Model")
+			end)
+		end
+	elseif (Type == "EclipsisPart") then
+		if (Model.Parent.Name ~= game:GetService("Players").LocalPlayer.Team.Name) then
+			pcall(function()
+				Render("Range", "Part")
 			end)
 		end
 	else
 		pcall(function()
-			Render()
+			Render("Range", "Player")
 		end)
 	end
 	game:GetService("RunService").RenderStepped:Wait()
@@ -1730,10 +1865,29 @@ function ESP.Call.Runtime()
 			for _, Player in next, game:GetService("Workspace").Players.Ghosts:GetChildren() do
 				ESP.DrawESP(Player, "PhantomForcesTeam")
 			end
+		elseif (GLOBAL.GameName == "Eclipsis") then
+			for _, Player in next, game:GetService("Players"):GetPlayers() do
+				if Player.Character and Player.Name ~= game:GetService("Players").LocalPlayer.Name then
+					ESP.DrawESP(Player.Character, "EclipsisTeam", Player)
+				end
+			end
+			for _, Model in next, workspace["Structures"]:GetChildren() do
+				
+				if Model.Team and Model.Team.Value ~= game:GetService("Players").LocalPlayer.Team.TeamColor then
+					if (Model.Name == "Turret" or Model.Name == "Point Defense" or Model.Name == "Artillery" or Model.Name == "Bore" or Model.Name == "Arc Turret" or Model.Name == "Spawn Point") then
+						ESP.DrawESP(Model, "EclipsisModel")
+					end
+				end
+			end
+			for _, Model in next, workspace:GetChildren() do
+				if (Model.Name == "CruiseMissile") then
+					ESP.DrawESP(Model, "EclipsisPart")
+				end
+			end
 		else
 			for _, Player in next, game:GetService("Players"):GetPlayers() do
 				if Player.Character and Player.Name ~= game:GetService("Players").LocalPlayer.Name then
-					ESP.DrawESP(Player.Character, "none")
+					ESP.DrawESP(Player.Character, "none", Player)
 				end
 			end
 		end
@@ -1981,6 +2135,10 @@ if (GLOBAL.GameName == "Phantom Forces") then
 	UI:CreateInfoOption("Aim Bot", GAMESUPPORT_HOLDER:FindFirstChildOfClass("Frame"))
 	UI:CreateInfoOption("ESP", GAMESUPPORT_HOLDER:FindFirstChildOfClass("Frame"))
 	GAMESUPPORT_HOLDER.Size = UDim2.new(1, 0, 0, 104)
+elseif (GLOBAL.GameName == "Eclipsis") then
+	GAMESUPPORT_HOLDER:FindFirstChildOfClass("Frame"):FindFirstChildOfClass("Frame"):Destroy()
+	UI:CreateInfoOption("ESP", GAMESUPPORT_HOLDER:FindFirstChildOfClass("Frame"))
+	GAMESUPPORT_HOLDER.Size = UDim2.new(1, 0, 0, 74)
 end
 
 --//////////////////////////////////////////////////////////////////////////////////////////////
