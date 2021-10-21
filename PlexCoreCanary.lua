@@ -1472,7 +1472,6 @@ function FLY.Call.Runtime()
 			FLY.BodyGyro.CFrame = FLY.Core.Handle.CFrame
 		end
 
-		game:GetService('Players').LocalPlayer.Character.Humanoid.PlatformStand=true
 		if (FLY.BodyGyro and FLY.BodyPos) then
 			wait()
 			action = true
