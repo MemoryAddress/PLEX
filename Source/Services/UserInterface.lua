@@ -1170,6 +1170,8 @@ function UI:Dispose()
 	ScreenGui:Destroy();
 end
 
+UI._contents_ = (ScreenGui);
+
 function UI:CreateTextBoxOption(NAME, DEFAULT_INPUT, Parent)
 	local Frame = Instance.new("Frame")
 	local TextLabel = Instance.new("TextLabel")
@@ -1360,6 +1362,8 @@ UI.register = function(Enviroment)
 	Frame:TweenPosition(UDim2.new(0,400,0,0), Enum.EasingDirection.InOut, Enum.EasingStyle.Quart, 1, true, function()
 		CORE_DEBOUNCE = false
 	end)
+	
+	Enviroment["UserInterface"] = (UI);
 end
 
 return (UI);
